@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+    
+    <bean id="applicationContextHolder" class="org.apache.axis2.extensions.spring.receivers.ApplicationContextHolder"/>
+    <bean id="demoService" class="com.bulain.axis2.service.DemoServiceImpl"></bean>
+    <bean id="serverPasswordCallback" class="com.bulain.axis2.security.ServerPasswordCallback">
+        <property name="privateAlais">
+            <list>
+                <value>${jaxws.server.signatureUser}</value>
+            </list>
+        </property>
+        <property name="location" value="${jaxws.server.location}" />
+    </bean>
+
+</beans>

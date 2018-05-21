@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="applicationContextHolder" class="org.apache.axis2.extensions.spring.receivers.ApplicationContextHolder" />
+    <bean id="clientPasswordCallback" class="com.bulain.axis2.security.ClientPasswordCallback">
+        <property name="privateAlais">
+            <list>
+                <value>${jaxws.client.signatureUser}</value>
+            </list>
+        </property>
+        <property name="password" value="${jaxws.client.password}" />
+    </bean>
+
+</beans>  

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<serviceGroup>
+    <service name="DemoService">
+        <!-- Spring -->
+        <parameter name="ServiceObjectSupplier">org.apache.axis2.extensions.spring.receivers.SpringServletContextObjectSupplier</parameter>
+        <parameter name="SpringBeanName">demoService</parameter>
+        
+        <!-- Security -->
+        <module ref="rampart" />
+        <parameter name="InflowSecurity">
+            <action>
+                <items>UsernameToken Timestamp Signature Encrypt</items>
+                <passwordCallbackClass>com.bulain.axis2.security.ServerPasswordCallbackProxy</passwordCallbackClass>
+                <signaturePropFile>certs/server.properties</signaturePropFile>
+                <decryptionPropFile>certs/server.properties</decryptionPropFile>
+            </action>
+        </parameter>
+        <parameter name="OutflowSecurity">
+            <action>
+                <items>Timestamp Signature</items>
+                <user>server</user>
+                <passwordCallbackClass>com.bulain.axis2.security.ServerPasswordCallbackProxy</passwordCallbackClass>
+                <passwordType>PasswordText</passwordType>
+                <signaturePropFile>certs/server.properties</signaturePropFile>
+                <signatureUser>server</signatureUser>
+                <signatureParts>{Element}{http://schemas.xmlsoap.org/soap/envelope/}Body</signatureParts>
+            </action>
+        </parameter>
+    </service>
+</serviceGroup>

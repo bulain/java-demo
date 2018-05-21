@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://bulain.com/axis2/service/demo/1.0" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://bulain.com/axis2/service/demo/1.0" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://bulain.com/axis2/service/demo/1.0" xmlns:ns1="http://bulain.com/axis2/pojo/1.0" xmlns:tns="http://bulain.com/axis2/service/demo/1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://bulain.com/axis2/pojo/1.0" schemaLocation="pojo.xsd"/>
+      <xs:element name="test01">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="request" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="test01Response">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" type="xs:string"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="test02">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="request" type="ns1:demo"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="test02Response">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" type="ns1:demo"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="test02ResponseMessage">
+    <wsdl:part name="part" element="tns:test02Response">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="test01Message">
+    <wsdl:part name="part" element="tns:test01">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="test02Message">
+    <wsdl:part name="part" element="tns:test02">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="test01ResponseMessage">
+    <wsdl:part name="part" element="tns:test01Response">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="DemoServicePortType">
+    <wsdl:operation name="test01">
+      <wsdl:input message="tns:test01Message">
+    </wsdl:input>
+      <wsdl:output message="tns:test01ResponseMessage">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="test02">
+      <wsdl:input message="tns:test02Message">
+    </wsdl:input>
+      <wsdl:output message="tns:test02ResponseMessage">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="DemoServiceBinding" type="tns:DemoServicePortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="test01">
+      <soap:operation soapAction="urn:test01"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="test02">
+      <soap:operation soapAction="urn:test02"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="DemoService">
+    <wsdl:port name="DemoServicePort" binding="tns:DemoServiceBinding">
+      <soap:address location="http://localhost:8080/axis2/services/DemoService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
