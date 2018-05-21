@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="baseJmsTemplate" class="org.springframework.jms.core.JmsTemplate" abstract="true">
+        <property name="connectionFactory" ref="connectionFactory" />
+        <property name="receiveTimeout" value="${jms.receiveTimeout}" />
+        <property name="explicitQosEnabled" value="true" />
+    </bean>
+    <bean id="jmsTemplateA" parent="baseJmsTemplate">
+        <property name="defaultDestination" ref="destinationA" />
+    </bean>
+    <bean id="jmsTemplateB" parent="baseJmsTemplate">
+        <property name="defaultDestination" ref="destinationB" />
+    </bean>
+    <bean id="jmsTemplateC" parent="baseJmsTemplate">
+        <property name="defaultDestination" ref="destinationC" />
+        <property name="pubSubDomain" value="true" />
+    </bean>
+
+    <bean id="p2pClient" class="com.bulain.jms.P2pClient">
+        <property name="jmsTemplateA" ref="jmsTemplateA" />
+        <property name="jmsTemplateB" ref="jmsTemplateB" />
+    </bean>
+    <bean id="queueContainer" class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+        <property name="connectionFactory" ref="connectionFactory" />
+        <property name="transactionManager" ref="transactionManager" />
+        <property name="destination" ref="destinationA" />
+        <property name="messageListener" ref="queueListenerAdapter" />
+        <property name="sessionTransacted" value="${jms.sessionTransacted}" />
+        <property name="maxConcurrentConsumers" value="${jms.maxConcurrentConsumers}" />
+    </bean>
+    <bean id="queueListenerAdapter" class="org.springframework.jms.listener.adapter.MessageListenerAdapter">
+        <property name="delegate" ref="p2pServer" />
+        <property name="defaultListenerMethod" value="onMessage" />
+    </bean>
+    <bean id="p2pServer" class="com.bulain.jms.P2pServer">
+        <property name="jmsTemplate" ref="jmsTemplateB" />
+    </bean>
+
+    <bean id="topicContainer" class="org.springframework.jms.listener.SimpleMessageListenerContainer">
+        <property name="connectionFactory" ref="connectionFactory" />
+        <property name="destination" ref="destinationC" />
+        <property name="messageListener" ref="topicListenerAdapter" />
+        <property name="sessionTransacted" value="${jms.sessionTransacted}" />
+        <property name="subscriptionDurable" value="true" />
+        <property name="clientId" value="topicClient" />
+        <property name="pubSubDomain" value="true" />
+    </bean>
+    <bean id="topicListenerAdapter" class="org.springframework.jms.listener.adapter.MessageListenerAdapter">
+        <property name="delegate" ref="topicListener" />
+        <property name="defaultListenerMethod" value="onMessage" />
+    </bean>
+    <bean id="topicListener" class="com.bulain.jms.TopicListener" />
+
+</beans>

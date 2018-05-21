@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="jndiTemplate" class="org.springframework.jndi.JndiTemplate">
+        <property name="environment">
+            <props>
+                <prop key="java.naming.factory.initial">${jms.factory.initial}</prop>
+                <prop key="java.naming.provider.url">${jms.provider.url}</prop>
+                <prop key="queue.Demo.A">${jms.queue.name.a}</prop>
+                <prop key="queue.Demo.B">${jms.queue.name.b}</prop>
+                <prop key="topic.Demo.C">${jms.topic.name.c}</prop>
+                <prop key="xa">${jms.xa}</prop>
+            </props>
+        </property>
+    </bean>
+    <bean id="baseJndiObject" class="org.springframework.jndi.JndiObjectFactoryBean" abstract="true">
+        <property name="jndiTemplate" ref="jndiTemplate" />
+    </bean>
+
+    <bean id="connectionFactory" parent="baseJndiObject">
+        <property name="jndiName" value="${jms.factory.name}" />
+    </bean>
+    <bean id="destinationA" parent="baseJndiObject">
+        <property name="jndiName" value="${jms.queue.name.a}" />
+    </bean>
+    <bean id="destinationB" parent="baseJndiObject">
+        <property name="jndiName" value="${jms.queue.name.b}" />
+    </bean>
+    <bean id="destinationC" parent="baseJndiObject">
+        <property name="jndiName" value="${jms.topic.name.c}" />
+    </bean>
+
+
+
+</beans>
