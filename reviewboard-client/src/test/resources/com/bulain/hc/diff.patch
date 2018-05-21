@@ -1,0 +1,96 @@
+
+Property changes on: D:\javaproject\demo
+___________________________________________________________________
+Added: reviewboard:url
+   + http://localhost:2082
+
+Index: /demo/Rakefile
+===================================================================
+--- /demo/Rakefile  (revision 219)
++++ /demo/Rakefile  (working copy)
+@@ -1,10 +1,14 @@
+ # Add your own tasks in files placed in lib/tasks ending in .rake,
+ # for example lib/tasks/capistrano.rake, and they will automatically be available to Rake.
+ 
++
++
+ require(File.join(File.dirname(__FILE__), 'config', 'boot'))
+ 
++
+ require 'rake'
+ require 'rake/testtask'
+ require 'rake/rdoctask'
+ 
++
+ require 'tasks/rails'
+Index: /demo/README
+===================================================================
+--- /demo/README    (revision 219)
++++ /demo/README    (working copy)
+@@ -3,6 +3,8 @@
+ Rails is a web-application framework that includes everything needed to create 
+ database-backed web applications according to the Model-View-Control pattern. 
+ 
++test
++
+ This pattern splits the view (also called the presentation) into "dumb" templates
+ that are primarily responsible for inserting pre-built data in between HTML tags.
+ The model contains the "smart" domain objects (such as Account, Product, Person,
+@@ -16,6 +18,8 @@
+ methods. You can read more about Active Record in
+ link:files/vendor/rails/activerecord/README.html.
+ 
++ok
++
+ The controller and view are handled by the Action Pack, which handles both
+ layers by its two parts: Action View and Action Controller. These two layers
+ are bundled in a single package due to their heavy interdependence. This is
+@@ -25,14 +29,14 @@
+ link:files/vendor/rails/actionpack/README.html.
+ 
+ 
++xxxxx
++
+ == Getting Started
+ 
+ 1. At the command prompt, start a new Rails application using the <tt>rails</tt> command
+    and your application name. Ex: rails myapp
+ 2. Change directory into myapp and start the web server: <tt>script/server</tt> (run with --help for options)
+ 3. Go to http://localhost:3000/ and get "Welcome aboard: You're riding the Rails!"
+-4. Follow the guidelines to start developing your application
+-
+ 
+ == Web Servers
+ 
+@@ -46,7 +50,7 @@
+ 
+ Say other Ruby web servers like Thin and Ebb or regular web servers like Apache or LiteSpeed or
+ Lighttpd or IIS. The Ruby web servers are run through Rack and the latter can either be setup to use
+-FCGI or proxy to a pack of Mongrels/Thin/Ebb servers.
++FCGI or  ooooo proxy to a pack of Mongrels/Thin/Ebb servers.
+ 
+ == Apache .htaccess example for FCGI/CGI
+ 
+@@ -71,18 +75,15 @@
+ #   RewriteRule ^(.*)$ dispatch.fcgi [QSA,L]
+ RewriteEngine On
+ 
+-# If your Rails application is accessed via an Alias directive,
+-# then you MUST also set the RewriteBase in this htaccess file.
+-#
+-# Example:
+-#   Alias /myrailsapp /path/to/myrailsapp/public
+-#   RewriteBase /myrailsapp
++ttt  ppp p p p
+ 
+ RewriteRule ^$ index.html [QSA]
+ RewriteRule ^([^.]+)$ $1.html [QSA]
+ RewriteCond %{REQUEST_FILENAME} !-f
+ RewriteRule ^(.*)$ dispatch.cgi [QSA,L]
+ 
++test
++
+ # In case Rails experiences terminal errors
+ # Instead of displaying this message you can supply a file here which will be rendered instead
+ # 
+

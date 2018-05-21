@@ -1,0 +1,17 @@
+This is a reviewboard client.
+use the next technology: svnkit, httpclient, json-lib
+
+If you want to build this project, please follow the next step.
+1, checkout out parent and run: 
+    git clone git@github.com:bulain/parent.git
+    mvn install
+2, checkout out reviewboard-client:
+    git clone git@github.com:bulain/reviewboard-client.git
+    mvn eclipse:eclipse
+    
+QA:
+1, If you can't download svnkit-x.x.x.jar and sequence-library-x.x.x.jar try the next methods:
+    1) add http://maven.tmatesoft.com/content/repositories/releases/ into you maven repository.
+    2) download http://www.svnkit.com/org.tmatesoft.svn_x.x.x.standalone.zip unzip it
+       upload svnkit-x.x.x.jar, sequence-library-x.x.x.jar into you maven repository.
+       or using "mvn install", install these jar into your local repository.
