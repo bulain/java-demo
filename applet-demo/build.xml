@@ -1,0 +1,17 @@
+<project name="applet-demo" default="jarsigner" basedir=".">
+
+	<target name="genkeypair">
+		<exec dir="target" executable="keytool">
+			<arg line=" -genkeypair -alias server -keyalg RSA -dname 'CN=Server,OU=Development,O=Test,L=Shanghai,S=SH,C=CN' -keystore server.keystore -storepass server -keypass server"/>
+		</exec>
+	</target>
+	
+	<target name="jarsigner">
+		<signjar destDir="src/main/webapp/applet" alias="server" keystore="target/server.keystore" storepass="server" keypass="server" lazy="true">
+			<path>
+				<fileset dir="target/" includes="*.jar" />
+			</path>
+		</signjar>
+	</target>
+	
+</project>
