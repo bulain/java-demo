@@ -1,0 +1,3 @@
+create database mybatis_development default character set utf8 default collate utf8_general_ci;
+grant all on mybatis_development.* to mybatis@localhost identified by 'mybatis';
+flush privileges;

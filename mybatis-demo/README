@@ -1,0 +1,43 @@
+这个项目目的是测试数据库的性能。
+
+If you want to build this project, please follow the next step.
+1, checkout git@github.com:bulain/parent.git
+    mvn install
+2, checkout git@github.com:bulain/mytatis-demo.git
+    mvn clean package
+    
+测试数据
+win8,硬盘为固态,cpu i5-3210m为2核心4线程,8G内存
+操作类型 操作次数  存取速率 连接数 线程数 时间
+insert  1000    205     1     1     4.875s
+insert  10000   276     1     1     36.142s
+insert  100000  342     1     1     292.089s
+insert  1000    827     4     4     4.833s
+insert  1000    1307    8     8     6.117s
+insert  1000    2477    32    32    12.915s
+insert  10000   1214    4     4     32.935s
+insert  10000   2149    8     8     37.222s
+insert  10000   3237    32    32    98.833s
+binsert 1000    496     1     1     2.016s
+binsert 10000   2275    1     1     4.395s
+binsert 100000  6363    1     1     15.714s
+binsert 10000   8828    4     4     4.531s
+binsert 10000   12855   8     8     6.223s
+binsert 10000   20199   32    32    15.842s
+binsert 100000  28194   4     4     14.187s
+binsert 100000  30530   8     8     26.203s
+binsert 100000  31316   32    32    102.183s
+update  1000    435     1     1     2.296s
+update  10000   788     1     1     12.688s
+update  100000  1438    1     1     69.528s
+select  1000            1     1
+select  10000           1     1
+select  100000          1     1
+delete  1000            1     1
+delete  10000           1     1
+delete  100000          1     1
+
+代办事项：
+1. 测试事物超时时间
+结论：数据源配置问题
+
