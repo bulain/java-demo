@@ -1,0 +1,6 @@
+<?link rel="stylesheet" type="text/css" href="/static/css/style.css"?>
+<?init class="org.zkoss.zk.ui.util.Composition" arg0="/includes/layout.zul"?>
+<?page title="Ilogie"?>
+<zk>
+    <include id="mainInclude" self="@define(content)" src="/tabs/list.zul" />
+</zk>

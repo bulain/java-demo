@@ -1,0 +1,157 @@
+<grid form="@id('pt') @load(vm.tabnet) @save(vmp.tabnet, before='save')">
+    <columns>
+        <column width="10%" />
+        <column width="15%" />
+        <column width="10%" />
+        <column width="15%" />
+        <column width="10%" />
+        <column width="15%" />
+        <column width="10%" />
+        <column width="15%" />
+    </columns>
+    <rows>
+        <row>
+            <cell>客户</cell>
+            <cell>
+                <bandbox id="client" autodrop="true" width="133px" value="@bind(pt.clientName)">
+                    <bandpopup>
+                        <include src="/person/_popupList.zul" />
+                    </bandpopup>
+                </bandbox>
+            </cell>
+            <cell></cell>
+            <cell>
+                <textbox id="clientDesc" readonly="true" value="@load(pt.clientDesc)" />
+            </cell>
+            <cell>asn编号</cell>
+            <cell>
+                <textbox value="2013020212000001" readonly="true" />
+            </cell>
+            <cell>asn状态</cell>
+            <cell>
+                <textbox value="全部收货" readonly="true" />
+            </cell>
+        </row>
+        <row>
+            <cell>供应商</cell>
+            <cell>
+                <bandbox id="supplier" autodrop="true" width="133px">
+                    <bandpopup>
+                        <vbox>
+                            <hbox>
+                                <textbox width="100px" />
+                                <button>查询</button>
+                            </hbox>
+                            <listbox width="200px">
+                                <listhead>
+                                    <listheader label="名字" width="50px" />
+                                    <listheader label="描述" />
+                                </listhead>
+                                <listitem>
+                                    <listcell label="QQ" />
+                                    <listcell label="互联网公司" />
+                                </listitem>
+                                <listitem>
+                                    <listcell label="Baidu" />
+                                    <listcell label="互联网公司" />
+                                </listitem>
+                                <listitem>
+                                    <listcell label="GM" />
+                                    <listcell label="汽车制造厂商" />
+                                </listitem>
+                            </listbox>
+                        </vbox>
+                    </bandpopup>
+                </bandbox>
+            </cell>
+            <cell></cell>
+            <cell>
+                <textbox readonly="true" />
+            </cell>
+            <cell>asn创建时间</cell>
+            <cell>
+                <datebox cols="16" format="yyyy-MM-dd" />
+            </cell>
+            <cell>asn类型</cell>
+            <cell>
+                <combobox width="133px">
+                    <comboitem label="商务退机" />
+                    <comboitem label="个人退机" />
+                </combobox>
+            </cell>
+        </row>
+        <row>
+            <cell>承运人</cell>
+            <cell>
+                <bandbox id="carrier" width="133px">
+                    <bandpopup>
+                        <vbox>
+                            <hbox>
+                                <textbox width="100px" />
+                                <button>查询</button>
+                            </hbox>
+                            <listbox width="200px">
+                                <listhead>
+                                    <listheader label="姓名" width="50px" />
+                                    <listheader label="描述" />
+                                </listhead>
+                                <listitem>
+                                    <listcell label="王大牛" />
+                                    <listcell label="大货车，牌照沪A02001" />
+                                </listitem>
+                                <listitem>
+                                    <listcell label="李二" />
+                                    <listcell label="小货车，牌照沪A03001" />
+                                </listitem>
+                                <listitem>
+                                    <listcell label="张三" />
+                                    <listcell label="中货车，牌照沪A04001" />
+                                </listitem>
+                            </listbox>
+                        </vbox>
+                    </bandpopup>
+                </bandbox>
+            </cell>
+            <cell></cell>
+            <cell>
+                <textbox readonly="true" />
+            </cell>
+            <cell>预计到货时间</cell>
+            <cell>
+                <datebox cols="16" format="yyyy-MM-dd" />
+            </cell>
+            <cell>拜尔订单号</cell>
+            <cell>
+                <textbox />
+            </cell>
+        </row>
+        <row>
+            <cell>asn参考信息2</cell>
+            <cell>
+                <textbox />
+            </cell>
+            <cell>asn参考信息4</cell>
+            <cell>
+                <textbox />
+            </cell>
+            <cell>asn参考信息5</cell>
+            <cell>
+                <textbox />
+            </cell>
+            <cell>添加人员</cell>
+            <cell colspan="3">
+                <textbox hflex="1" />
+            </cell>
+        </row>
+        <row>
+            <cell>添加时间</cell>
+            <cell>
+                <datebox cols="16" format="yyyy-MM-dd HH:ss" readonly="true" />
+            </cell>
+            <cell>备注</cell>
+            <cell>
+                <textbox />
+            </cell>
+        </row>
+    </rows>
+</grid>

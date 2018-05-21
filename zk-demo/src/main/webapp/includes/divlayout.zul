@@ -1,0 +1,25 @@
+<zk>
+    <style>
+        .container{margin:0 auto; width:100%;}
+        .header{height:30px; background:#C2CFF1; margin:1px 2px 1px 2px;}
+        .login{height:20px; background:#B2B3A5; border-top: 1px solid; border-bottom: 1px solid; text-align: right; padding-right: 10px;}
+        .main{margin-top:3px;}
+        .sidebar{float:left; width:120px; height:200px; background:#E2E2E2; margin-left: 1px; border: 0px solid;}
+        .content{margin-left:128px !important; margin-left:125px; margin-right:2px; background:#ffffff;}
+        .footer{height:20px; background:#ffffff;}
+    </style>
+    <div sclass="container">
+        <div sclass="header">
+            <include src="/includes/banner.zul" />
+        </div>
+        <div sclass="main">
+            <div sclass="sidebar">
+                <include src="/includes/menu.zul" />
+            </div>
+            <div id="mainContent" sclass="content" self="@insert(content)"></div>
+        </div>
+        <div sclass="footer">
+            <include src="/includes/footer.zul" />
+        </div>
+    </div>
+</zk>

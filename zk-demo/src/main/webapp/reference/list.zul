@@ -1,0 +1,178 @@
+<window title="Reference" border="normal" hflex="1" vflex="1" apply="org.zkoss.bind.BindComposer"
+    viewModel="@id('vm') @init('com.bulain.zk.vm.ReferenceVm')" validationMessages="@id('vmsgs')" contentStyle="overflow:auto">
+    <hlayout>
+        <vlayout hflex="1" vflex="1">
+            <vlayout hflex="1" form="@id('ps') @load(vm.search) @save(vm.search, before='list')">
+                <grid hflex="1">
+                    <columns>
+                        <column align="right" width="20%" />
+                        <column width="30%" />
+                        <column align="right" width="20%" />
+                        <column width="30%" />
+                    </columns>
+                    <rows>
+                        <row>
+                            <cell>
+                                <label value="Name" />
+                            </cell>
+                            <cell>
+                                <combobox width="150px" model="@load(vm.listReferenceName)"
+                                    selectedItem="@bind(ps.name) @converter('com.bulain.zk.converter.ItemConverter')">
+                                    <template name="model">
+                                        <comboitem label="@load(each.value)" value="@load(each.key)" />
+                                    </template>
+                                </combobox>
+                            </cell>
+                            <cell>
+                                <label value="Code" />
+                            </cell>
+                            <cell>
+                                <textbox width="144px" value="@bind(ps.code)" />
+                            </cell>
+                        </row>
+                        <row>
+                            <cell>
+                                <label value="Language" />
+                            </cell>
+                            <cell>
+                                <combobox width="150px" model="@load(vm.listReferenceLang)"
+                                    selectedItem="@bind(ps.lang) @converter('com.bulain.zk.converter.ItemConverter')">
+                                    <template name="model">
+                                        <comboitem label="@load(each.value)" value="@load(each.key)" />
+                                    </template>
+                                </combobox>
+                            </cell>
+                            <cell>
+                                <label value="Catagory" />
+                            </cell>
+                            <cell>
+                                <combobox width="150px" model="@load(vm.listReferenceCatagory)"
+                                    selectedItem="@bind(ps.catagory)  @converter('com.bulain.zk.converter.ItemConverter')">
+                                    <template name="model">
+                                        <comboitem label="@load(each.value)" value="@load(each.key)" />
+                                    </template>
+                                </combobox>
+                            </cell>
+                        </row>
+
+                    </rows>
+                </grid>
+                <hlayout hflex="1" vflex="1" valign="middle">
+                    <button id="btnSearch" label="Search" onClick="@command('list')" />
+                    <a id="btnNew" label="New" onClick="@command('new')" />
+                </hlayout>
+            </vlayout>
+            <vlayout hflex="1" vflex="1">
+                <listbox span="true" model="@load(vm.listReference)" emptyMessage="No reference found in the result">
+                    <listhead sizable="true">
+                        <listheader id="hdName" label="Name" align="center" width="80px" sort="auto(name)"
+                            onSort="@command('sort', orderBy='name', ascending=event.ascending)" />
+                        <listheader id="hdCode" label="Code" align="center" width="100px" sort="auto(code)"
+                            onSort="@command('sort', orderBy='code', ascending=event.ascending)" />
+                        <listheader id="hdLang" label="Language" align="center" width="80px" sort="auto(lang)"
+                            onSort="@command('sort', orderBy='lang', ascending=event.ascending)" />
+                        <listheader id="hdCatagory" label="Catagory" align="center" width="80px" sort="auto(catagory)"
+                            onSort="@command('sort', orderBy='catagory', ascending=event.ascending)" />
+                        <listheader label="Text" />
+                        <listheader label="Action" align="center" width="120px" />
+                    </listhead>
+                    <template name="model">
+                        <listitem>
+                            <listcell label="@load(each.nameName)"></listcell>
+                            <listcell label="@load(each.code)"></listcell>
+                            <listcell label="@load(each.langName)"></listcell>
+                            <listcell label="@load(each.catagoryName)"></listcell>
+                            <listcell label="@load(each.text)"></listcell>
+                            <listcell>
+                                <a id="btnShow${each.id}" label="Show" onClick="@command('show',id=each.id)" />
+                                <a id="btnEdit${each.id}" label="Edit" onClick="@command('edit',id=each.id)" />
+                                <a id="btnDestroy${each.id}" label="Destroy" onClick="@command('destroy',id=each.id)" />
+                            </listcell>
+                        </listitem>
+                    </template>
+                </listbox>
+                <paging id="pageReference" pageSize="@load(vm.page.pageSize)" totalSize="@load(vm.page.totalPage)"
+                    activePage="@save(vm.activePage)" />
+            </vlayout>
+        </vlayout>
+        <vlayout visible="@bind(not empty vm.reference)" width="300px"
+            form="@id('pr') @load(vm.reference) @save(vm.reference, before='save') @validator('com.bulain.zk.validator.FormValidator', id='validator.admin.reference')">
+            <div>
+                <label class="error" value="@load(vmsgs['name'])" />
+                <label class="error" value="@load(vmsgs['code'])" />
+                <label class="error" value="@load(vmsgs['lang'])" />
+                <label class="error" value="@load(vmsgs['catagory'])" />
+                <label class="error" value="@load(vmsgs['text'])" />
+            </div>
+            <grid hflex="1">
+                <columns>
+                    <column align="right" width="100px" />
+                    <column />
+                </columns>
+                <rows>
+                    <row>
+                        <cell>
+                            <label value="Name" />
+                        </cell>
+                        <cell>
+                            <combobox width="150px" model="@load(vm.listReferenceName)"
+                                selectedItem="@bind(pr.name) @converter('com.bulain.zk.converter.ItemConverter')"
+                                constraint="no empty">
+                                <template name="model">
+                                    <comboitem label="@load(each.value)" value="@load(each.key)" />
+                                </template>
+                            </combobox>
+                        </cell>
+                    </row>
+                    <row>
+                        <cell>
+                            <label value="Code" />
+                        </cell>
+                        <cell>
+                            <textbox value="@bind(pr.code)" constraint="no empty" />
+                        </cell>
+                    </row>
+                    <row>
+                        <cell>
+                            <label value="Lanuage" />
+                        </cell>
+                        <cell>
+                            <combobox width="150px" model="@load(vm.listReferenceLang)"
+                                selectedItem="@bind(pr.lang) @converter('com.bulain.zk.converter.ItemConverter')"
+                                constraint="no empty">
+                                <template name="model">
+                                    <comboitem label="@load(each.value)" value="@load(each.key)" />
+                                </template>
+                            </combobox>
+                        </cell>
+                    </row>
+                    <row>
+                        <cell>
+                            <label value="Catagory" />
+                        </cell>
+                        <cell>
+                            <combobox width="150px" model="@load(vm.listReferenceCatagory)"
+                                selectedItem="@bind(pr.catagory) @converter('com.bulain.zk.converter.ItemConverter')">
+                                <template name="model">
+                                    <comboitem label="@load(each.value)" value="@load(each.key)" />
+                                </template>
+                            </combobox>
+                        </cell>
+                    </row>
+                    <row>
+                        <cell>
+                            <label value="Text" />
+                        </cell>
+                        <cell>
+                            <textbox value="@bind(pr.text)" multiline="true" hflex="1" height="200px"
+                                constraint="no empty" />
+                        </cell>
+                    </row>
+                </rows>
+            </grid>
+            <hlayout>
+                <button id="btnSave" label="Save" onClick="@command('save')" />
+            </hlayout>
+        </vlayout>
+    </hlayout>
+</window>

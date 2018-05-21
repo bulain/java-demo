@@ -1,0 +1,24 @@
+<?page title="Index"?>
+<window title="ZK example" border="nomal" width="400px" mode="overlapped" position="center">
+    <grid>
+        <columns>
+            <column width="50%" />
+            <column width="50%" />
+        </columns>
+        <rows>
+            <row>
+                Person(need user login)
+                <a href="/person/index.zul">click here</a>
+            </row>
+            <row>
+                Demo(need superuser login)
+                <a href="/demo/index.zul">click here</a>
+            </row>
+            <row>
+                Demo(need user login with ajax)
+                <a href="/reference/index.zul">click here</a>
+            </row>
+        </rows>
+    </grid>
+
+</window>

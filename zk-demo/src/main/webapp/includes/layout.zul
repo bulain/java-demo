@@ -1,0 +1,14 @@
+<zk>
+    <borderlayout hflex="1" vflex="1">
+        <north height="30px" border="none">
+            <include src="/includes/banner.zul" />
+        </north>
+        <west maxsize="150" width="120px" border="0" collapsible="true" splittable="true">
+            <include src="/includes/menu.zul" />
+        </west>
+        <center id="mainContent" autoscroll="true" border="none" self="@insert(content)"></center>
+        <south height="20px" border="none">
+            <include src="/includes/footer.zul" />
+        </south>
+    </borderlayout>
+</zk>

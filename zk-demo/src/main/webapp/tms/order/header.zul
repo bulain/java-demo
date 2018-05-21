@@ -1,0 +1,418 @@
+<tabbox vflex="1" hflex="1">
+  <tabs>
+    <tab id="tabMasterSearch" label="查询条件" />
+    <tab id="tabMasterList" label="列表" />
+    <tab id="tabMasterDetail" label="主信息" />
+    <tab label="运输需求" />
+    <tab label="参考信息" />
+    <tab label="其他信息" />
+  </tabs>
+  <tabpanels>
+    <tabpanel>
+      <vlayout hflex="1" vflex="1" style="overflow:auto">
+        <grid hflex="1" span="1">
+          <columns>
+            <column align="right" width="100px" />
+            <column />
+            <column align="right" width="100px" />
+            <column />
+            <column align="right" width="100px" />
+            <column />
+            <column align="right" width="100px" />
+            <column />
+          </columns>
+          <rows>
+            <row>
+              <label value="托运单号" />
+              <textbox />
+              <label value="客户" />
+              <bandbox width="133px" />
+              <label value="客户单号" />
+              <textbox />
+              <label value="状态" />
+              <combobox width="133px" />
+            </row>
+            <row>
+              <label value="业务类型" />
+              <combobox width="133px" />
+              <label value="运输方式" />
+              <combobox width="133px" />
+              <label value="起始区域" />
+              <bandbox width="133px" />
+              <label value="目的区域" />
+              <bandbox width="133px" />
+            </row>
+            <row>
+              <label value="接单时间从" />
+              <datebox width="133px" format="yyyy-MM-dd" />
+              <label value="到" />
+              <datebox width="133px" format="yyyy-MM-dd" />
+              <label value="结算日期从" />
+              <datebox width="133px" format="yyyy-MM-dd" />
+              <label value="到" />
+              <datebox width="133px" format="yyyy-MM-dd" />
+            </row>
+            <row>
+              <label value="收货人" />
+              <bandbox width="133px" />
+              <label value="收货地址" />
+              <bandbox width="133px" />
+              <label value="运输路线" />
+              <bandbox width="133px" />
+              <label value="创建人" />
+              <textbox readonly="true" value="Test User" />
+            </row>
+          </rows>
+        </grid>
+        <hlayout>
+          <button label="查询" />
+          <button label="重置" />
+        </hlayout>
+      </vlayout>
+    </tabpanel>
+    <tabpanel>
+      <vlayout hflex="1" vflex="1">
+        <listbox hflex="1" vflex="1">
+          <listhead sizable="true" menupopup="auto">
+            <listheader label="托运单号" sort="auto" />
+            <listheader label="客户" sort="auto" />
+            <listheader label="客户单号" sort="auto" />
+            <listheader label="业务类型" sort="auto" />
+            <listheader label="状态" sort="auto" />
+            <listheader label="收货人" sort="auto" />
+            <listheader label="收货地址" sort="auto" />
+            <listheader label="起始区域" sort="auto" />
+            <listheader label="目的区域" sort="auto" />
+            <listheader label="运输方式" sort="auto" />
+            <listheader label="接单时间" sort="auto" />
+            <listheader label="结算日期" sort="auto" />
+            <listheader label="创建人" sort="auto" />
+            <listheader label="运输路线" sort="auto" />
+          </listhead>
+          <listitem>
+            <listcell label="" />
+            <listcell label="" />
+            <listcell label="" />
+            <listcell label="" />
+            <listcell label="" />
+            <listcell label="" />
+            <listcell label="" />
+            <listcell label="" />
+            <listcell label="" />
+            <listcell label="" />
+            <listcell label="" />
+            <listcell label="" />
+            <listcell label="" />
+            <listcell label="" />
+          </listitem>
+        </listbox>
+        <paging></paging>
+      </vlayout>
+    </tabpanel>
+    <tabpanel>
+      <vlayout hflex="1" vflex="1" style="overflow:auto">
+        <grid hflex="1" span="1">
+          <columns>
+            <column align="right" width="100px" />
+            <column />
+            <column align="right" width="100px" />
+            <column />
+            <column align="right" width="100px" />
+            <column />
+            <column align="right" width="100px" />
+            <column />
+          </columns>
+          <rows>
+            <row>
+              <label value="客户" />
+              <bandbox width="133px" />
+              <label value="客户单号" />
+              <textbox />
+              <label value="托运单号" />
+              <textbox />
+              <label value="状态" />
+              <combobox width="133px" />
+            </row>
+            <row>
+              <label value="业务类型" />
+              <combobox width="133px" />
+              <label value="运输方式" />
+              <combobox width="133px" />
+              <label value="是否紧急" />
+              <combobox width="133px" />
+              <label value="下单模式" />
+              <combobox width="133px" />
+            </row>
+            <row>
+              <label value="接单时间" />
+              <datebox width="133px" format="yyyy-MM-dd" />
+              <label value="装货地址" />
+              <bandbox width="133px" />
+              <label value="装货联系人" />
+              <bandbox width="133px" />
+              <label value="装货联系电话" />
+              <textbox />
+            </row>
+            <row>
+              <label value="收货人" />
+              <bandbox width="133px" />
+              <label value="收货地址" />
+              <bandbox width="133px" />
+              <label value="收货联系人" />
+              <bandbox width="133px" />
+              <label value="收货人电话" />
+              <textbox />
+            </row>
+            <row>
+              <label value="起始地区" />
+              <bandbox width="133px" />
+              <label value="目的地区" />
+              <bandbox width="133px" />
+              <label value="收货人手机" />
+              <textbox />
+              <label value="是否接受SMS" />
+              <combobox width="133px" />
+            </row>
+            <row>
+              <label value="路线" />
+              <bandbox width="133px" />
+              <label value="集货分发模式 " />
+              <combobox width="133px" />
+              <label value="温度条件" />
+              <combobox width="133px" />
+              <label value="是否接受Email" />
+              <combobox width="133px" />
+            </row>
+          </rows>
+        </grid>
+        <hlayout>
+          <button label="保存" />
+          <button label="重置" />
+        </hlayout>
+      </vlayout>
+    </tabpanel>
+    <tabpanel>
+      <vlayout hflex="1" vflex="1" style="overflow:auto">
+        <grid hflex="1" span="1">
+          <columns>
+            <column align="right" width="100px" />
+            <column />
+            <column align="right" width="100px" />
+            <column />
+            <column align="right" width="100px" />
+            <column />
+            <column align="right" width="100px" />
+            <column />
+          </columns>
+          <rows>
+            <row>
+              <label value="整车/零担" />
+              <combobox width="133px" />
+              <label value="车型要求" />
+              <combobox width="133px" />
+              <label value="危品等级" />
+              <combobox width="133px" />
+              <label value="任务完成状态" />
+              <combobox width="133px" />
+            </row>
+            <row>
+              <label value="客户下单时间" />
+              <datebox width="133px" format="yyyy-MM-dd" />
+              <label value="预计发货时间" />
+              <datebox width="133px" format="yyyy-MM-dd" />
+              <label value="要求完成时间" />
+              <datebox width="133px" format="yyyy-MM-dd" />
+              <label value="要求回单时间" />
+              <datebox width="133px" format="yyyy-MM-dd" />
+            </row>
+            <row>
+              <label value="要求完成天数" />
+              <intbox />
+              <label value="实发时间" />
+              <datebox width="133px" format="yyyy-MM-dd" />
+              <label value="实际完成时间" />
+              <datebox width="133px" format="yyyy-MM-dd" />
+              <label value="实际回单时间" />
+              <datebox width="133px" format="yyyy-MM-dd" />
+            </row>
+            <row>
+              <label value="合计数量" />
+              <intbox />
+              <label value="合计毛重" />
+              <doublebox />
+              <label value="合计净量" />
+              <doublebox />
+              <label value="合计体积" />
+              <doublebox />
+            </row>
+            <row>
+              <label value="结算单位" />
+              <combobox width="133px" />
+              <label value="付款方式" />
+              <combobox width="133px" />
+              <label value="应收款日期" />
+              <datebox width="133px" format="yyyy-MM-dd" />
+              <label value="货物价值" />
+              <combobox width="133px" />
+            </row>
+            <row>
+              <label value="结算方式 " />
+              <combobox width="133px" />
+              <label value="结算总额" />
+              <doublebox />
+              <label value="结算状态" />
+              <combobox width="133px" />
+              <label value="结算时间" />
+              <datebox width="133px" format="yyyy-MM-dd" />
+            </row>
+          </rows>
+        </grid>
+        <hlayout>
+          <button label="保存" />
+          <button label="重置" />
+        </hlayout>
+      </vlayout>
+    </tabpanel>
+    <tabpanel>
+      <vlayout hflex="1" vflex="1" style="overflow:auto">
+        <grid hflex="1" span="1">
+          <columns>
+            <column align="right" width="100px" />
+            <column />
+            <column align="right" width="100px" />
+            <column />
+            <column align="right" width="100px" />
+            <column />
+            <column align="right" width="100px" />
+            <column />
+          </columns>
+          <rows>
+            <row>
+              <label value="参考号1" />
+              <textbox />
+              <label value="参考号2" />
+              <textbox />
+              <label value="参考号3" />
+              <textbox />
+              <label value="参考号4" />
+              <textbox />
+            </row>
+            <row>
+              <label value="需要加温" />
+              <combobox width="133px" />
+              <label value="需要短驳" />
+              <combobox width="133px" />
+              <label value="需要押车" />
+              <combobox width="133px" />
+              <label value="需要还箱" />
+              <combobox width="133px" />
+            </row>
+            <row>
+              <label value="创建人" />
+              <textbox readonly="true" />
+              <label value="创建时间" />
+              <textbox readonly="true" />
+              <label value="修改人" />
+              <textbox readonly="true" />
+              <label value="修改时间" />
+              <textbox readonly="true" />
+            </row>
+            <row>
+              <label value="备注" />
+              <cell colspan="6">
+                <textbox rows="5" hflex="1" />
+              </cell>
+            </row>
+          </rows>
+        </grid>
+        <hlayout>
+          <button label="保存" />
+          <button label="重置" />
+        </hlayout>
+      </vlayout>
+    </tabpanel>
+    <tabpanel>
+      <vlayout hflex="1" vflex="1" style="overflow:auto">
+        <grid hflex="1" span="1">
+          <columns>
+            <column align="right" width="100px" />
+            <column />
+            <column align="right" width="100px" />
+            <column />
+            <column align="right" width="100px" />
+            <column />
+            <column align="right" width="100px" />
+            <column />
+          </columns>
+          <rows>
+            <row>
+              <label value="客户" />
+              <bandbox width="133px" />
+              <label value="客户联系人" />
+              <bandbox width="133px" />
+              <label value="客户联系电话" />
+              <textbox />
+              <label value="物流单号" />
+              <textbox />
+            </row>
+            <row>
+              <label value="结算方" />
+              <bandbox width="133px" />
+              <label value="结算方联系人" />
+              <bandbox width="133px" />
+              <label value="结算方联系电话" />
+              <textbox />
+              <label value="发票抬头" />
+              <textbox />
+            </row>
+            <row>
+              <label value="提箱地地址" />
+              <bandbox width="133px" />
+              <label value="提箱地联系人" />
+              <bandbox width="133px" />
+              <label value="提箱地联系电话" />
+              <textbox />
+              <label value="" />
+              <textbox />
+            </row>
+            <row>
+              <label value="还箱地地址" />
+              <bandbox width="133px" />
+              <label value="还箱地联系人" />
+              <bandbox width="133px" />
+              <label value="还箱地联系电话" />
+              <textbox />
+              <label value="订单组" />
+              <textbox />
+            </row>
+            <row>
+              <label value="船名" />
+              <textbox />
+              <label value="航次" />
+              <textbox />
+              <label value="订舱号" />
+              <textbox />
+              <label value="接单单价" />
+              <textbox />
+            </row>
+            <row>
+              <label value="起运港" />
+              <textbox />
+              <label value="目的港" />
+              <textbox />
+              <label value="箱号" />
+              <textbox />
+              <label value="铅封号" />
+              <textbox />
+            </row>
+          </rows>
+        </grid>
+        <hlayout>
+          <button label="保存" />
+          <button label="重置" />
+        </hlayout>
+      </vlayout>
+    </tabpanel>
+  </tabpanels>
+</tabbox>
+    

@@ -1,0 +1,4 @@
+<vlayout hflex="1" vflex="1">
+    <include hflex="1" vflex="1" src="/tms/order/header.zul"/>
+    <include hflex="1" vflex="1" src="/tms/order/details.zul"/>
+</vlayout>

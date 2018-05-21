@@ -1,0 +1,31 @@
+<grid>
+    <columns>
+        <column label="客户" />
+        <column label="供应商" />
+        <column label="asn编号" />
+        <column label="asn状态" />
+        <column label="asn类型" />
+        <column label="承运人" />
+        <column label="预计到货时间" />
+    </columns>
+    <rows>
+        <row>
+            <cell>QQ</cell>
+            <cell>QQ</cell>
+            <cell>2013020212000001</cell>
+            <cell>全部收货</cell>
+            <cell>商务退机</cell>
+            <cell>王大牛</cell>
+            <cell>2013-12-01</cell>
+        </row>
+        <row>
+            <cell>QQ</cell>
+            <cell>QQ</cell>
+            <cell>2013020212000002</cell>
+            <cell>部分收货</cell>
+            <cell>商务退机</cell>
+            <cell>王大牛</cell>
+            <cell>2013-12-02</cell>
+        </row>
+    </rows>
+</grid>

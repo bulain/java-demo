@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<validators>
+    <command name="save" namespace="reference">
+        <field name="nameItem">
+            <field-validator type="requireditem">
+                <param name="trim">true</param>
+            </field-validator>
+        </field>
+        <field name="code">
+            <field-validator type="requiredstring">
+                <param name="trim">true</param>
+            </field-validator>
+            <field-validator type="stringlength">
+                <param name="minLength">1</param>
+                <param name="maxLength">50</param>
+            </field-validator>
+        </field>
+        <field name="langItem">
+            <field-validator type="requireditem">
+                <param name="trim">true</param>
+            </field-validator>
+        </field>
+        <field name="text">
+            <field-validator type="requiredstring">
+                <param name="trim">true</param>
+            </field-validator>
+            <field-validator type="stringlength">
+                <param name="minLength">1</param>
+                <param name="maxLength">255</param>
+            </field-validator>
+        </field>
+    </command>
+</validators>

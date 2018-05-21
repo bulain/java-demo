@@ -1,0 +1,121 @@
+<window title="Login" border="normal" hflex="1" vflex="1" apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('com.bulain.zk.vm.LoginVm')"
+  validationMessages="@id('vmsgs')">
+  <hlayout hflex="1" vflex="1">
+    <vlayout hflex="1" vflex="1">
+      <vlayout hflex="1" form="@id('ps') @load(vm.search) @save(vm.search, before='list')">
+        <grid hflex="1">
+          <columns>
+            <column align="right" width="20%" />
+            <column width="30%" />
+            <column align="right" width="20%" />
+            <column width="30%" />
+          </columns>
+          <rows>
+            <row>
+              <cell>
+                <label value="Login Name" />
+              </cell>
+              <cell>
+                <textbox width="144px" value="@bind(ps.loginName)" />
+              </cell>
+              <cell>
+                <label value="Email" />
+              </cell>
+              <cell>
+                <textbox width="144px" value="@bind(ps.email)" />
+              </cell>
+            </row>
+          </rows>
+        </grid>
+        <hlayout hflex="1" vflex="1" valign="middle">
+          <button id="btnSearch" label="Search" onClick="@command('list')" />
+          <a id="btnNew" label="New" onClick="@command('new')" />
+        </hlayout>
+      </vlayout>
+      <vlayout hflex="1" vflex="1">
+        <listbox span="true" model="@load(vm.listView)" emptyMessage="No login found in the result" vflex="1"
+          context="listboxPopup">
+          <listhead sizable="true" menupopup="auto">
+            <listheader id="hdLoginName" label="Login Name" align="center" width="80px" sort="auto(loginName)"
+              onSort="@command('sort', orderBy='login_name', ascending=event.ascending)" />
+            <listheader id="hdEmail" label="Email" align="center" sort="auto(email)"
+              onSort="@command('sort', orderBy='email', ascending=event.ascending)" />
+            <listheader label="Person Id" align="center" />
+            <listheader label="Person Name" align="center" />
+            <!-- 
+            <listheader label="Action" align="center" width="120px" />
+             -->
+          </listhead>
+          <template name="model">
+            <listitem context="listboxPopup" onDoubleClick="@command('edit',id=each.id)">
+              <listcell label="@load(each.loginName)" style="cursor:default"></listcell>
+              <listcell label="@load(each.email)" style="cursor:default"></listcell>
+              <listcell label="@load(each.personId)" style="cursor:default"></listcell>
+              <listcell label="@load(each.personName)" style="cursor:default"></listcell>
+              <!-- 
+              <listcell>
+                  <a id="btnShow${each.id}" label="Show" onClick="@command('show',id=each.id)" />
+                  <a id="btnEdit${each.id}" label="Edit" onClick="@command('edit',id=each.id)" />
+                  <a id="btnDestroy${each.id}" label="Destroy" onClick="@command('destroy',id=each.id)" />
+              </listcell>
+               -->
+            </listitem>
+          </template>
+        </listbox>
+        <paging id="pageLogin" pageSize="@load(vm.page.pageSize)" totalSize="@load(vm.page.count)" activePage="@bind(vm.page.pageIndex)"
+          onPaging="@command('paging')" />
+        <idspace apply="org.zkoss.bind.BindComposer" viewModel="@id('pvm') @init('com.bulain.zk.vm.LoginVm$PopupVm')">
+          <menupopup id="listboxPopup" onOpen="@command('openPopupMenu')" />
+        </idspace>
+      </vlayout>
+    </vlayout>
+    <vlayout visible="@bind(not empty vm.view)" width="300px"
+      form="@id('pb') @load(vm.view) @save(vm.view, before='save') @validator('com.bulain.zk.validator.FormValidator', id='validator.admin.login')">
+      <div>
+        <label class="error" value="@load(vmsgs['personId'])" />
+        <label class="error" value="@load(vmsgs['loginName'])" />
+        <label class="error" value="@load(vmsgs['email'])" />
+      </div>
+      <grid hflex="1">
+        <columns>
+          <column align="right" width="100px" />
+          <column />
+        </columns>
+        <rows>
+          <row>
+            <cell>
+              <label value="Person" />
+            </cell>
+            <cell>
+              <textbox id="personId" value="@bind(pb.personId)" visible="false" />
+              <bandbox id="personName" value="@bind(pb.personName)" constraint="no empty" width="133px"
+                onOpen="@command('initPerson')" onOK="@command('enterPerson')">
+                <bandpopup width="400px" height="300px">
+                </bandpopup>
+              </bandbox>
+            </cell>
+          </row>
+          <row>
+            <cell>
+              <label value="Login Name" />
+            </cell>
+            <cell>
+              <textbox value="@bind(pb.loginName)" constraint="no empty" />
+            </cell>
+          </row>
+          <row>
+            <cell>
+              <label value="Email" />
+            </cell>
+            <cell>
+              <textbox value="@bind(pb.email)" constraint="no empty" />
+            </cell>
+          </row>
+        </rows>
+      </grid>
+      <hlayout>
+        <button id="btnSave" label="Save" onClick="@command('save')" />
+      </hlayout>
+    </vlayout>
+  </hlayout>
+</window>

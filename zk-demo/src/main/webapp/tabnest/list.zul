@@ -1,0 +1,14 @@
+<tabbox>
+    <tabs>
+        <tab label="首页" />
+        <tab label="上架规则" />
+        <tab label="入库通知单" />
+    </tabs>
+    <tabpanels>
+        <tabpanel></tabpanel>
+        <tabpanel></tabpanel>
+        <tabpanel>
+            <include src="/tabnest/innotify.zul"></include>
+        </tabpanel>
+    </tabpanels>
+</tabbox>

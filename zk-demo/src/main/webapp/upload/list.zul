@@ -1,0 +1,6 @@
+<window title="Upload" border="normal" hflex="1" vflex="1" apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('com.bulain.zk.vm.UploadVm')">
+    <hlayout hflex="1" vflex="1">
+        <button label="Upload" upload="true" onUpload="@command('upload')" autodisable="self"/>
+        <button label="Download" onClick="@command('download')" autodisable="self"/>
+    </hlayout>
+</window>

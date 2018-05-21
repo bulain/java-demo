@@ -1,0 +1,15 @@
+<div hflex="1" vflex="1" sclass="banner">
+    <hlayout>
+        <span style="margin-left:2px;">
+            <image src="/static/img/logo.png" width="68px" height="30px"/>
+        </span>
+        <hbox hflex="1" vflex="1" pack="end" align="end" style="margin:0px 2px 2px 0px;">
+            <span apply="org.zkoss.bind.BindComposer" viewModel="@id('lvm') @init('com.bulain.zk.vm.LocaleVm')">
+                <a label="English" onClick="@global-command('changeLocale', locale='en_US')" if="${sessionScope.locale != 'en_US' and sessionScope.locale != null}"/>
+                <a label="Chinese" onClick="@global-command('changeLocale', locale='zh_CN')" if="${sessionScope.locale != 'zh_CN'}"/>
+            </span>
+            <label value="${sessionScope.userCredential.name}" if="${not sessionScope.userCredential.anonymous}" />
+            <a label="Logout" href="/j_spring_security_logout" />
+        </hbox>
+    </hlayout>
+</div>
