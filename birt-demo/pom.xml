@@ -1,0 +1,276 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <parent>
+        <groupId>com.bulain</groupId>
+        <artifactId>parent</artifactId>
+        <version>1.0.0</version>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.bulain</groupId>
+    <artifactId>birt-demo</artifactId>
+    <packaging>war</packaging>
+    <version>1.0.1-SNAPSHOT</version>
+    <name>birt-demo</name>
+    <url>https://github.com/bulain/birt-demo</url>
+
+    <scm>
+        <connection>scm:git:git@github.com:bulain/birt-demo.git</connection>
+        <developerConnection>scm:git:git@github.com:bulain/birt-demo.git</developerConnection>
+        <url>git@github.com:bulain/birt-demo.git</url>
+    </scm>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <tools.version>1.5</tools.version>
+        <common.version>1.0.1</common.version>
+        <birt.version>4.3.1</birt.version>
+        <spring.version>3.1.2.RELEASE</spring.version>
+        <mysql.version>5.0.8</mysql.version>
+        <ojdbc.version>10.2.0.4.0</ojdbc.version>
+        <migration.env>test</migration.env>
+        <migration.path>src/migration/mysql</migration.path>
+        <database.type>mysql</database.type>
+    </properties>
+
+    <dependencies>
+        <!-- common -->
+        <dependency>
+            <groupId>com.bulain</groupId>
+            <artifactId>common-service</artifactId>
+            <version>${common.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-logging</groupId>
+            <artifactId>commons-logging</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+        </dependency>
+
+        <!-- birt -->
+        <dependency>
+            <groupId>org.eclipse.birt.runtime</groupId>
+            <artifactId>org.eclipse.birt.runtime</artifactId>
+            <version>${birt.version}</version>
+        </dependency>
+        <!--  -->
+        <dependency>
+            <groupId>org.eclipse.birt.example</groupId>
+            <artifactId>viewservlets</artifactId>
+            <version>${birt.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>commons-discovery</groupId>
+                    <artifactId>axis</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>commons-discovery</groupId>
+                    <artifactId>commons-discovery</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        
+
+        <!-- test -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.dbunit</groupId>
+            <artifactId>dbunit</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- compile -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jsp-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>p6spy</groupId>
+            <artifactId>p6spy</artifactId>
+            <scope>provided</scope>
+            <optional>true</optional>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>birt-demo</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.5</source>
+                    <target>1.5</target>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.sun</groupId>
+                        <artifactId>tools</artifactId>
+                        <scope>system</scope>
+                        <version>${tools.version}</version>
+                        <systemPath>${java.home}/../lib/tools.jar</systemPath>
+                    </dependency>
+                </dependencies>
+                <executions>
+                    <execution>
+                        <id>copy-resources</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <target name="copydevfile">
+                                <copy file="src/main/resources/jdbc.properties.${database.type}" tofile="src/main/resources/jdbc.properties" overwrite="true" />
+                            </target>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>copy-test-resources</id>
+                        <phase>process-test-resources</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <target name="copytestfile">
+                                <copy file="src/test/resources/jdbc.properties.${database.type}" tofile="src/test/resources/jdbc.properties" overwrite="true" />
+                            </target>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <target name="native2ascii">
+                                <native2ascii src="src/main/resources" dest="${project.build.directory}/classes" includes="**/*.chinese" ext=".properties" encoding="UTF-8" />
+                                <copy todir="src/main/webapp/WEB-INF">
+                                    <fileset dir="src/main/webapp/WEB-INF" includes="**/*.native" />
+                                    <globmapper from="*.native" to="*.properties" />
+                                </copy>
+                            </target>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.mybatis.maven</groupId>
+                <artifactId>migrations-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>migration-up</id>
+                        <phase>process-test-resources</phase>
+                        <goals>
+                            <goal>up</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>mysql</groupId>
+                        <artifactId>mysql-connector-java</artifactId>
+                        <version>${mysql.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>com.oracle</groupId>
+                        <artifactId>ojdbc14</artifactId>
+                        <version>${ojdbc.version}</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+
+            <plugin>
+                <groupId>org.mortbay.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <configuration>
+                    <argLine>-Xmx512m -XX:MaxPermSize=256m</argLine>
+                    <scanIntervalSeconds>10</scanIntervalSeconds>
+                    <stopKey>foo</stopKey>
+                    <stopPort>9999</stopPort>
+                    <webAppConfig>
+                        <contextPath>/birt-demo</contextPath>
+                    </webAppConfig>
+                    <connectors>
+                        <connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
+                            <port>8082</port>
+                            <maxIdleTime>60000</maxIdleTime>
+                        </connector>
+                    </connectors>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>oracle</id>
+            <properties>
+                <migration.path>src/migration/oracle</migration.path>
+                <database.type>oracle</database.type>
+            </properties>
+        </profile>
+        <profile>
+            <id>it</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.mortbay.jetty</groupId>
+                        <artifactId>jetty-maven-plugin</artifactId>
+                        <configuration>
+                            <argLine>-Xmx512m -XX:MaxPermSize=256m</argLine>
+                            <scanIntervalSeconds>10</scanIntervalSeconds>
+                            <stopKey>foo</stopKey>
+                            <stopPort>9999</stopPort>
+                            <useTestClasspath>true</useTestClasspath>
+                            <webAppConfig>
+                                <contextPath>/birt-demo</contextPath>
+                            </webAppConfig>
+                            <connectors>
+                                <connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
+                                    <port>8082</port>
+                                    <maxIdleTime>60000</maxIdleTime>
+                                </connector>
+                            </connectors>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
+</project>
