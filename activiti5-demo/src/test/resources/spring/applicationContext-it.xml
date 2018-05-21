@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<bean id="baseUrl" class="java.lang.String">
+        <constructor-arg value="${it.baseUrl}"/>
+    </bean>
+    <bean id="webDriver" class="java.lang.String">
+        <constructor-arg value="${it.webDriver}"/>
+    </bean>
+    <bean id="waitSeconds" class="java.lang.Long">
+        <constructor-arg value="${it.waitSeconds}"/>
+    </bean>
+</beans>

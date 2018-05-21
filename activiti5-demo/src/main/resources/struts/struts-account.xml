@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <package name="account" namespace="/account" extends="order-default">
+        <action name="list" class="accountAction" method="list">
+            <result>/account/list.jsp</result>
+        </action>
+        <action name="new" class="accountAction" method="newn">
+            <result>/account/new.jsp</result>
+        </action>
+        <action name="create" class="accountAction" method="create">
+            <interceptor-ref name="orderStack" />
+            <result type="redirectAction">list</result>
+            <result name="input">/account/new.jsp</result>
+        </action>
+        <action name="edit" class="accountAction" method="edit">
+            <result>/account/edit.jsp</result>
+        </action>
+        <action name="update" class="accountAction" method="update">
+            <interceptor-ref name="orderStack" />
+            <result type="redirectAction">list</result>
+            <result name="input">/account/edit.jsp</result>
+        </action>
+        <action name="show" class="accountAction" method="show">
+            <result>/account/show.jsp</result>
+        </action>
+        <action name="destroy" class="accountAction" method="destroy">
+            <result type="redirectAction">list</result>
+            <result name="input" type="redirectAction">list</result>
+        </action>
+    </package>
+</struts>

@@ -1,0 +1,43 @@
+1, install mysql
+./configure \
+--prefix=/srv/mysql-5.1.61 \
+--with-extra-charsets=all \
+--with-charset=utf8 \
+--with-client-ldflags=-all-static \
+--with-mysqld-ldflags=-all-static \
+--with-plugins=all \
+--with-pthread \
+--enable-thread-safe-client
+
+confirm the engines.
+show engines;
+
+2, install master
+./mysql_install_db --defaults-file=/srv/mysql-5.1.61/master.cnf
+sudo ./mysqld_safe --defaults-file=/srv/mysql-5.1.61/master.cnf &
+./mysqladmin --defaults-file=/srv/mysql-5.1.61/master.cnf -u root password 'master'
+./mysqladmin --defaults-file=/srv/mysql-5.1.61/master.cnf -u root -p shutdown
+./mysql --defaults-file=/srv/mysql-5.1.61/master.cnf -u root -p
+
+grant replication slave on *.* to slaver@localhost identified by 'slaver';
+show master status \G;
+
+3, install slaver
+./mysql_install_db --defaults-file=/srv/mysql-5.1.61/slaver01.cnf
+sudo ./mysqld_safe --defaults-file=/srv/mysql-5.1.61/slaver01.cnf &
+./mysqladmin --defaults-file=/srv/mysql-5.1.61/slaver01.cnf -u root password 'slaver'
+./mysqladmin --defaults-file=/srv/mysql-5.1.61/slaver01.cnf -u root -p shutdown
+./mysql --defaults-file=/srv/mysql-5.1.61/slaver01.cnf -u root -p
+
+./mysql_install_db --defaults-file=/srv/mysql-5.1.61/slaver02.cnf
+sudo ./mysqld_safe --defaults-file=/srv/mysql-5.1.61/slaver02.cnf &
+./mysqladmin --defaults-file=/srv/mysql-5.1.61/slaver02.cnf -u root password 'slaver'
+./mysqladmin --defaults-file=/srv/mysql-5.1.61/slaver02.cnf -u root -p shutdown
+./mysql --defaults-file=/srv/mysql-5.1.61/slaver02.cnf -u root -p
+
+slave start;
+show slave status \G;
+
+4, using jdbc to test
+jdbc:mysql:replication://192.168.0.190:3307,192.168.0.190:3308,192.168.0.190:3309/test
+

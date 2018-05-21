@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset>
+  <referances id="101" name="name_101" code="code_101" text="text_101" lang="lang_101" category="category_101"/>
+  <referances id="102" name="name_102" code="code_102" text="text_102" lang="lang_102" category="category_102"/>
+  <referances id="103" name="name_103" code="code_103" text="text_103" lang="lang_103" category="category_103"/>
+  <referances id="104" name="name_104" code="code_104" text="text_104" lang="lang_104" category="category_104"/>
+  <referances id="105" name="name_page" code="code_page" text="text_page" lang="lang_page" category="category_page"/>
+  <referances id="106" name="name_page" code="code_page" text="text_page" lang="lang_page" category="category_page"/>
+  <referances id="107" name="name_page" code="code_page" text="text_page" lang="lang_page" category="category_page"/>
+</dataset>

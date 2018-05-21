@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/test">
+  <process id="open_account" name="Open Account">
+    <documentation>Place documentation for the 'open_account' process here.</documentation>
+    <startEvent id="startevent1" name="Start"></startEvent>
+    <endEvent id="endevent1" name="End"></endEvent>
+    <userTask id="requestOpenAccount" name="Request Open Account" activiti:candidateGroups="${requester}" activiti:formKey="accountEdit"></userTask>
+    <serviceTask id="loadDynamicPageInfo" name="Load Dynamic Page Info" activiti:expression="${test}"></serviceTask>
+    <sequenceFlow id="flow1" name="" sourceRef="startevent1" targetRef="loadDynamicPageInfo"></sequenceFlow>
+    <sequenceFlow id="flow2" name="" sourceRef="loadDynamicPageInfo" targetRef="requestOpenAccount"></sequenceFlow>
+    <userTask id="approveOpenAccount" name="Approve Open Account" activiti:candidateUsers="${approver}" activiti:formKey="accountEdit"></userTask>
+    <userTask id="reviewOpenAccount" name="Review Open Account" activiti:candidateUsers="#{treasuer}" activiti:formKey="accountEdit"></userTask>
+    <sequenceFlow id="flow3" name="submit" sourceRef="requestOpenAccount" targetRef="approveOpenAccount"></sequenceFlow>
+    <sequenceFlow id="approve" name="approve" sourceRef="approveOpenAccount" targetRef="reviewOpenAccount"></sequenceFlow>
+    <sequenceFlow id="flow5" name="submit" sourceRef="reviewOpenAccount" targetRef="endevent1"></sequenceFlow>
+    <sequenceFlow id="reject" name="reject" sourceRef="approveOpenAccount" targetRef="requestOpenAccount"></sequenceFlow>
+    <sequenceFlow id="flow7" name="reject" sourceRef="reviewOpenAccount" targetRef="requestOpenAccount"></sequenceFlow>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_open_account">
+    <bpmndi:BPMNPlane bpmnElement="open_account" id="BPMNPlane_open_account">
+      <bpmndi:BPMNShape bpmnElement="startevent1" id="BPMNShape_startevent1">
+        <omgdc:Bounds height="35" width="35" x="103" y="40"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="endevent1" id="BPMNShape_endevent1">
+        <omgdc:Bounds height="35" width="35" x="593" y="260"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="requestOpenAccount" id="BPMNShape_requestOpenAccount">
+        <omgdc:Bounds height="55" width="105" x="68" y="250"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="loadDynamicPageInfo" id="BPMNShape_loadDynamicPageInfo">
+        <omgdc:Bounds height="55" width="105" x="68" y="130"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="approveOpenAccount" id="BPMNShape_approveOpenAccount">
+        <omgdc:Bounds height="55" width="105" x="253" y="250"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="reviewOpenAccount" id="BPMNShape_reviewOpenAccount">
+        <omgdc:Bounds height="55" width="108" x="423" y="250"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="flow1" id="BPMNEdge_flow1">
+        <omgdi:waypoint x="120" y="75"></omgdi:waypoint>
+        <omgdi:waypoint x="120" y="130"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow2" id="BPMNEdge_flow2">
+        <omgdi:waypoint x="120" y="185"></omgdi:waypoint>
+        <omgdi:waypoint x="120" y="250"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow3" id="BPMNEdge_flow3">
+        <omgdi:waypoint x="173" y="277"></omgdi:waypoint>
+        <omgdi:waypoint x="253" y="277"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="approve" id="BPMNEdge_approve">
+        <omgdi:waypoint x="358" y="277"></omgdi:waypoint>
+        <omgdi:waypoint x="423" y="277"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow5" id="BPMNEdge_flow5">
+        <omgdi:waypoint x="531" y="277"></omgdi:waypoint>
+        <omgdi:waypoint x="593" y="277"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="reject" id="BPMNEdge_reject">
+        <omgdi:waypoint x="305" y="305"></omgdi:waypoint>
+        <omgdi:waypoint x="213" y="314"></omgdi:waypoint>
+        <omgdi:waypoint x="120" y="305"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow7" id="BPMNEdge_flow7">
+        <omgdi:waypoint x="477" y="305"></omgdi:waypoint>
+        <omgdi:waypoint x="240" y="341"></omgdi:waypoint>
+        <omgdi:waypoint x="120" y="305"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>

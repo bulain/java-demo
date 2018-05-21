@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <package name="activiti" namespace="/activiti" extends="order-default">
+        <action name="list" class="activitiAction" method="list">
+            <result>/activiti/list.jsp</result>
+        </action>
+        <action name="deploy" class="activitiAction" method="deploy">
+            <result type="redirectAction">list</result>
+        </action>
+        <action name="destroy" class="activitiAction" method="destroy">
+            <result type="redirectAction">list</result>
+        </action>
+        <action name="start" class="activitiAction" method="start">
+            <result type="redirectAction">list</result>
+        </action>
+        <action name="view" class="activitiAction" method="view">
+            <result>/activiti/view.jsp</result>
+        </action>
+        <action name="active" class="activitiAction" method="active">
+            <result type="redirect">${render}?taskId=${taskId}</result>
+        </action>
+    </package>
+</struts>

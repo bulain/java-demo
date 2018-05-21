@@ -1,0 +1,28 @@
+<!DOCTYPE jboss-web PUBLIC "-//JBoss//DTD Web Application 5.0//EN"  "http://www.jboss.org/j2ee/dtd/jboss-web_5_0.dtd">
+<jboss-web>  
+  
+    <!-- For load class independently -->
+    <class-loading java2ClassLoadingCompliance='false'>
+        <loader-repository>
+            com.bulain:loader=activiti5-demo.war
+            <loader-repository-config>java2ParentDelegation=false</loader-repository-config>
+        </loader-repository>
+    </class-loading>  
+  
+    <!-- For context -->
+    <context-root>activiti5-demo</context-root>  
+  
+    <!-- For session copy -->
+    <replication-config>
+        <cache-name>standard-session-cache</cache-name>
+    </replication-config>  
+  
+    <!-- For session time -->
+    <max-active-sessions>20</max-active-sessions>
+    <passivation-config>
+        <use-session-passivation>true</use-session-passivation>
+        <passivation-min-idle-time>60</passivation-min-idle-time>
+        <passivation-max-idle-time>600</passivation-max-idle-time>
+    </passivation-config>
+
+</jboss-web>  

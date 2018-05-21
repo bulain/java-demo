@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset>
+  <joda_demo id="101" xdate="2010-04-01" xtime="05:00:00" xdatetime="2010-04-03 08:00:00.0" xtimestamp="2010-04-03 08:00:00.0" />
+  <joda_demo id="102" xdate="2010-04-03" xtime="08:00:00" xdatetime="2010-04-03 08:00:00.0" xtimestamp="2010-04-03 08:00:00.0" />
+  <joda_demo id="103" xdate="2010-04-03" xtime="07:00:00" xdatetime="2010-04-03 08:00:00.0" xtimestamp="2010-04-03 08:00:00.0" />
+  <joda_demo id="104" xdate="2010-04-03" xtime="08:00:00" xdatetime="2010-04-03 08:00:00.0" xtimestamp="2010-04-03 08:00:00.0" />
+  <joda_demo id="105" xdate="2010-04-04" xtime="10:00:00" xdatetime="2010-04-03 08:00:00.0" xtimestamp="2010-04-03 08:00:00.0" />
+  <joda_demo id="106" xdate="2010-04-04" xtime="10:00:00" xdatetime="2010-04-03 08:00:00.0" xtimestamp="2010-04-03 08:00:00.0" />
+  <joda_demo id="107" xdate="2010-04-04" xtime="10:00:00" xdatetime="2010-04-03 08:00:00.0" xtimestamp="2010-04-03 08:00:00.0" />
+</dataset>

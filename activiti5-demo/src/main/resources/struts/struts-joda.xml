@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <package name="joda" namespace="/joda" extends="order-default">
+        <action name="list" class="jodaAction" method="list">
+            <result>/joda/list.jsp</result>
+        </action>
+        <action name="new" class="jodaAction" method="newn">
+            <result>/joda/new.jsp</result>
+        </action>
+        <action name="create" class="jodaAction" method="create">
+            <interceptor-ref name="orderStack" />
+            <result type="redirectAction">list</result>
+            <result name="input">/joda/new.jsp</result>
+            <result name="error">/joda/new.jsp</result>
+        </action>
+        <action name="edit" class="jodaAction" method="edit">
+            <result>/joda/edit.jsp</result>
+        </action>
+        <action name="update" class="jodaAction" method="update">
+            <interceptor-ref name="orderStack" />
+            <result type="redirectAction">list</result>
+            <result name="input">/joda/edit.jsp</result>
+            <result name="error">/joda/edit.jsp</result>
+        </action>
+        <action name="show" class="jodaAction" method="show">
+            <result>/joda/show.jsp</result>
+        </action>
+        <action name="destroy" class="jodaAction" method="destroy">
+            <result type="redirectAction">list</result>
+            <result name="input">/joda/list.jsp</result>
+            <result name="error">/joda/list.jsp</result>
+        </action>
+    </package>
+</struts>

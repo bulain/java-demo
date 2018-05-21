@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bulain.activiti.dao.JodaMapper" >
+  <resultMap id="BaseResultMap" type="com.bulain.activiti.model.Joda" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="xdate" property="xdate" jdbcType="DATE" />
+    <result column="xtime" property="xtime" jdbcType="TIME" />
+    <result column="xdatetime" property="xdatetime" jdbcType="TIMESTAMP" />
+    <result column="xtimestamp" property="xtimestamp" jdbcType="TIMESTAMP" />
+    <result column="created_by" property="createdBy" jdbcType="VARCHAR" />
+    <result column="created_at" property="createdAt" jdbcType="TIMESTAMP" />
+    <result column="updated_by" property="updatedBy" jdbcType="VARCHAR" />
+    <result column="updated_at" property="updatedAt" jdbcType="TIMESTAMP" />
+    <result column="version" property="version" jdbcType="BIGINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, xdate, xtime, xdatetime, xtimestamp, created_by, created_at, updated_by, updated_at, 
+    version
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from joda_demo
+    where id = #{id}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from joda_demo
+    where id = #{id}
+  </delete>
+  <insert id="insert" parameterType="com.bulain.activiti.model.Joda" >
+    insert into joda_demo (xdate, xtime, xdatetime, xtimestamp, created_by, created_at, 
+      updated_by, updated_at, version)
+    values (#{xdate}, #{xtime}, #{xdatetime}, #{xtimestamp}, #{createdBy}, #{createdAt}, 
+      #{updatedBy}, #{updatedAt}, #{version})
+    <selectKey resultType="java.lang.Long" keyProperty="id" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+  </insert>
+  <insert id="insertSelective" parameterType="com.bulain.activiti.model.Joda" >
+    insert into joda_demo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="xdate != null" >
+        xdate,
+      </if>
+      <if test="xtime != null" >
+        xtime,
+      </if>
+      <if test="xdatetime != null" >
+        xdatetime,
+      </if>
+      <if test="xtimestamp != null" >
+        xtimestamp,
+      </if>
+      <if test="createdBy != null" >
+        created_by,
+      </if>
+      <if test="createdAt != null" >
+        created_at,
+      </if>
+      <if test="updatedBy != null" >
+        updated_by,
+      </if>
+      <if test="updatedAt != null" >
+        updated_at,
+      </if>
+      <if test="version != null" >
+        version,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="xdate != null" >
+        #{xdate},
+      </if>
+      <if test="xtime != null" >
+        #{xtime},
+      </if>
+      <if test="xdatetime != null" >
+        #{xdatetime},
+      </if>
+      <if test="xtimestamp != null" >
+        #{xtimestamp},
+      </if>
+      <if test="createdBy != null" >
+        #{createdBy},
+      </if>
+      <if test="createdAt != null" >
+        #{createdAt},
+      </if>
+      <if test="updatedBy != null" >
+        #{updatedBy},
+      </if>
+      <if test="updatedAt != null" >
+        #{updatedAt},
+      </if>
+      <if test="version != null" >
+        #{version},
+      </if>
+    </trim>
+    <selectKey resultType="java.lang.Long" keyProperty="id" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bulain.activiti.model.Joda" >
+    update joda_demo
+    <set >
+      <if test="xdate != null" >
+        xdate = #{xdate},
+      </if>
+      <if test="xtime != null" >
+        xtime = #{xtime},
+      </if>
+      <if test="xdatetime != null" >
+        xdatetime = #{xdatetime},
+      </if>
+      <if test="xtimestamp != null" >
+        xtimestamp = #{xtimestamp},
+      </if>
+      <if test="createdBy != null" >
+        created_by = #{createdBy},
+      </if>
+      <if test="createdAt != null" >
+        created_at = #{createdAt},
+      </if>
+      <if test="updatedBy != null" >
+        updated_by = #{updatedBy},
+      </if>
+      <if test="updatedAt != null" >
+        updated_at = #{updatedAt},
+      </if>
+      <if test="version != null" >
+        version = #{version},
+      </if>
+    </set>
+    where id = #{id}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bulain.activiti.model.Joda" >
+    update joda_demo
+    set xdate = #{xdate},
+      xtime = #{xtime},
+      xdatetime = #{xdatetime},
+      xtimestamp = #{xtimestamp},
+      created_by = #{createdBy},
+      created_at = #{createdAt},
+      updated_by = #{updatedBy},
+      updated_at = #{updatedAt},
+      version = #{version}
+    where id = #{id}
+  </update>
+  
+  <!-- custom -->
+  <sql id="where">
+    <where>
+        <if test="xdate!=null">
+            and xdate = #{xdate}
+        </if>
+        <if test="xtime!=null">
+            and xtime = #{xtime}
+        </if>
+        <if test="xdatetimeFrom!=null">
+            <![CDATA[
+            and xdatetime >= #{xdatetimeFrom}
+            ]]>
+        </if>
+        <if test="xdatetimeTo!=null">
+            <![CDATA[
+            and xdatetime <= #{xdatetimeTo}
+            ]]>
+        </if>
+    </where>
+  </sql>
+  <select id="find" resultMap="BaseResultMap" parameterType="com.bulain.activiti.pojo.OrderSearch">
+    select 
+    <include refid="Base_Column_List" />
+    from joda_demo
+    <include refid="where"/>
+    <include refid="common.orderby"/>
+  </select>
+  <select id="count" resultType="java.lang.Long" parameterType="com.bulain.activiti.pojo.OrderSearch">
+    select count(*)
+    from joda_demo
+    <include refid="where"/>
+  </select>
+  <select id="page" resultMap="BaseResultMap" parameterType="com.bulain.activiti.pojo.OrderSearch">
+    <![CDATA[${PAGE_HEAD}]]>
+    select 
+    <include refid="Base_Column_List" />
+    from joda_demo
+    <include refid="where"/>
+    <include refid="common.orderby"/>
+    <![CDATA[${PAGE_FOOT}]]>
+  </select>
+</mapper>

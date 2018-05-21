@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset>
+  <categorys id="101" name="name_101" type="ACCOUNT"/>
+  <categorys id="102" name="name_102" type="ACCOUNT"/>
+  <categorys id="103" name="name_103" type="ACCOUNT"/>
+  <categorys id="104" name="name_104" type="ACCOUNT"/>
+  <categorys id="105" name="name_page" type="INSTITUTION"/>
+  <categorys id="106" name="name_page" type="INSTITUTION"/>
+  <categorys id="107" name="name_page" type="INSTITUTION"/>
+</dataset>

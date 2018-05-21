@@ -1,0 +1,3 @@
+<Context path="activiti5-demo" reloadable="false" docBase="C:/home/javaproject/activiti5-demo/target/activiti5-demo" workDir="C:/home/javaproject/activiti5-demo/target/work">
+    <Resource name="jdbc/activiti5.ds" auth="Container" type="javax.sql.DataSource" driverClassName="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost:3306/activiti5_development" username="activiti5" password="activiti5" maxActive="100" maxIdle="30" maxWait="10000" />
+</Context>

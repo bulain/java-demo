@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+    <bean id="userMapper" parent="abstractMapper">
+        <property name="mapperInterface" value="com.bulain.activiti.dao.UserMapper" />
+    </bean>
+
+    <bean id="orderMapper" parent="abstractMapper">
+        <property name="mapperInterface" value="com.bulain.activiti.dao.OrderMapper" />
+    </bean>
+    <bean id="orderMasterMapper" parent="abstractMapper">
+        <property name="mapperInterface" value="com.bulain.activiti.dao.OrderMasterMapper" />
+    </bean>
+    <bean id="orderHisMapper" parent="abstractMapper">
+        <property name="mapperInterface" value="com.bulain.activiti.dao.OrderHisMapper" />
+    </bean>
+    <bean id="jodaMapper" parent="abstractMapper">
+        <property name="mapperInterface" value="com.bulain.activiti.dao.JodaMapper" />
+    </bean>
+    
+    <bean id="referanceMapper" parent="abstractMapper">
+        <property name="mapperInterface" value="com.bulain.activiti.dao.ReferanceMapper" />
+    </bean>
+    
+    <bean id="groupMapper" parent="abstractMapper">
+        <property name="mapperInterface" value="com.bulain.activiti.dao.GroupMapper" />
+    </bean>
+    <bean id="categoryMapper" parent="abstractMapper">
+        <property name="mapperInterface" value="com.bulain.activiti.dao.CategoryMapper" />
+    </bean>
+    <bean id="accountMapper" parent="abstractMapper">
+        <property name="mapperInterface" value="com.bulain.activiti.dao.AccountMapper" />
+    </bean>
+    
+</beans>

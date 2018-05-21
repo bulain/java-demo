@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <package name="category" namespace="/category" extends="order-default">
+        <action name="list" class="categoryAction" method="list">
+            <result>/category/list.jsp</result>
+        </action>
+        <action name="new" class="categoryAction" method="newn">
+            <result>/category/new.jsp</result>
+        </action>
+        <action name="create" class="categoryAction" method="create">
+            <interceptor-ref name="orderStack" />
+            <result type="redirectAction">list</result>
+            <result name="input">/category/new.jsp</result>
+        </action>
+        <action name="edit" class="categoryAction" method="edit">
+            <result>/category/edit.jsp</result>
+        </action>
+        <action name="update" class="categoryAction" method="update">
+            <interceptor-ref name="orderStack" />
+            <result type="redirectAction">list</result>
+            <result name="input">/category/edit.jsp</result>
+        </action>
+        <action name="show" class="categoryAction" method="show">
+            <result>/category/show.jsp</result>
+        </action>
+        <action name="destroy" class="categoryAction" method="destroy">
+            <result type="redirectAction">list</result>
+            <result name="input" type="redirectAction">list</result>
+        </action>
+    </package>
+</struts>

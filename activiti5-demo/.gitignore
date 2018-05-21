@@ -1,0 +1,12 @@
+/target
+Thumbs.db
+/pom.xml.releaseBackup
+/release.properties
+/pom.xml.releaseBackup
+.classpath
+.project
+.settings/
+spy.log
+activiti5-demo.log*
+chromedriver.log
+src/migration/drivers/

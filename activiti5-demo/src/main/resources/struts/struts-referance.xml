@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <package name="referance" namespace="/referance" extends="order-default">
+        <action name="list" class="referanceAction" method="list">
+            <result>/referance/list.jsp</result>
+            <result name="input" >/referance/list.jsp</result>
+        </action>
+        <action name="new" class="referanceAction" method="newn">
+            <result>/referance/new.jsp</result>
+        </action>
+		<action name="create" class="referanceAction" method="create">
+			<interceptor-ref name="orderStack" />
+            <result type="redirectAction">list</result>
+            <result name="input" >/referance/new.jsp</result>
+        </action>
+        <action name="edit" class="referanceAction" method="edit">
+            <result>/referance/edit.jsp</result>
+        </action>
+		<action name="update" class="referanceAction" method="update">
+			<interceptor-ref name="orderStack" />
+			<result type="redirectAction">list</result>
+            <result name="input" >/referance/edit.jsp</result>
+        </action>
+        <action name="show" class="referanceAction" method="show">
+            <result>/referance/show.jsp</result>
+        </action>
+		<action name="destroy" class="referanceAction" method="destroy">
+            <result type="redirectAction">list</result>
+            <result name="input" type="redirectAction">list</result>
+        </action>
+    </package>
+</struts>

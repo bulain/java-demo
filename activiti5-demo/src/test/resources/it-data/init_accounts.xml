@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset>
+  <accounts id="101" name="name_101" type="CASH" currency="USD" status="ENAB" statement_cycle="DAIL" urgency_flag="No"/>
+  <accounts id="102" name="name_102" type="CASH" currency="USD" status="ENAB" statement_cycle="DAIL" urgency_flag="No"/>
+  <accounts id="103" name="name_103" type="CASH" currency="USD" status="ENAB" statement_cycle="DAIL" urgency_flag="No"/>
+  <accounts id="104" name="name_104" type="CASH" currency="USD" status="ENAB" statement_cycle="DAIL" urgency_flag="No"/>
+  <accounts id="105" name="name_page" type="CHAR" currency="USD" status="ENAB" statement_cycle="DAIL" urgency_flag="No"/>
+  <accounts id="106" name="name_page" type="CHAR" currency="USD" status="ENAB" statement_cycle="DAIL" urgency_flag="No"/>
+  <accounts id="107" name="name_page" type="CHAR" currency="USD" status="ENAB" statement_cycle="DAIL" urgency_flag="No"/>
+</dataset>

@@ -1,0 +1,428 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bulain.activiti.dao.AccountMapper" >
+  <resultMap id="BaseResultMap" type="com.bulain.activiti.model.Account" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="iban" property="iban" jdbcType="VARCHAR" />
+    <result column="scheme_name" property="schemeName" jdbcType="VARCHAR" />
+    <result column="identification" property="identification" jdbcType="VARCHAR" />
+    <result column="issuer" property="issuer" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="currency" property="currency" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="VARCHAR" />
+    <result column="monthly_payment_value" property="monthlyPaymentValue" jdbcType="DECIMAL" />
+    <result column="monthly_received_value" property="monthlyReceivedValue" jdbcType="DECIMAL" />
+    <result column="monthly_transaction_number" property="monthlyTransactionNumber" jdbcType="INTEGER" />
+    <result column="average_balance" property="averageBalance" jdbcType="DECIMAL" />
+    <result column="floor_notification_amount" property="floorNotificationAmount" jdbcType="DECIMAL" />
+    <result column="ceiling_notification_amount" property="ceilingNotificationAmount" jdbcType="DECIMAL" />
+    <result column="statement_cycle" property="statementCycle" jdbcType="VARCHAR" />
+    <result column="closing_date" property="closingDate" jdbcType="DATE" />
+    <result column="purpose" property="purpose" jdbcType="VARCHAR" />
+    <result column="restriction" property="restriction" jdbcType="VARCHAR" />
+    <result column="target_go_live_date" property="targetGoLiveDate" jdbcType="DATE" />
+    <result column="target_closing_date" property="targetClosingDate" jdbcType="DATE" />
+    <result column="urgency_flag" property="urgencyFlag" jdbcType="VARCHAR" />
+    <result column="created_by" property="createdBy" jdbcType="VARCHAR" />
+    <result column="created_at" property="createdAt" jdbcType="TIMESTAMP" />
+    <result column="updated_by" property="updatedBy" jdbcType="VARCHAR" />
+    <result column="updated_at" property="updatedAt" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, iban, scheme_name, identification, issuer, status, name, currency, type, monthly_payment_value, 
+    monthly_received_value, monthly_transaction_number, average_balance, floor_notification_amount, 
+    ceiling_notification_amount, statement_cycle, closing_date, purpose, restriction, 
+    target_go_live_date, target_closing_date, urgency_flag, created_by, created_at, updated_by, 
+    updated_at
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from accounts
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from accounts
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.bulain.activiti.model.Account" >
+    <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into accounts (iban, scheme_name, identification, 
+      issuer, status, name, 
+      currency, type, monthly_payment_value, 
+      monthly_received_value, monthly_transaction_number, 
+      average_balance, floor_notification_amount, 
+      ceiling_notification_amount, statement_cycle, 
+      closing_date, purpose, restriction, 
+      target_go_live_date, target_closing_date, urgency_flag, 
+      created_by, created_at, updated_by, 
+      updated_at)
+    values (#{iban,jdbcType=VARCHAR}, #{schemeName,jdbcType=VARCHAR}, #{identification,jdbcType=VARCHAR}, 
+      #{issuer,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{currency,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, #{monthlyPaymentValue,jdbcType=DECIMAL}, 
+      #{monthlyReceivedValue,jdbcType=DECIMAL}, #{monthlyTransactionNumber,jdbcType=INTEGER}, 
+      #{averageBalance,jdbcType=DECIMAL}, #{floorNotificationAmount,jdbcType=DECIMAL}, 
+      #{ceilingNotificationAmount,jdbcType=DECIMAL}, #{statementCycle,jdbcType=VARCHAR}, 
+      #{closingDate,jdbcType=DATE}, #{purpose,jdbcType=VARCHAR}, #{restriction,jdbcType=VARCHAR}, 
+      #{targetGoLiveDate,jdbcType=DATE}, #{targetClosingDate,jdbcType=DATE}, #{urgencyFlag,jdbcType=VARCHAR}, 
+      #{createdBy,jdbcType=VARCHAR}, #{createdAt,jdbcType=TIMESTAMP}, #{updatedBy,jdbcType=VARCHAR}, 
+      #{updatedAt,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.bulain.activiti.model.Account" >
+    <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into accounts
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="iban != null" >
+        iban,
+      </if>
+      <if test="schemeName != null" >
+        scheme_name,
+      </if>
+      <if test="identification != null" >
+        identification,
+      </if>
+      <if test="issuer != null" >
+        issuer,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="currency != null" >
+        currency,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="monthlyPaymentValue != null" >
+        monthly_payment_value,
+      </if>
+      <if test="monthlyReceivedValue != null" >
+        monthly_received_value,
+      </if>
+      <if test="monthlyTransactionNumber != null" >
+        monthly_transaction_number,
+      </if>
+      <if test="averageBalance != null" >
+        average_balance,
+      </if>
+      <if test="floorNotificationAmount != null" >
+        floor_notification_amount,
+      </if>
+      <if test="ceilingNotificationAmount != null" >
+        ceiling_notification_amount,
+      </if>
+      <if test="statementCycle != null" >
+        statement_cycle,
+      </if>
+      <if test="closingDate != null" >
+        closing_date,
+      </if>
+      <if test="purpose != null" >
+        purpose,
+      </if>
+      <if test="restriction != null" >
+        restriction,
+      </if>
+      <if test="targetGoLiveDate != null" >
+        target_go_live_date,
+      </if>
+      <if test="targetClosingDate != null" >
+        target_closing_date,
+      </if>
+      <if test="urgencyFlag != null" >
+        urgency_flag,
+      </if>
+      <if test="createdBy != null" >
+        created_by,
+      </if>
+      <if test="createdAt != null" >
+        created_at,
+      </if>
+      <if test="updatedBy != null" >
+        updated_by,
+      </if>
+      <if test="updatedAt != null" >
+        updated_at,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="iban != null" >
+        #{iban,jdbcType=VARCHAR},
+      </if>
+      <if test="schemeName != null" >
+        #{schemeName,jdbcType=VARCHAR},
+      </if>
+      <if test="identification != null" >
+        #{identification,jdbcType=VARCHAR},
+      </if>
+      <if test="issuer != null" >
+        #{issuer,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="currency != null" >
+        #{currency,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="monthlyPaymentValue != null" >
+        #{monthlyPaymentValue,jdbcType=DECIMAL},
+      </if>
+      <if test="monthlyReceivedValue != null" >
+        #{monthlyReceivedValue,jdbcType=DECIMAL},
+      </if>
+      <if test="monthlyTransactionNumber != null" >
+        #{monthlyTransactionNumber,jdbcType=INTEGER},
+      </if>
+      <if test="averageBalance != null" >
+        #{averageBalance,jdbcType=DECIMAL},
+      </if>
+      <if test="floorNotificationAmount != null" >
+        #{floorNotificationAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="ceilingNotificationAmount != null" >
+        #{ceilingNotificationAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="statementCycle != null" >
+        #{statementCycle,jdbcType=VARCHAR},
+      </if>
+      <if test="closingDate != null" >
+        #{closingDate,jdbcType=DATE},
+      </if>
+      <if test="purpose != null" >
+        #{purpose,jdbcType=VARCHAR},
+      </if>
+      <if test="restriction != null" >
+        #{restriction,jdbcType=VARCHAR},
+      </if>
+      <if test="targetGoLiveDate != null" >
+        #{targetGoLiveDate,jdbcType=DATE},
+      </if>
+      <if test="targetClosingDate != null" >
+        #{targetClosingDate,jdbcType=DATE},
+      </if>
+      <if test="urgencyFlag != null" >
+        #{urgencyFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="createdBy != null" >
+        #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createdAt != null" >
+        #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedBy != null" >
+        #{updatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedAt != null" >
+        #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bulain.activiti.model.Account" >
+    update accounts
+    <set >
+      <if test="iban != null" >
+        iban = #{iban,jdbcType=VARCHAR},
+      </if>
+      <if test="schemeName != null" >
+        scheme_name = #{schemeName,jdbcType=VARCHAR},
+      </if>
+      <if test="identification != null" >
+        identification = #{identification,jdbcType=VARCHAR},
+      </if>
+      <if test="issuer != null" >
+        issuer = #{issuer,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="currency != null" >
+        currency = #{currency,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="monthlyPaymentValue != null" >
+        monthly_payment_value = #{monthlyPaymentValue,jdbcType=DECIMAL},
+      </if>
+      <if test="monthlyReceivedValue != null" >
+        monthly_received_value = #{monthlyReceivedValue,jdbcType=DECIMAL},
+      </if>
+      <if test="monthlyTransactionNumber != null" >
+        monthly_transaction_number = #{monthlyTransactionNumber,jdbcType=INTEGER},
+      </if>
+      <if test="averageBalance != null" >
+        average_balance = #{averageBalance,jdbcType=DECIMAL},
+      </if>
+      <if test="floorNotificationAmount != null" >
+        floor_notification_amount = #{floorNotificationAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="ceilingNotificationAmount != null" >
+        ceiling_notification_amount = #{ceilingNotificationAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="statementCycle != null" >
+        statement_cycle = #{statementCycle,jdbcType=VARCHAR},
+      </if>
+      <if test="closingDate != null" >
+        closing_date = #{closingDate,jdbcType=DATE},
+      </if>
+      <if test="purpose != null" >
+        purpose = #{purpose,jdbcType=VARCHAR},
+      </if>
+      <if test="restriction != null" >
+        restriction = #{restriction,jdbcType=VARCHAR},
+      </if>
+      <if test="targetGoLiveDate != null" >
+        target_go_live_date = #{targetGoLiveDate,jdbcType=DATE},
+      </if>
+      <if test="targetClosingDate != null" >
+        target_closing_date = #{targetClosingDate,jdbcType=DATE},
+      </if>
+      <if test="urgencyFlag != null" >
+        urgency_flag = #{urgencyFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="createdBy != null" >
+        created_by = #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createdAt != null" >
+        created_at = #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedBy != null" >
+        updated_by = #{updatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedAt != null" >
+        updated_at = #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bulain.activiti.model.Account" >
+    update accounts
+    set iban = #{iban,jdbcType=VARCHAR},
+      scheme_name = #{schemeName,jdbcType=VARCHAR},
+      identification = #{identification,jdbcType=VARCHAR},
+      issuer = #{issuer,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      currency = #{currency,jdbcType=VARCHAR},
+      type = #{type,jdbcType=VARCHAR},
+      monthly_payment_value = #{monthlyPaymentValue,jdbcType=DECIMAL},
+      monthly_received_value = #{monthlyReceivedValue,jdbcType=DECIMAL},
+      monthly_transaction_number = #{monthlyTransactionNumber,jdbcType=INTEGER},
+      average_balance = #{averageBalance,jdbcType=DECIMAL},
+      floor_notification_amount = #{floorNotificationAmount,jdbcType=DECIMAL},
+      ceiling_notification_amount = #{ceilingNotificationAmount,jdbcType=DECIMAL},
+      statement_cycle = #{statementCycle,jdbcType=VARCHAR},
+      closing_date = #{closingDate,jdbcType=DATE},
+      purpose = #{purpose,jdbcType=VARCHAR},
+      restriction = #{restriction,jdbcType=VARCHAR},
+      target_go_live_date = #{targetGoLiveDate,jdbcType=DATE},
+      target_closing_date = #{targetClosingDate,jdbcType=DATE},
+      urgency_flag = #{urgencyFlag,jdbcType=VARCHAR},
+      created_by = #{createdBy,jdbcType=VARCHAR},
+      created_at = #{createdAt,jdbcType=TIMESTAMP},
+      updated_by = #{updatedBy,jdbcType=VARCHAR},
+      updated_at = #{updatedAt,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  
+  <!-- custom -->
+  <sql id="where">
+    <where>
+        <if test="iban!=null and iban!='' ">
+            and iban = #{iban}
+        </if>
+        <if test="schemeName!=null and schemeName!='' ">
+            and scheme_name = #{schemeName}
+        </if>
+        <if test="identification!=null and identification!='' ">
+            and identification = #{identification}
+        </if>
+        <if test="issuer!=null and issuer!='' ">
+            and issuer = #{issuer}
+        </if>
+        <if test="status!=null and status!=''">
+            and status = #{status}
+        </if>
+        <if test="name!=null and name!='' ">
+            and name = #{name}
+        </if>
+        <if test="currency!=null and currency!=''">
+            and currency = #{currency}
+        </if>
+        <if test="type!=null and type!=''">
+            and type = #{type}
+        </if>
+        <if test="statementCycle!=null and statementCycle!=''">
+            and statement_cycle = #{statementCycle}
+        </if>
+        <if test="closingDate!=null and closingDate!=''">
+            and closing_date = #{closingDate}
+        </if>
+        <if test="purpose!=null and purpose!=''">
+            and purpose = #{purpose}
+        </if>
+        <if test="restriction!=null and restriction!=''">
+            and restriction = #{restriction}
+        </if>
+        <if test="targetGoLiveDate!=null and targetGoLiveDate!=''">
+            and target_go_live_date = #{targetGoLiveDate}
+        </if>
+        <if test="targetClosingDate!=null and targetClosingDate!=''">
+            and target_closing_date = #{targetClosingDate}
+        </if>
+        <if test="urgencyFlag!=null and urgencyFlag!=''">
+            and urgency_flag = #{urgencyFlag}
+        </if>
+    </where>
+  </sql>
+  <select id="find" resultMap="BaseResultMap" parameterType="com.bulain.activiti.pojo.AccountSearch">
+    select 
+    <include refid="Base_Column_List" />
+    from accounts
+    <include refid="where"/>
+    <include refid="common.orderby"/>
+  </select>
+  <select id="count" resultType="java.lang.Long" parameterType="com.bulain.activiti.pojo.AccountSearch">
+    select count(*)
+    from accounts
+    <include refid="where"/>
+  </select>
+  <select id="page" resultMap="BaseResultMap" parameterType="com.bulain.activiti.pojo.AccountSearch">
+    <![CDATA[${PAGE_HEAD}]]>
+    select 
+    <include refid="Base_Column_List" />
+    from accounts
+    <include refid="where"/>
+    <include refid="common.orderby"/>
+    <![CDATA[${PAGE_FOOT}]]>
+  </select>
+  <select id="countByDuplicate" resultType="long" parameterType="com.bulain.activiti.model.Account">
+    select count(*)
+    from accounts
+    <where>
+        <if test="id!=null ">
+            and id != #{id}
+        </if>
+        <if test="name!=null and name!='' ">
+            and name = #{name}
+        </if>
+    </where>
+  </select>
+</mapper>
