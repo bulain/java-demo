@@ -4,16 +4,8 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.bulain</groupId>
 	<artifactId>mongodb-demo</artifactId>
-	<packaging>war</packaging>
 	<version>1.0.0-SNAPSHOT</version>
 	<name>mongodb-demo</name>
-	<url>https://github.com/bulain/mongodb-demo</url>
-
-	<scm>
-		<connection>scm:git:git@github.com:bulain/mongodb-demo.git</connection>
-		<developerConnection>scm:git:git@github.com:bulain/mongodb-demo.git</developerConnection>
-		<url>git@github.com:bulain/mongodb-demo.git</url>
-	</scm>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

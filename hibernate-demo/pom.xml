@@ -4,25 +4,19 @@
         <groupId>com.bulain</groupId>
         <artifactId>parent</artifactId>
         <version>1.0.0</version>
+        <relativePath>../parent/</relativePath>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.bulain</groupId>
     <artifactId>hibernate-demo</artifactId>
     <packaging>jar</packaging>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.0-SNAPSHOT</version>
     <name>hibernate-demo</name>
-    <url>https://github.com/bulain/hibernate-demo</url>
-
-    <scm>
-        <connection>scm:git:git@github.com:bulain/hibernate-demo.git</connection>
-        <developerConnection>scm:git:git@github.com:bulain/hibernate-demo.git</developerConnection>
-        <url>git@github.com:bulain/hibernate-demo.git</url>
-    </scm>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <common.version>1.0.1</common.version>
+        <common.version>1.0.0</common.version>
         <hibernate.core.version>3.3.2.GA</hibernate.core.version>
         <hibernate.anno.version>3.4.0.GA</hibernate.anno.version>
         <hibernate.plugin.version>2.2</hibernate.plugin.version>
@@ -139,29 +133,6 @@
                 </executions>
             </plugin>
             <plugin>
-                <groupId>org.mybatis.maven</groupId>
-                <artifactId>migrations-maven-plugin</artifactId>
-                <configuration>
-                    <repository>src/migration</repository>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>migration-up</id>
-                        <phase>process-test-resources</phase>
-                        <goals>
-                            <goal>up</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <dependencies>
-                    <dependency>
-                        <groupId>mysql</groupId>
-                        <artifactId>mysql-connector-java</artifactId>
-                        <version>${mysql.version}</version>
-                    </dependency>
-                </dependencies>
-            </plugin>
-            <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>hibernate3-maven-plugin</artifactId>
                 <version>${hibernate.plugin.version}</version>
@@ -194,4 +165,39 @@
             </plugin>
         </plugins>
     </build>
+
+
+    <profiles>
+        <profile>
+            <id>test</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.mybatis.maven</groupId>
+                        <artifactId>migrations-maven-plugin</artifactId>
+                        <configuration>
+                            <repository>src/migration</repository>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>migration-up</id>
+                                <phase>process-test-resources</phase>
+                                <goals>
+                                    <goal>up</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <dependencies>
+                            <dependency>
+                                <groupId>mysql</groupId>
+                                <artifactId>mysql-connector-java</artifactId>
+                                <version>${mysql.version}</version>
+                            </dependency>
+                        </dependencies>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
 </project>

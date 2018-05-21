@@ -4,21 +4,15 @@
         <groupId>com.bulain</groupId>
         <artifactId>parent</artifactId>
         <version>1.0.0</version>
+        <relativePath>../parent/</relativePath>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.bulain</groupId>
-    <artifactId>common-root</artifactId>
+    <artifactId>common</artifactId>
     <packaging>pom</packaging>
-    <version>1.0.1</version>
-    <name>common-root</name>
-    <url>https://github.com/bulain/common</url>
-
-    <scm>
-        <connection>scm:git:git@github.com:bulain/common.git</connection>
-        <developerConnection>scm:git:git@github.com:bulain/common.git</developerConnection>
-        <url>git@github.com:bulain/common.git</url>
-    </scm>
+    <version>1.0.0</version>
+    <name>common</name>
 
     <modules>
         <module>test</module>
@@ -52,60 +46,6 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-site-plugin</artifactId>
-                <configuration>
-                    <reportPlugins>
-                        <plugin>
-                            <groupId>org.apache.maven.plugins</groupId>
-                            <artifactId>maven-jxr-plugin</artifactId>
-                        </plugin>
-                        <plugin>
-                            <groupId>org.apache.maven.plugins</groupId>
-                            <artifactId>maven-surefire-report-plugin</artifactId>
-                        </plugin>
-                        <plugin>
-                            <groupId>org.apache.maven.plugins</groupId>
-                            <artifactId>maven-checkstyle-plugin</artifactId>
-                            <configuration>
-                                <configLocation>checkstyle.xml</configLocation>
-                            </configuration>
-                        </plugin>
-                        <plugin>
-                            <groupId>org.codehaus.mojo</groupId>
-                            <artifactId>cobertura-maven-plugin</artifactId>
-                        </plugin>
-                        <plugin>
-                            <groupId>org.codehaus.mojo</groupId>
-                            <artifactId>findbugs-maven-plugin</artifactId>
-                            <configuration>
-                                <findbugsXmlOutput>true</findbugsXmlOutput>
-                                <findbugsXmlWithMessages>true</findbugsXmlWithMessages>
-                                <xmlOutput>true</xmlOutput>
-                                <excludeFilterFile>findbugs-exclude.xml</excludeFilterFile>
-                            </configuration>
-                        </plugin>
-                        <plugin>
-                            <groupId>org.apache.maven.plugins</groupId>
-                            <artifactId>maven-pmd-plugin</artifactId>
-                            <configuration>
-                                <linkXref>true</linkXref>
-                                <sourceEncoding>UTF-8</sourceEncoding>
-                                <minimumTokens>100</minimumTokens>
-                                <targetJdk>1.5</targetJdk>
-                            </configuration>
-                        </plugin>
-                        <plugin>
-                            <groupId>net.sourceforge.maven-taglib</groupId>
-                            <artifactId>maven-taglib-plugin</artifactId>
-                            <configuration>
-                                <taglib.src.dir>src/main/resources/META-INF</taglib.src.dir>
-                            </configuration>
-                        </plugin>
-                    </reportPlugins>
-                </configuration>
             </plugin>
         </plugins>
     </build>

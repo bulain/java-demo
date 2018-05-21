@@ -4,7 +4,7 @@
     <groupId>com.bulain.karaf</groupId>
     <artifactId>karaf-client</artifactId>
     <packaging>bundle</packaging>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.0-SNAPSHOT</version>
 
     <name>karaf-client</name>
     <description>Karaf Client</description>
@@ -21,7 +21,7 @@
         <dependency>
             <groupId>com.bulain.karaf</groupId>
             <artifactId>karaf-service</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <version>1.0.0-SNAPSHOT</version>
         </dependency>
     
         <dependency>

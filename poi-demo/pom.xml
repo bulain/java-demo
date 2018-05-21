@@ -6,13 +6,6 @@
     <packaging>jar</packaging>
     <version>1.0.0-SNAPSHOT</version>
     <name>poi-demo</name>
-    <url>https://github.com/bulain/poi-demo</url>
-
-    <scm>
-        <connection>scm:git:git@github.com:bulain/poi-demo.git</connection>
-        <developerConnection>scm:git:git@github.com:bulain/poi-demo.git</developerConnection>
-        <url>git@github.com:bulain/poi-demo.git</url>
-    </scm>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

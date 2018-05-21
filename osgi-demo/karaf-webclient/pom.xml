@@ -4,7 +4,7 @@
     <groupId>com.bulain.karaf</groupId>
     <artifactId>karaf-webclient</artifactId>
     <packaging>war</packaging>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.0-SNAPSHOT</version>
 
     <name>karaf-webclient</name>
     <description>Karaf Webclient</description>
@@ -24,7 +24,7 @@
         <dependency>
             <groupId>com.bulain.karaf</groupId>
             <artifactId>karaf-service</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <version>1.0.0-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
 

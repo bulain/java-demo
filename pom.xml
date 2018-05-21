@@ -1,0 +1,87 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.bulain</groupId>
+    <artifactId>java-demo</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0.0-SNAPSHOT</version>
+    <name>java-demo</name>
+    <url>https://github.com/bulain/java-demo</url>
+
+    <scm>
+        <connection>scm:git:git@github.com:bulain/java-demo.git</connection>
+        <developerConnection>scm:git:git@github.com:bulain/java-demo.git</developerConnection>
+        <url>git@github.com:bulain/java-demo.git</url>
+    </scm>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <modules>
+        <module>parent</module>
+        <module>common</module>
+        <!-- <module>migration</module> -->
+        
+        <module>activiti5-demo</module>
+        <module>antlr-demo</module>
+        <module>applet-demo</module>
+        <module>appserver-demo</module>
+        <module>axis-demo</module>
+        <module>axis2-demo</module>
+        <module>birt-demo</module>
+        <module>btrace-demo</module>
+        <module>cache-demo</module>
+        <module>camel-demo</module>
+        <module>canal-demo</module>
+        <module>cassandra-demo</module>
+        <module>crawler-demo</module>
+        <module>cxf-demo</module>
+        <module>dbtools</module>
+        <module>disruptor-demo</module>
+        <module>drools5-demo</module>
+        <module>elasticsearch-demo</module>
+        <module>gwt-demo</module>
+        <module>hbase-demo</module>
+        <module>hessian-demo</module>
+        <module>hibernate-demo</module>
+        <module>httpclient-demo</module>
+        <module>influxdb-demo</module>
+        <module>jaas-demo</module>
+        <module>jackrabbit-demo</module>
+        <module>jbpm4-demo</module>
+        <module>jbpm4order</module>
+        <module>jencks-demo</module>
+        <module>jgroup-demo</module>
+        <module>jms-demo</module>
+        <module>jolokia-demo</module>
+        <module>jxls-demo</module>
+        <module>lucene-demo</module>
+        <module>mail-demo</module>
+        <module>math-demo</module>
+        <module>mina-demo</module>
+        <module>mongodb-demo</module>
+        <module>mybatis-demo</module>
+        <module>netty-demo</module>
+        <module>oauth-demo</module>
+        <module>oltu-demo</module>
+        <module>poi-demo</module>
+        <module>quartz-demo</module>
+        <module>reviewboard-client</module>
+        <module>script-demo</module>
+        <module>shiro-demo</module>
+        <module>smooks-demo</module>
+        <module>springmvc-demo</module>
+        <module>struts2-demo</module>
+        <module>tika-demo</module>
+        <module>tomcat-cache-demo</module>
+        <module>weixin-rpc</module>
+        <module>xml-demo</module>
+        <module>zk-demo</module>
+        
+        <!-- <module>osgi-demo</module> -->
+        
+    </modules>
+
+
+</project>

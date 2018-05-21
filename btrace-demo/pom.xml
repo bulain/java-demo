@@ -4,21 +4,15 @@
         <groupId>com.bulain</groupId>
         <artifactId>parent</artifactId>
         <version>1.0.0</version>
+        <relativePath>../parent/</relativePath>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.bulain</groupId>
     <artifactId>btrace-demo</artifactId>
     <packaging>jar</packaging>
-    <version>1.0.1-SNAPSHOT</version>
+    <version>1.0.0-SNAPSHOT</version>
     <name>btrace-demo</name>
-    <url>https://github.com/bulain/btrace-demo</url>
-
-    <scm>
-        <connection>scm:git:git@github.com:bulain/btrace-demo.git</connection>
-        <developerConnection>scm:git:git@github.com:bulain/btrace-demo.git</developerConnection>
-        <url>git@github.com:bulain/btrace-demo.git</url>
-    </scm>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

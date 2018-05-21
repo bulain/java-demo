@@ -4,25 +4,18 @@
         <groupId>com.bulain</groupId>
         <artifactId>parent</artifactId>
         <version>1.0.0</version>
+        <relativePath>../parent/</relativePath>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.bulain</groupId>
     <artifactId>axis2-demo</artifactId>
     <packaging>war</packaging>
-    <version>1.0.1-SNAPSHOT</version>
-    <url>https://github.com/bulain/axis2-demo</url>
-
-    <scm>
-        <connection>scm:git:git@github.com:bulain/axis2-demo.git</connection>
-        <developerConnection>scm:git:git@github.com:bulain/axis2-demo.git</developerConnection>
-        <url>git@github.com:bulain/axis2-demo.git</url>
-    </scm>
+    <version>1.0.0-SNAPSHOT</version>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <tools.version>1.5</tools.version>
-        <httpclient.version>3.1</httpclient.version>
         <axis2.version>1.6.2</axis2.version>
         <rampart.version>1.6.2</rampart.version>
         <jibx.version>1.2.4.5</jibx.version>
@@ -238,53 +231,6 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-site-plugin</artifactId>
-                <configuration>
-                    <reportPlugins>
-                        <plugin>
-                            <groupId>org.apache.maven.plugins</groupId>
-                            <artifactId>maven-jxr-plugin</artifactId>
-                        </plugin>
-                        <plugin>
-                            <groupId>org.apache.maven.plugins</groupId>
-                            <artifactId>maven-surefire-report-plugin</artifactId>
-                        </plugin>
-                        <plugin>
-                            <groupId>org.apache.maven.plugins</groupId>
-                            <artifactId>maven-checkstyle-plugin</artifactId>
-                            <configuration>
-                                <configLocation>checkstyle.xml</configLocation>
-                            </configuration>
-                        </plugin>
-                        <plugin>
-                            <groupId>org.codehaus.mojo</groupId>
-                            <artifactId>cobertura-maven-plugin</artifactId>
-                        </plugin>
-                        <plugin>
-                            <groupId>org.codehaus.mojo</groupId>
-                            <artifactId>findbugs-maven-plugin</artifactId>
-                            <configuration>
-                                <findbugsXmlOutput>true</findbugsXmlOutput>
-                                <findbugsXmlWithMessages>true</findbugsXmlWithMessages>
-                                <xmlOutput>true</xmlOutput>
-                                <excludeFilterFile>findbugs-exclude.xml</excludeFilterFile>
-                            </configuration>
-                        </plugin>
-                        <plugin>
-                            <groupId>org.apache.maven.plugins</groupId>
-                            <artifactId>maven-pmd-plugin</artifactId>
-                            <configuration>
-                                <linkXref>true</linkXref>
-                                <sourceEncoding>UTF-8</sourceEncoding>
-                                <minimumTokens>100</minimumTokens>
-                                <targetJdk>1.5</targetJdk>
-                            </configuration>
-                        </plugin>
-                    </reportPlugins>
-                </configuration>
-            </plugin>
         </plugins>
     </build>
 
@@ -329,7 +275,7 @@
                             </execution>
                         </executions>
                         <configuration>
-                            <wsdlFile>src/main/config/DemoService.wsdl</wsdlFile>
+                            <wsdlFile>${basedir}/src/main/config/DemoService.wsdl</wsdlFile>
                             <databindingName>adb</databindingName>
                             <packageName>com.bulain.axis2.service.demo</packageName>
                             <generateServerSide>true</generateServerSide>
@@ -360,7 +306,7 @@
                             </execution>
                         </executions>
                         <configuration>
-                            <wsdlFile>src/main/config/DemoService.wsdl</wsdlFile>
+                            <wsdlFile>${basedir}/src/main/config/DemoService.wsdl</wsdlFile>
                             <databindingName>jaxbri</databindingName>
                             <packageName>com.bulain.axis2.service.demo</packageName>
                             <generateServerSide>true</generateServerSide>
@@ -398,7 +344,7 @@
                             </execution>
                         </executions>
                         <configuration>
-                            <wsdlFile>src/main/config/DemoService.wsdl</wsdlFile>
+                            <wsdlFile>${basedir}/src/main/config/DemoService.wsdl</wsdlFile>
                             <databindingName>xmlbeans</databindingName>
                             <packageName>com.bulain.axis2.service.demo</packageName>
                             <generateServerSide>true</generateServerSide>
@@ -421,6 +367,9 @@
         </profile>
         <profile>
             <id>wsdl2code-jibx</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
             <build>
                 <plugins>
                     <plugin>
@@ -436,7 +385,7 @@
                             </execution>
                         </executions>
                         <configuration>
-                            <wsdlFile>src/main/config/DemoService.wsdl</wsdlFile>
+                            <wsdlFile>${basedir}/src/main/config/DemoService.wsdl</wsdlFile>
                             <serviceName>DemoService</serviceName>
                             <databindingName>jibx</databindingName>
                             <packageName>com.bulain.axis2.service.demo</packageName>
@@ -447,7 +396,7 @@
                             <generateTestcase>false</generateTestcase>
                             <unwrap>true</unwrap>
                             <options>
-                                <bindingfile>src/main/config/demo-binding.xml</bindingfile>
+                                <bindingfile>${basedir}/src/main/config/demo-binding.xml</bindingfile>
                             </options>
                         </configuration>
                         <dependencies>
@@ -490,6 +439,9 @@
         </profile>
         <profile>
             <id>bind</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
             <build>
                 <plugins>
                     <plugin>
@@ -517,6 +469,9 @@
         </profile>
         <profile>
             <id>schema-codegen</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
             <build>
                 <plugins>
                     <plugin>
@@ -534,7 +489,7 @@
                         </executions>
                         <configuration>
                             <verbose>true</verbose>
-                            <targetDirectory>target/generated-sources/jibx/src</targetDirectory>
+                            <targetDirectory>${project.build.directory}/generated-sources/jibx/src</targetDirectory>
                             <includeSchemas>
                                 <includeSchema>*.xsd</includeSchema>
                             </includeSchemas>

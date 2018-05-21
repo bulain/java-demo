@@ -4,7 +4,7 @@
     <groupId>com.bulain.karaf</groupId>
     <artifactId>karaf-web</artifactId>
     <packaging>war</packaging>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.0-SNAPSHOT</version>
 
     <name>karaf-web</name>
     <description>Karaf Web</description>

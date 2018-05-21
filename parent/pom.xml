@@ -4,18 +4,12 @@
     <groupId>com.bulain</groupId>
     <artifactId>parent</artifactId>
     <packaging>pom</packaging>
-    <version>1.0.2</version>
+    <version>1.0.0</version>
     <name>parent</name>
-    <url>https://github.com/bulain/parent</url>
-
-    <scm>
-        <connection>scm:git:git@github.com:bulain/parent.git</connection>
-        <developerConnection>scm:git:git@github.com:bulain/parent.git</developerConnection>
-        <url>git@github.com:bulain/parent.git</url>
-    </scm>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.test.skip>true</maven.test.skip>
         <!-- runtime -->
         <joda.version>2.1</joda.version>
         <mybatis.version>3.2.3</mybatis.version>

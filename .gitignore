@@ -2,6 +2,9 @@
 *.class
 .project
 
+# Target
+target/
+
 # Log file
 *.log
 

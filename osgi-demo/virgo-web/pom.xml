@@ -4,7 +4,7 @@
     <groupId>com.bulain.virgo</groupId>
     <artifactId>virgo-web</artifactId>
     <packaging>war</packaging>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.0-SNAPSHOT</version>
 
     <name>virgo-web</name>
     <description>Virgo Web</description>
@@ -23,7 +23,7 @@
         <dependency>
             <groupId>com.bulain.virgo</groupId>
             <artifactId>virgo-service</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <version>1.0.0-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
 
