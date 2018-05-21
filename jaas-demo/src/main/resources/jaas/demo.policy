@@ -1,0 +1,5 @@
+grant codebase "file:./target/classes" {
+    permission javax.security.auth.AuthPermission "modifyPrincipals";
+    permission javax.security.auth.AuthPermission "createLoginContext.Sample";
+};
+
