@@ -1,0 +1,22 @@
+<beans xsi:schemaLocation="http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd" xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+    <bean id="msgBean" class="com.bulain.camel.jms.MsgBean" />
+    <bean id="jms" class="org.apache.activemq.camel.component.ActiveMQComponent">
+        <property name="brokerURL" value="vm://localhost?broker.persistent=false" />
+    </bean>
+
+    <camelContext xmlns="http://camel.apache.org/schema/spring">
+        <route id="jms2file-producer">
+            <from uri="timer://foo?period=1s" />
+            <transform>
+                <method ref="msgBean" method="generateMessage" />
+            </transform>
+            <to uri="jms:queue:test.queue" />
+        </route>
+        <route id="jms2file-comsumer">
+            <from uri="jms:queue:test.queue" />
+            <to uri="file://target/test.queue" />
+        </route>
+    </camelContext>
+
+</beans>

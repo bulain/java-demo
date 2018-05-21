@@ -1,0 +1,16 @@
+<beans xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd" xmlns="http://www.springframework.org/schema/beans" xmlns:camel="http://camel.apache.org/schema/spring" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <camelContext id="camel-demo-ssh" xmlns="http://camel.apache.org/schema/spring">
+        <route id="camel-demo-ssh-consumer">
+            <from uri="ssh://bulain:123456@192.168.1.108:22?useFixedDelay=true&amp;delay=5000&amp;pollCommand=ls%0A" />
+            <log message="${body}" />
+        </route>
+        <route id="camel-demo-ssh-producer">
+            <from uri="direct:exampleSshProducer" />
+            <setBody>
+                <constant>ls</constant>
+            </setBody>
+            <to uri="ssh://bulain:123456@192.168.1.108:22" />
+            <log message="${body}" />
+        </route>
+    </camelContext>
+</beans>

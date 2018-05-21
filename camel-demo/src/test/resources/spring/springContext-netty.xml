@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:camel="http://camel.apache.org/schema/spring" xsi:schemaLocation="
+         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+         http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+    <bean id="configuration" class="org.apache.camel.component.netty.http.NettySharedHttpServerBootstrapConfiguration">
+        <property name="port" value="8888" />
+        <property name="host" value="0.0.0.0" />
+        <property name="backlog" value="50" />
+    </bean>
+
+    <bean id="httpServer" class="org.apache.camel.component.netty.http.DefaultNettySharedHttpServer" init-method="start" destroy-method="stop">
+        <property name="nettyServerBootstrapConfiguration" ref="configuration" />
+    </bean>
+
+    <camelContext xmlns="http://camel.apache.org/schema/spring">
+        <route id="http-route-one">
+            <from uri="netty-http:http://localhost/one?matchOnUriPrefix=true&amp;nettySharedHttpServer=#httpServer" />
+            <transform>
+                <simple>Response from Camel one on route ${routeId} using thread: ${threadName}</simple>
+            </transform>
+        </route>
+        <route id="http-route-two">
+            <from uri="netty-http:http://localhost/two?matchOnUriPrefix=true&amp;nettySharedHttpServer=#httpServer" />
+            <transform>
+                <simple>Response from Camel two on route ${routeId} using thread: ${threadName}</simple>
+            </transform>
+        </route>
+
+    </camelContext>
+
+</beans>
