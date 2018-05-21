@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+    <bean id="jcrConnectionFactory" class="org.apache.jackrabbit.jca.JCAManagedConnectionFactory" destroy-method="finalize">
+        <property name="homeDir" value="${repository.home}" />
+        <property name="configFile" value="${repository.config}" />
+    </bean>
+    <bean id="jcrRepository" class="org.springframework.jca.support.LocalConnectionFactoryBean">
+        <property name="managedConnectionFactory" ref="jcrConnectionFactory"/>
+    </bean>
+    <bean id="jcrSessionFactory" class="org.springmodules.jcr.jackrabbit.JackrabbitSessionFactory">
+        <property name="repository" ref="jcrRepository" />
+        <property name="credentials">
+            <bean class="javax.jcr.SimpleCredentials">
+                <constructor-arg index="0" value="admin" />
+                <constructor-arg index="1" value="admin" />
+            </bean>
+        </property>
+    </bean>
+    <bean id="jcrTransactionManager" class="org.springmodules.jcr.jackrabbit.LocalTransactionManager">
+        <property name="sessionFactory" ref="jcrSessionFactory"/>
+    </bean>
+    <bean id="jcrTemplate" class="org.springmodules.jcr.JcrTemplate">
+        <property name="sessionFactory" ref="jcrSessionFactory"/>
+        <property name="allowCreate" value="true"/>
+    </bean>
+    <bean id="contentDao" class="com.bulain.jcr.dao.ContentDaoImpl">
+        <property name="jcrTemplate" ref="jcrTemplate"/>
+    </bean>
+    <bean id="contentService" class="com.bulain.jcr.service.ContentServiceImpl">
+        <property name="contentDao" ref="contentDao"/>
+    </bean>
+    
+    <bean id="transactionInterceptor" class="org.springframework.transaction.interceptor.TransactionInterceptor">
+        <property name="transactionManager" ref="jcrTransactionManager" />
+        <property name="transactionAttributes">
+            <props>
+                <prop key="check*">PROPAGATION_REQUIRED,readOnly</prop>
+                <prop key="get*">PROPAGATION_REQUIRED,readOnly</prop>
+                <prop key="find*">PROPAGATION_REQUIRED,readOnly</prop>
+                <prop key="count*">PROPAGATION_REQUIRED,readOnly</prop>
+                <prop key="page*">PROPAGATION_REQUIRED,readOnly</prop>
+                <prop key="*">PROPAGATION_REQUIRED</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+        <property name="beanNames">
+            <list>
+                <value>*Service</value>
+                <value>*Bpo</value>
+            </list>
+        </property>
+        <property name="interceptorNames">
+            <list>
+                <value>transactionInterceptor</value>
+            </list>
+        </property>
+    </bean>
+
+</beans>
