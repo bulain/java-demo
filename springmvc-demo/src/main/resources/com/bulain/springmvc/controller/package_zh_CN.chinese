@@ -1,0 +1,6 @@
+person.model=个人
+person.firstName=名
+person.lastName=姓
+
+Size.person.firstName={0}: 长度必须在{2}和{1}之间 
+Size.person.lastName={0}: 长度必须在{2}和{1}之间 
