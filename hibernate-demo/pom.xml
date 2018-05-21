@@ -3,20 +3,17 @@
     <parent>
         <groupId>com.bulain</groupId>
         <artifactId>parent</artifactId>
-        <version>1.0.0</version>
+        <version>1.0.0-SNAPSHOT</version>
         <relativePath>../parent/</relativePath>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.bulain</groupId>
     <artifactId>hibernate-demo</artifactId>
     <packaging>jar</packaging>
-    <version>1.0.0-SNAPSHOT</version>
     <name>hibernate-demo</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <common.version>1.0.0</common.version>
         <hibernate.core.version>3.3.2.GA</hibernate.core.version>
         <hibernate.anno.version>3.4.0.GA</hibernate.anno.version>
         <hibernate.plugin.version>2.2</hibernate.plugin.version>
@@ -31,7 +28,7 @@
         <dependency>
             <groupId>com.bulain</groupId>
             <artifactId>common-core</artifactId>
-            <version>${common.version}</version>
+            <version>${project.version}</version>
         </dependency>
         <!-- hibernate -->
         <dependency>
@@ -74,7 +71,7 @@
         <dependency>
             <groupId>com.bulain</groupId>
             <artifactId>common-test</artifactId>
-            <version>${common.version}</version>
+            <version>${project.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>

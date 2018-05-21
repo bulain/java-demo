@@ -3,14 +3,12 @@
     <parent>
         <groupId>com.bulain</groupId>
         <artifactId>common</artifactId>
-        <version>1.0.0</version>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.bulain</groupId>
     <artifactId>common-core</artifactId>
     <packaging>jar</packaging>
-    <version>1.0.0</version>
     <name>common-core</name>
 
     <properties>
@@ -165,7 +163,7 @@
         <dependency>
             <groupId>com.bulain</groupId>
             <artifactId>common-test</artifactId>
-            <version>1.0.0</version>
+            <version>${project.version}</version>
             <scope>test</scope>
         </dependency>
 
