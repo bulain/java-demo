@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bulain.common.dao.PersonMapper">
+  <!-- custom -->
+  <sql id="where">
+    <where>
+      <if test="firstName != null and firstName != '' ">
+        and first_name like #{firstNameLike}
+      </if>
+      <if test="lastName != null and lastName != '' ">
+        and last_name like #{lastNameLike}
+      </if>
+    </where>
+  </sql>
+  <select id="find" resultMap="BaseResultMap" parameterType="com.bulain.common.pojo.PersonSearch">
+    select
+    <include refid="Base_Column_List" />
+    from persons
+    <include refid="where" />
+    <include refid="common.orderby" />
+  </select>
+  <select id="count" resultType="java.lang.Long" parameterType="com.bulain.common.pojo.PersonSearch">
+    select count(*)
+    from persons
+    <include refid="where" />
+  </select>
+  <select id="page" resultMap="BaseResultMap" parameterType="com.bulain.common.pojo.PersonSearch">
+  	<![CDATA[${PAGE_HEAD}]]>
+    select
+    <include refid="Base_Column_List" />
+    from persons
+    <include refid="where" />
+    <include refid="common.orderby" />
+    <![CDATA[${PAGE_FOOT}]]>
+  </select>
+</mapper>

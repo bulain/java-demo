@@ -1,0 +1,13 @@
+language: java
+jdk:
+  - openjdk6
+  - openjdk7
+  - oraclejdk7
+script: 
+  - mvn test --quiet -Pmysql
+before_install:
+  - git clone --branch=master git://github.com/bulain/parent.git bulain/parent
+  - mvn install --quiet -DskipTests=true -f bulain/parent/pom.xml
+before_script:
+  - mysql -uroot -e "create database service_test;"
+  - mysql -uroot -e "grant all on service_test.* to service@localhost identified by 'service';"

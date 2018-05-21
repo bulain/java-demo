@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+    <bean id="authorizeMapper" class="org.mybatis.spring.mapper.MapperFactoryBean" parent="baseMapper">
+        <property name="mapperInterface" value="com.bulain.common.dao.AuthorizeMapper" />
+    </bean>
+
+    <bean id="contentMapper" class="org.mybatis.spring.mapper.MapperFactoryBean" parent="baseMapper">
+        <property name="mapperInterface" value="com.bulain.common.dao.ContentMapper" />
+    </bean>
+
+    <bean id="groupMapper" class="org.mybatis.spring.mapper.MapperFactoryBean" parent="baseMapper">
+        <property name="mapperInterface" value="com.bulain.common.dao.GroupMapper" />
+    </bean>
+
+    <bean id="loginMapper" class="org.mybatis.spring.mapper.MapperFactoryBean" parent="baseMapper">
+        <property name="mapperInterface" value="com.bulain.common.dao.LoginMapper" />
+    </bean>
+
+    <bean id="groupLoginMapper" class="org.mybatis.spring.mapper.MapperFactoryBean" parent="baseMapper">
+        <property name="mapperInterface" value="com.bulain.common.dao.GroupLoginMapper" />
+    </bean>
+
+    <bean id="groupPermissionMapper" class="org.mybatis.spring.mapper.MapperFactoryBean" parent="baseMapper">
+        <property name="mapperInterface" value="com.bulain.common.dao.GroupPermissionMapper" />
+    </bean>
+
+    <bean id="mailTemplateMapper" class="org.mybatis.spring.mapper.MapperFactoryBean" parent="baseMapper">
+        <property name="mapperInterface" value="com.bulain.common.dao.MailTemplateMapper" />
+    </bean>
+
+    <bean id="masterMapper" class="org.mybatis.spring.mapper.MapperFactoryBean" parent="baseMapper">
+        <property name="mapperInterface" value="com.bulain.common.dao.MasterMapper" />
+    </bean>
+
+    <bean id="orderMapper" class="org.mybatis.spring.mapper.MapperFactoryBean" parent="baseMapper">
+        <property name="mapperInterface" value="com.bulain.common.dao.OrderMapper" />
+    </bean>
+
+    <bean id="permissionMapper" class="org.mybatis.spring.mapper.MapperFactoryBean" parent="baseMapper">
+        <property name="mapperInterface" value="com.bulain.common.dao.PermissionMapper" />
+    </bean>
+
+    <bean id="personMapper" class="org.mybatis.spring.mapper.MapperFactoryBean" parent="baseMapper">
+        <property name="mapperInterface" value="com.bulain.common.dao.PersonMapper" />
+    </bean>
+
+    <bean id="profileMapper" class="org.mybatis.spring.mapper.MapperFactoryBean" parent="baseMapper">
+        <property name="mapperInterface" value="com.bulain.common.dao.ProfileMapper" />
+    </bean>
+
+    <bean id="referenceMapper" class="org.mybatis.spring.mapper.MapperFactoryBean" parent="baseMapper">
+        <property name="mapperInterface" value="com.bulain.common.dao.ReferenceMapper" />
+    </bean>
+
+</beans>

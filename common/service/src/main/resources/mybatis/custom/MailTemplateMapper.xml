@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bulain.common.dao.MailTemplateMapper" >
+<!-- custom -->
+  <sql id="where">
+  	<where>
+  		<if test="name != null and name != '' ">
+  			and name = #{name}
+  		</if>
+  		<if test="lang != null and lang != '' ">
+  			and lang = #{lang}
+  		</if>
+  	</where>
+  </sql>
+  <select id="find" resultMap="BaseResultMap" parameterType="com.bulain.common.pojo.MailTemplateSearch">
+  	select 
+    <include refid="Base_Column_List" />
+    from mail_templates
+    <include refid="where"/>
+    <include refid="common.orderby"/>
+  </select>
+  <select id="count" resultType="java.lang.Long" parameterType="com.bulain.common.pojo.MailTemplateSearch">
+  	select count(*)
+    from mail_templates
+    <include refid="where"/>
+  </select>
+  <select id="page" resultMap="BaseResultMap" parameterType="com.bulain.common.pojo.MailTemplateSearch">
+  	<![CDATA[${PAGE_HEAD}]]>
+  	select 
+    <include refid="Base_Column_List" />
+    from mail_templates
+    <include refid="where"/>
+    <include refid="common.orderby"/>
+    <![CDATA[${PAGE_FOOT}]]>
+  </select>
+  <select id="selectByPrimaryKeyWithoutBLOBs" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from mail_templates
+    where id = #{id}
+  </select>
+</mapper>

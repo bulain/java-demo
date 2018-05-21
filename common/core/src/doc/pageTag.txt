@@ -1,0 +1,19 @@
+﻿1,分页链接设计概要。
+« Previous 1 2 3 4 5 6 7 8 9 … 46 47 Next »
+« Previous 1 2 … 39 40 41 42 43 44 45 46 47 Next »
+« Previous 1 2 … 5 6 7 8 9 10 11 12 13 … 46 47 Next »
+« Previous 1 2 … 35 36 37 38 39 40 41 42 43 … 46 47 Next »
+
+用法：<page:link page="page.page" totalPage="page.totalPage"/>
+
+2,排序链接的设计概要。
+▲:asc    ▼:desc
+用法：<page:order fixOrderBy="name">Name</page:order>
+
+3,大数据量截取的设计概要。
+当然数据量过大时，特别是列表页面，页面会变得非常难看，特作截取处理。
+如abcdefghijkl\nmnopqrstuvwxyz ==> abcdefghijkl<br/>mnop...
+用法：<page:text value="text"/>
+
+4,格式化处理，转换\n为<br/>
+用法：<page:textarea value="referance.text"/>

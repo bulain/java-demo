@@ -1,0 +1,33 @@
+<project name="struts2-demo" default="copy" basedir=".">
+	<property file="build.properties" />
+
+	<path id="classpath">
+		<fileset dir="target/dependency">
+			<include name="*.jar" />
+		</fileset>
+		<path location="target/test-classes" />
+		<path location="target/classes" />
+	</path>
+
+	<target name="copy">
+		<copy file="src/test/resources/jdbc.properties.${generator.type}" tofile="target/test-classes/jdbc.properties" overwrite="true" />
+	</target>
+
+	<target name="genfile" description="Generate the files">
+		<mkdir dir="${generator.target}" />
+		<taskdef name="mbggenerator" classname="org.mybatis.generator.ant.GeneratorAntTask">
+			<classpath refid="classpath" />
+		</taskdef>
+		<mbggenerator overwrite="true" configfile="${generator.file}" verbose="true">
+			<propertyset>
+				<propertyref name="generator.jdbcDriver" />
+				<propertyref name="generator.jdbcUrl" />
+				<propertyref name="generator.username" />
+				<propertyref name="generator.password" />
+				<propertyref name="generator.schema" />
+				<propertyref name="generator.packagePrefix" />
+				<propertyref name="generator.target" />
+			</propertyset>
+		</mbggenerator>
+	</target>
+</project>

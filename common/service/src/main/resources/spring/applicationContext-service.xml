@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-2.5.xsd" default-autowire="byName">
+       
+	<bean id="authorizeService" class="com.bulain.common.service.AuthorizeServiceImpl"/>
+	<bean id="contentService" class="com.bulain.common.service.ContentServiceImpl"/>
+	<bean id="groupService" class="com.bulain.common.service.GroupServiceImpl"/>
+	<bean id="loginService" class="com.bulain.common.service.LoginServiceImpl"/>
+	<bean id="mailTemplateService" class="com.bulain.common.service.MailTemplateServiceImpl"/>
+	<bean id="masterService" class="com.bulain.common.service.MasterServiceImpl"/>
+	<bean id="orderService" class="com.bulain.common.service.OrderServiceImpl"/>
+	<bean id="personService" class="com.bulain.common.service.PersonServiceImpl"/>
+	<bean id="profileService" class="com.bulain.common.service.ProfileServiceImpl"/>
+	<bean id="referenceService" class="com.bulain.common.service.ReferenceServiceImpl"/>
+    
+</beans>

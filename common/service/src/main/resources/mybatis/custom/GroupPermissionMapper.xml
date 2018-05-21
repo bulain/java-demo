@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bulain.common.dao.GroupPermissionMapper" >
+<!-- custom -->
+  <delete id="deleteGroupPermissionByGroupId" parameterType="java.lang.Long" >
+    delete from group_permissions
+    where group_id = #{groupId}
+  </delete>
+  <delete id="deleteGroupPermissionByNotInPermission" parameterType="java.lang.Long" >
+    delete from group_permissions
+    where group_id = #{groupId}
+    <if test="listPermission.size() >  0">
+    <foreach collection="listPermission" item="item" open="and permission not in (" close=")" separator=",">
+      #{item}
+    </foreach>
+    </if>
+  </delete>
+</mapper>

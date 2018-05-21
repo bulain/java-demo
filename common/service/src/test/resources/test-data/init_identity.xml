@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset>
+  <permissions id="101" permission="Admin"/>
+  <groups/>
+  <persons/>
+  <logins/>
+  <group_logins/>
+  <group_permissions/>
+</dataset>

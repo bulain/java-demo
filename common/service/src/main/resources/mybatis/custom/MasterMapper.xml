@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bulain.common.dao.MasterMapper" >
+<!-- custom -->
+  <resultMap id="BaseResultMap" type="com.bulain.common.pojo.Master" >
+    <result column="id" property="key" jdbcType="BIGINT" />
+    <result column="name" property="value" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <select id="selectList4Group" resultMap="BaseResultMap">
+  	select id, name
+    from groups
+   	order by name
+  </select>
+  <select id="selectMaster4Group" resultMap="BaseResultMap" parameterType="java.lang.Long">
+  	select id, name
+    from groups
+    where id = #{key}
+  </select>
+  
+  <select id="selectList4Person" resultMap="BaseResultMap">
+  	select id, concat(concat(last_name, ', '), first_name) name
+    from persons
+   	order by name
+  </select>
+  <select id="selectMaster4Person" resultMap="BaseResultMap" parameterType="java.lang.Long">
+  	select id, concat(concat(last_name, ', '), first_name) name
+    from persons
+    where id = #{key}
+  </select>
+</mapper>

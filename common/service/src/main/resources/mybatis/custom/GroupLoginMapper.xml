@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bulain.common.dao.GroupLoginMapper" >
+<!-- custom -->
+  <delete id="deleteGroupLoginByGroupId" parameterType="java.lang.Long" >
+    delete from group_logins
+    where group_id = #{id}
+  </delete>
+  <delete id="deleteGroupLoginByLoginId" parameterType="java.lang.Long" >
+    delete from group_logins
+    where login_id = #{id}
+  </delete>
+  <delete id="deleteGroupLoginByNotInLoginId" parameterType="com.bulain.common.pojo.GroupSearch" >
+    delete from group_logins
+    where group_id = #{groupId}
+    <if test="listLoginId.size() >  0">
+    <foreach collection="listLoginId" item="item" open="and login_id not in(" close=")" separator=",">
+    	#{item}
+    </foreach>
+    </if>
+  </delete>
+  <delete id="deleteGroupLoginByNotInGroupId" parameterType="com.bulain.common.pojo.LoginSearch" >
+    delete from group_logins
+    where login_id = #{loginId}
+    <if test="listGroupId.size() >  0">
+    <foreach collection="listGroupId" item="item" open="and group_id not in(" close=")" separator=",">
+      #{item}
+    </foreach>
+    </if>
+  </delete>
+  <delete id="deleteGroupLogin" parameterType="com.bulain.common.pojo.LoginSearch" >
+    delete from group_logins
+    where login_id = #{loginId}
+    and group_id = #{groupId}
+  </delete>
+</mapper>

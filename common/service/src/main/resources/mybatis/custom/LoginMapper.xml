@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bulain.common.dao.LoginMapper" >
+<!-- custom -->
+  <sql id="where">
+  	<where>
+  		<if test="loginName != null and loginName != '' ">
+  			and login_name = #{loginName}
+  		</if>
+  		<if test="email != null and email != '' ">
+  			and email = #{email}
+  		</if>
+  		<if test="enabled != null and enabled != '' ">
+  			and enabled = #{enabled}
+  		</if>
+        <if test="personId != null">
+            and person_id = #{personId}
+        </if>
+  		<if test="groupId != null">
+  			and exists (select 1 from group_logins where group_logins.login_id = logins.id and group_logins.group_id = #{groupId})
+  		</if>
+  	</where>
+  </sql>
+  <select id="find" resultMap="BaseResultMap" parameterType="com.bulain.common.pojo.LoginSearch">
+  	select 
+    <include refid="Base_Column_List" />
+    from logins
+    <include refid="where"/>
+    <include refid="common.orderby"/>
+  </select>
+  <select id="count" resultType="java.lang.Long" parameterType="com.bulain.common.pojo.LoginSearch">
+  	select count(*)
+    from logins
+    <include refid="where"/>
+  </select>
+  <select id="page" resultMap="BaseResultMap" parameterType="com.bulain.common.pojo.LoginSearch">
+  	<![CDATA[${PAGE_HEAD}]]>
+  	select 
+    <include refid="Base_Column_List" />
+    from logins
+    <include refid="where"/>
+    <include refid="common.orderby"/>
+    <![CDATA[${PAGE_FOOT}]]>
+  </select>
+  
+  <select id="countLoginByGroupId" resultType="java.lang.Long" parameterType="java.lang.Long">
+  	select count(*)
+    from group_logins 
+    where group_id = #{groupId}
+  </select>
+  <select id="findLoginByGroupId" resultMap="BaseResultMap" parameterType="java.lang.Long">
+  	select l.id, l.person_id, l.login_name, l.email, l.hashed_password, l.enabled, l.created_by, l.created_at, l.updated_by, l.updated_at
+    from logins l
+    join group_logins gl on gl.login_id = l.id
+    where gl.group_id = #{groupId}
+    order by l.id
+  </select>
+  <select id="findLoginByNoGroupId" resultMap="BaseResultMap" parameterType="java.lang.Long">
+  	select l.id, l.person_id, l.login_name, l.email, l.hashed_password, l.enabled, l.created_by, l.created_at, l.updated_by, l.updated_at
+    from logins l
+    where not exists (select 1 from group_logins gl where gl.login_id = l.id and gl.group_id = #{groupId})
+    order by l.id
+  </select>
+  <select id="findLoginByLoginNames" resultMap="BaseResultMap" parameterType="java.lang.Object">
+  	select l.id, l.person_id, l.login_name, l.email, l.hashed_password, l.enabled, l.created_by, l.created_at, l.updated_by, l.updated_at
+    from logins l
+    <foreach collection="array" open="where l.login_name in(" close=")" item="item" separator=",">
+    	#{item}
+    </foreach>
+    order by l.id
+  </select>
+</mapper>

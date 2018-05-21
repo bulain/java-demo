@@ -1,0 +1,3 @@
+[submodule "service/src/migration"]
+	path = service/src/migration
+	url = https://github.com/bulain/migration.git

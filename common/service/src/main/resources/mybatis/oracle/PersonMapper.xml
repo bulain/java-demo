@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bulain.common.dao.PersonMapper" >
+  <resultMap id="BaseResultMap" type="com.bulain.common.model.Person" >
+    <id column="ID" property="id" jdbcType="DECIMAL" />
+    <result column="FIRST_NAME" property="firstName" jdbcType="VARCHAR" />
+    <result column="LAST_NAME" property="lastName" jdbcType="VARCHAR" />
+    <result column="CREATED_BY" property="createdBy" jdbcType="VARCHAR" />
+    <result column="CREATED_AT" property="createdAt" jdbcType="DATE" />
+    <result column="UPDATED_BY" property="updatedBy" jdbcType="VARCHAR" />
+    <result column="UPDATED_AT" property="updatedAt" jdbcType="DATE" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, FIRST_NAME, LAST_NAME, CREATED_BY, CREATED_AT, UPDATED_BY, UPDATED_AT
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from ${jdbc.schema}.PERSONS
+    where ID = #{id,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from ${jdbc.schema}.PERSONS
+    where ID = #{id,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.bulain.common.model.Person" >
+    <selectKey resultType="java.lang.Long" keyProperty="id" order="BEFORE" >
+      select service_sequence.nextval from dual
+    </selectKey>
+    insert into ${jdbc.schema}.PERSONS (ID, FIRST_NAME, LAST_NAME, 
+      CREATED_BY, CREATED_AT, UPDATED_BY, 
+      UPDATED_AT)
+    values (#{id,jdbcType=DECIMAL}, #{firstName,jdbcType=VARCHAR}, #{lastName,jdbcType=VARCHAR}, 
+      #{createdBy,jdbcType=VARCHAR}, #{createdAt,jdbcType=DATE}, #{updatedBy,jdbcType=VARCHAR}, 
+      #{updatedAt,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.bulain.common.model.Person" >
+    <selectKey resultType="java.lang.Long" keyProperty="id" order="BEFORE" >
+      select service_sequence.nextval from dual
+    </selectKey>
+    insert into ${jdbc.schema}.PERSONS
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      ID,
+      <if test="firstName != null" >
+        FIRST_NAME,
+      </if>
+      <if test="lastName != null" >
+        LAST_NAME,
+      </if>
+      <if test="createdBy != null" >
+        CREATED_BY,
+      </if>
+      <if test="createdAt != null" >
+        CREATED_AT,
+      </if>
+      <if test="updatedBy != null" >
+        UPDATED_BY,
+      </if>
+      <if test="updatedAt != null" >
+        UPDATED_AT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      #{id,jdbcType=DECIMAL},
+      <if test="firstName != null" >
+        #{firstName,jdbcType=VARCHAR},
+      </if>
+      <if test="lastName != null" >
+        #{lastName,jdbcType=VARCHAR},
+      </if>
+      <if test="createdBy != null" >
+        #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createdAt != null" >
+        #{createdAt,jdbcType=DATE},
+      </if>
+      <if test="updatedBy != null" >
+        #{updatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedAt != null" >
+        #{updatedAt,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bulain.common.model.Person" >
+    update ${jdbc.schema}.PERSONS
+    <set >
+      <if test="firstName != null" >
+        FIRST_NAME = #{firstName,jdbcType=VARCHAR},
+      </if>
+      <if test="lastName != null" >
+        LAST_NAME = #{lastName,jdbcType=VARCHAR},
+      </if>
+      <if test="createdBy != null" >
+        CREATED_BY = #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createdAt != null" >
+        CREATED_AT = #{createdAt,jdbcType=DATE},
+      </if>
+      <if test="updatedBy != null" >
+        UPDATED_BY = #{updatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedAt != null" >
+        UPDATED_AT = #{updatedAt,jdbcType=DATE},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bulain.common.model.Person" >
+    update ${jdbc.schema}.PERSONS
+    set FIRST_NAME = #{firstName,jdbcType=VARCHAR},
+      LAST_NAME = #{lastName,jdbcType=VARCHAR},
+      CREATED_BY = #{createdBy,jdbcType=VARCHAR},
+      CREATED_AT = #{createdAt,jdbcType=DATE},
+      UPDATED_BY = #{updatedBy,jdbcType=VARCHAR},
+      UPDATED_AT = #{updatedAt,jdbcType=DATE}
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+</mapper>

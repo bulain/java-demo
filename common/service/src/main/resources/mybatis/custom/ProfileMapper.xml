@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bulain.common.dao.ProfileMapper" >
+  <!-- custom -->
+  <sql id="where">
+  	<where>
+  		<if test="personId != null">
+  			and person_id = #{personId}
+  		</if>
+  		<if test="language != null and language != '' ">
+  			and language = #{language}
+  		</if>
+  		<if test="country != null and country != '' ">
+  			and country = #{country}
+  		</if>
+  	</where>
+  </sql>
+  <select id="find" resultMap="BaseResultMap" parameterType="com.bulain.common.pojo.ProfileSearch">
+  	select 
+    <include refid="Base_Column_List" />
+    from profiles
+    <include refid="where"/>
+    <include refid="common.orderby"/>
+  </select>
+  <select id="count" resultType="java.lang.Long" parameterType="com.bulain.common.pojo.ProfileSearch">
+  	select count(*)
+    from profiles
+    <include refid="where"/>
+  </select>
+  <select id="page" resultMap="BaseResultMap" parameterType="com.bulain.common.pojo.ProfileSearch">
+  	<![CDATA[${PAGE_HEAD}]]>
+  	select 
+    <include refid="Base_Column_List" />
+    from profiles
+    <include refid="where"/>
+    <include refid="common.orderby"/>
+    <![CDATA[${PAGE_FOOT}]]>
+  </select>
+</mapper>

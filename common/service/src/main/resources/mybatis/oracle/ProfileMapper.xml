@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bulain.common.dao.ProfileMapper" >
+  <resultMap id="BaseResultMap" type="com.bulain.common.model.Profile" >
+    <id column="ID" property="id" jdbcType="DECIMAL" />
+    <result column="PERSON_ID" property="personId" jdbcType="DECIMAL" />
+    <result column="LANGUAGE" property="language" jdbcType="VARCHAR" />
+    <result column="COUNTRY" property="country" jdbcType="VARCHAR" />
+    <result column="CREATED_BY" property="createdBy" jdbcType="VARCHAR" />
+    <result column="CREATED_AT" property="createdAt" jdbcType="DATE" />
+    <result column="UPDATED_BY" property="updatedBy" jdbcType="VARCHAR" />
+    <result column="UPDATED_AT" property="updatedAt" jdbcType="DATE" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, PERSON_ID, LANGUAGE, COUNTRY, CREATED_BY, CREATED_AT, UPDATED_BY, UPDATED_AT
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from ${jdbc.schema}.PROFILES
+    where ID = #{id,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from ${jdbc.schema}.PROFILES
+    where ID = #{id,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.bulain.common.model.Profile" >
+    <selectKey resultType="java.lang.Long" keyProperty="id" order="BEFORE" >
+      select service_sequence.nextval from dual
+    </selectKey>
+    insert into ${jdbc.schema}.PROFILES (ID, PERSON_ID, LANGUAGE, 
+      COUNTRY, CREATED_BY, CREATED_AT, 
+      UPDATED_BY, UPDATED_AT)
+    values (#{id,jdbcType=DECIMAL}, #{personId,jdbcType=DECIMAL}, #{language,jdbcType=VARCHAR}, 
+      #{country,jdbcType=VARCHAR}, #{createdBy,jdbcType=VARCHAR}, #{createdAt,jdbcType=DATE}, 
+      #{updatedBy,jdbcType=VARCHAR}, #{updatedAt,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.bulain.common.model.Profile" >
+    <selectKey resultType="java.lang.Long" keyProperty="id" order="BEFORE" >
+      select service_sequence.nextval from dual
+    </selectKey>
+    insert into ${jdbc.schema}.PROFILES
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      ID,
+      <if test="personId != null" >
+        PERSON_ID,
+      </if>
+      <if test="language != null" >
+        LANGUAGE,
+      </if>
+      <if test="country != null" >
+        COUNTRY,
+      </if>
+      <if test="createdBy != null" >
+        CREATED_BY,
+      </if>
+      <if test="createdAt != null" >
+        CREATED_AT,
+      </if>
+      <if test="updatedBy != null" >
+        UPDATED_BY,
+      </if>
+      <if test="updatedAt != null" >
+        UPDATED_AT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      #{id,jdbcType=DECIMAL},
+      <if test="personId != null" >
+        #{personId,jdbcType=DECIMAL},
+      </if>
+      <if test="language != null" >
+        #{language,jdbcType=VARCHAR},
+      </if>
+      <if test="country != null" >
+        #{country,jdbcType=VARCHAR},
+      </if>
+      <if test="createdBy != null" >
+        #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createdAt != null" >
+        #{createdAt,jdbcType=DATE},
+      </if>
+      <if test="updatedBy != null" >
+        #{updatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedAt != null" >
+        #{updatedAt,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bulain.common.model.Profile" >
+    update ${jdbc.schema}.PROFILES
+    <set >
+      <if test="personId != null" >
+        PERSON_ID = #{personId,jdbcType=DECIMAL},
+      </if>
+      <if test="language != null" >
+        LANGUAGE = #{language,jdbcType=VARCHAR},
+      </if>
+      <if test="country != null" >
+        COUNTRY = #{country,jdbcType=VARCHAR},
+      </if>
+      <if test="createdBy != null" >
+        CREATED_BY = #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createdAt != null" >
+        CREATED_AT = #{createdAt,jdbcType=DATE},
+      </if>
+      <if test="updatedBy != null" >
+        UPDATED_BY = #{updatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedAt != null" >
+        UPDATED_AT = #{updatedAt,jdbcType=DATE},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bulain.common.model.Profile" >
+    update ${jdbc.schema}.PROFILES
+    set PERSON_ID = #{personId,jdbcType=DECIMAL},
+      LANGUAGE = #{language,jdbcType=VARCHAR},
+      COUNTRY = #{country,jdbcType=VARCHAR},
+      CREATED_BY = #{createdBy,jdbcType=VARCHAR},
+      CREATED_AT = #{createdAt,jdbcType=DATE},
+      UPDATED_BY = #{updatedBy,jdbcType=VARCHAR},
+      UPDATED_AT = #{updatedAt,jdbcType=DATE}
+    where ID = #{id,jdbcType=DECIMAL}
+  </update>
+</mapper>
