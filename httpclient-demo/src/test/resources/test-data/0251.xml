@@ -1,0 +1,20 @@
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+    <soap:Body>
+        <ns2:download xmlns:ns2="http://api.winner.ilogie.com/">
+            <CountDl>
+                <action>Audit</action>
+                <docNo>CC00000003</docNo>
+                <udf01>1060</udf01>
+                <udf02></udf02>
+                <udf03></udf03>
+                <udf04></udf04>
+                <udf05></udf05>
+                <udf06></udf06>
+                <udf07></udf07>
+                <udf08></udf08>
+                <udf09></udf09>
+                <udf10></udf10>
+            </CountDl>
+        </ns2:download>
+    </soap:Body>
+</soap:Envelope>
