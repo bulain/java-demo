@@ -1,0 +1,8 @@
+2011-03-12
+1, Refactor code about import flat xml.
+
+2011-03-10
+1, Add refresh xml function.
+
+2011-02-21
+1, Init import/export tools using dbunit library. 
