@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<restrict>
+
+    <remote>
+        <host>127.0.0.1</host>
+        <host>localhost</host>
+        <host>0:0:0:0:0:0:0:1</host>
+    </remote>
+
+    <http>
+        <method>get</method>
+        <method>post</method>
+    </http>
+
+    <commands>
+        <command>read</command>
+        <command>list</command>
+        <command>search</command>
+        <command>version</command>
+    </commands>
+
+    <allow>
+        <mbean>
+            <name>jolokia:name=JmxBean</name>
+            <attribute>Times</attribute>
+            <operation>resetTimes</operation>
+            <operation>addTimes</operation>
+        </mbean>
+    </allow>
+
+    <deny>
+        <mbean>
+            <name>com.mchange.v2.c3p0:type=PooledDataSource,*</name>
+            <attribute>properties</attribute>
+        </mbean>
+    </deny>
+
+</restrict>
