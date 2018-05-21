@@ -1,0 +1,29 @@
+This is a hibernate example, will use next technology: hibernate, spring
+
+Task to do:
+1, Basic CURD, for one table.*
+2, POJO relationship: one-to-one, one-to-many, many-to-one, many-to-many.
+3, Inherited relationship, table/class hierarchy, table/subclass, table/concrete class.*
+4, First level cache, second level cache.
+5, XML configuration and Annotation configuration.*
+6, Execute native SQL.*
+7, Make all HQL/SQL is not in java code.*
+8, Research Tool, DB==>POJO,XML, XML==>DB,POJO.*
+9, Criteria.*
+10, Example.*
+11, Dynamic HQL, using Freemarker.
+12, FetchMode: DEFAULT, JOIN, SELECT.*
+13, MatchMode: EXACT, START, END, ANYWHERE.*
+14, Optimistic lock & Pessimistic lock.*
+15, Lazy loading.*
+
+If you want to run:
+1, checkout out parent and run: 
+    git clone git@github.com:bulain/parent.git
+    mvn install
+2, checkout out common and run: 
+    git clone git@github.com:bulain/common.git
+    mvn install
+3, checkout out hibernate-demo:
+    git clone git@github.com:bulain/hibernate-demo.git
+    mvn eclipse:eclipse

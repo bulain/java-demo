@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset>
+  <groups/>
+  <group_permissions/>
+  <users/>
+  <group_users/>
+  <permissions/>
+  <persons/>
+  
+  <fruits/>
+  <apples/>
+  <pears/>
+  <cell_phones/>
+  <tel_phones/>
+  <computers/>
+  <desktops/>
+  <lappads/>
+  <vehicles/>
+  
+  <alltypes/>
+  
+</dataset>

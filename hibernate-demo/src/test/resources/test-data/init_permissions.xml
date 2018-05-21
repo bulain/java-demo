@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset>
+  <permissions id="101" permission="permission_101"/>
+  <permissions id="102" permission="permission_102"/>
+  <permissions id="103" permission="permission_103"/>
+  <permissions id="104" permission="permission_104"/>
+  <permissions id="105" permission="permission_page"/>
+  <permissions id="106" permission="permission_page"/>
+  <permissions id="107" permission="permission_page"/>
+</dataset>

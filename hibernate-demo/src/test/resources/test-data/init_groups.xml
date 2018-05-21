@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset>
+  <groups id="101" name="name_101" note="note_101"/>
+  <groups id="102" name="name_102" note="note_102"/>
+  <groups id="103" name="name_103" note="note_103"/>
+  <groups id="104" name="name_104" note="note_104"/>
+  <groups id="105" name="name_page" note="note_page"/>
+  <groups id="106" name="name_page" note="note_page"/>
+  <groups id="107" name="name_page" note="note_page"/>
+</dataset>

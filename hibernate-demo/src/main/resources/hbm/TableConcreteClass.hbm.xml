@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.bulain.hibernate.entity.Phone" abstract="true">
+        <id name="id" type="long" column="id">
+            <generator class="hilo" />
+        </id>
+        <property name="name" type="string">
+            <column name="name" length="20" />
+        </property>
+        <union-subclass name="com.bulain.hibernate.entity.TelPhone" table="tel_phones">
+            <property name="telInfo" type="string">
+                <column name="tel_info" length="20" />
+            </property>
+        </union-subclass>
+        <union-subclass name="com.bulain.hibernate.entity.CellPhone" table="cell_phones">
+            <property name="cellInfo" type="string">
+                <column name="cell_info" length="20" />
+            </property>
+        </union-subclass>
+    </class>
+</hibernate-mapping>
