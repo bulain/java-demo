@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<project name="auto build" basedir="." default="copy">
+	
+	<target name="copy">
+		<copy todir="target/jbpm4order">
+			<fileset dir="src/main/webapp" includes="**/*" />
+		</copy>
+		<copy todir="target/classes">
+			<fileset dir="src/main/resources" includes="**/*" />
+		</copy>
+		<copy todir="target/jbpm4order/WEB-INF/classes">
+			<fileset dir="target/classes" includes="**/*" />
+		</copy>
+		<antcall target="native2ascii"></antcall>
+	</target>
+	
+	<target name="native2ascii">
+		<native2ascii dest="target/classes" src="src/main/resources" includes="**/*.chinese" ext=".properties" encoding="UTF-8"/>
+	</target>
+</project>

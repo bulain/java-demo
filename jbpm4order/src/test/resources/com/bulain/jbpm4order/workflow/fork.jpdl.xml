@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process name="fork" xmlns="http://jbpm.org/4.4/jpdl">
+   <start name="start1" g="144,3,48,48">
+      <transition name="to state1" to="state1" g="-54,-5"/>
+   </start>
+   <fork name="fork1" g="146,152,48,48">
+      <transition name="to state2" to="state2" g="-49,-18"/>
+      <transition name="to state3" to="state3" g="11,-15"/>
+   </fork>
+   <state name="state2" g="48,231,92,52">
+      <transition name="to join1" to="join1" g="-50,-1"/>
+   </state>
+   <state name="state3" g="209,227,92,52">
+      <transition name="to join1" to="join1" g="12,4"/>
+   </state>
+   <join name="join1" g="156,292,48,48">
+      <transition name="to state4" to="state4" g="-58,-10"/>
+   </join>
+   <state name="state4" g="134,365,92,52">
+      <transition name="to end1" to="end1" g="-54,-6"/>
+   </state>
+   <end name="end1" g="157,441,48,48"/>
+   <state name="state1" g="122,72,92,52">
+      <transition name="to fork1" to="fork1" g="-47,-6"/>
+   </state>
+</process>

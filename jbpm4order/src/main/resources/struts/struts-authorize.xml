@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <package name="authorize" namespace="/authorize" extends="order-default">
+        <action name="list" class="authorizeAction" method="list">
+            <result>/authorize/list.jsp</result>
+        </action>
+        <action name="new" class="authorizeAction" method="newn">
+            <result>/authorize/new.jsp</result>
+        </action>
+		<action name="create" class="authorizeAction" method="create">
+			<interceptor-ref name="orderStack" />
+            <result type="redirectAction">list</result>
+            <result name="input">/authorize/new.jsp</result>
+        </action>
+        <action name="edit" class="authorizeAction" method="edit">
+            <result>/authorize/edit.jsp</result>
+        </action>
+		<action name="update" class="authorizeAction" method="update">
+			<interceptor-ref name="orderStack" />
+            <result type="redirectAction">list</result>
+            <result name="input">/authorize/edit.jsp</result>
+        </action>
+        <action name="show" class="authorizeAction" method="show">
+            <result>/authorize/show.jsp</result>
+        </action>
+		<action name="destroy" class="authorizeAction" method="destroy">
+            <result type="redirectAction">list</result>
+            <result name="input" type="redirectAction">list</result>
+        </action>
+    </package>
+</struts>

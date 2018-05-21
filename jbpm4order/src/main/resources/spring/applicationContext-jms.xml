@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<!-- 
+	 <bean id="jndiTemplate" class="org.springframework.jndi.JndiTemplate">
+		<property name="environment">
+			<props>
+				<prop key="java.naming.factory.initial">${jms.factory.initial}</prop>
+				<prop key="java.naming.provider.url">${jms.provider.url}</prop>
+				<prop key="queue.Demo.A">${jms.queue.name.a}</prop>
+				<prop key="queue.Demo.B">${jms.queue.name.b}</prop>
+				<prop key="topic.Demo.C">${jms.topic.name.c}</prop>
+				<prop key="xa">${jms.xa}</prop>
+			</props>
+		</property>
+	</bean>
+	<bean id="baseJndiObject" class="org.springframework.jndi.JndiObjectFactoryBean" abstract="true">
+		<property name="jndiTemplate" ref="jndiTemplate"/>
+	</bean>
+	
+	<bean id="destinationA" parent="baseJndiObject">
+		<property name="jndiName" value="${jms.queue.name.a}"/>
+	</bean>
+	<bean id="destinationB" parent="baseJndiObject">
+		<property name="jndiName" value="${jms.queue.name.b}"/>
+	</bean>
+	<bean id="destinationC" parent="baseJndiObject">
+		<property name="jndiName" value="${jms.topic.name.c}"/>
+	</bean>
+	
+	<bean id="xaConnectionFactory" parent="baseJndiObject">
+		<property name="jndiName" value="${jms.factory.name}"/>
+	</bean>
+	<bean id="connectionFactory" class="com.atomikos.jms.AtomikosConnectionFactoryBean" init-method="init" destroy-method="close">
+      <property name="xaConnectionFactory" ref="xaConnectionFactory" />
+      <property name="uniqueResourceName" value="${jms.uniqueResourceName}" />
+      <property name="maxPoolSize" value="${jms.maxPoolSize}" />
+    </bean>
+	
+	<bean id="baseJmsTemplate" class="org.springframework.jms.core.JmsTemplate" abstract="true">
+		<property name="connectionFactory" ref="connectionFactory" />
+		<property name="receiveTimeout" value="${jms.receiveTimeout}"/>
+	</bean>
+	<bean id="jmsTemplateA" parent="baseJmsTemplate">
+		<property name="defaultDestination" ref="destinationA" />
+	</bean>
+	<bean id="jmsTemplateB" parent="baseJmsTemplate">
+		<property name="defaultDestination" ref="destinationB" />
+	</bean>
+	<bean id="jmsTemplateC" parent="baseJmsTemplate">
+		<property name="defaultDestination" ref="destinationC" />
+		<property name="pubSubDomain" value="true" />
+	</bean>
+	
+	<bean id="p2pClient" parent="baseTransactionProxy">
+		<property name="target">
+			<bean class="com.bulain.jbpm4order.jms.P2pClient">
+			    <property name="jmsTemplateA" ref="jmsTemplateA"/>
+			    <property name="jmsTemplateB" ref="jmsTemplateB"/>
+			</bean>
+		</property>
+	</bean>	
+	
+	<bean id="queueContainer" class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+	    <property name="connectionFactory" ref="connectionFactory"/>
+	    <property name="transactionManager" ref="transactionManager"/>
+	    <property name="destination" ref="destinationA"/>
+	    <property name="messageListener" ref="queueListenerAdapter" />
+	    <property name="sessionTransacted" value="${jms.sessionTransacted}" />
+	    <property name="maxConcurrentConsumers" value="${jms.maxConcurrentConsumers}" />
+	</bean>
+	<bean id="queueListenerAdapter" class="org.springframework.jms.listener.adapter.MessageListenerAdapter">
+	    <property name="delegate" ref="p2pServer"/>
+	    <property name="defaultListenerMethod" value="onMessage"/>
+	</bean>
+	<bean id="p2pServer" class="com.bulain.jbpm4order.jms.P2pServer">
+		<property name="jmsTemplate" ref="jmsTemplateB"/>
+	</bean>
+	 
+	 <bean id="topicContainer" class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+	    <property name="connectionFactory" ref="connectionFactory"/>
+	    <property name="transactionManager" ref="transactionManager"/>
+	    <property name="destination" ref="destinationC"/>
+	    <property name="messageListener" ref="topicListenerAdapter" />
+	    <property name="sessionTransacted" value="${jms.sessionTransacted}" />
+	    <property name="maxConcurrentConsumers" value="${jms.maxConcurrentConsumers}" />
+	</bean>
+	<bean id="topicListenerAdapter" class="org.springframework.jms.listener.adapter.MessageListenerAdapter">
+	    <property name="delegate" ref="topicListener"/>
+	    <property name="defaultListenerMethod" value="onMessage"/>
+	</bean>
+	<bean id="topicListener" class="com.bulain.jbpm4order.jms.TopicListener"/>
+	 -->
+</beans>

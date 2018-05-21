@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <package name="group" namespace="/group" extends="order-default">
+        <action name="list" class="groupAction" method="list">
+            <result>/group/list.jsp</result>
+        </action>
+        <action name="new" class="groupAction" method="newn">
+            <result>/group/new.jsp</result>
+        </action>
+		<action name="create" class="groupAction" method="create">
+			<interceptor-ref name="orderStack" />
+            <result type="redirectAction">list</result>
+            <result name="input">/group/new.jsp</result>
+        </action>
+        <action name="edit" class="groupAction" method="edit">
+            <result>/group/edit.jsp</result>
+        </action>
+		<action name="update" class="groupAction" method="update">
+			<interceptor-ref name="orderStack" />
+            <result type="redirectAction">list</result>
+            <result name="input">/group/edit.jsp</result>
+        </action>
+        <action name="show" class="groupAction" method="show">
+            <result>/group/show.jsp</result>
+        </action>
+		<action name="destroy" class="groupAction" method="destroy">
+            <result type="redirectAction">list</result>
+            <result name="input" type="redirectAction">list</result>
+        </action>
+        <action name="editLogin" class="groupAction" method="editLogin">
+            <result>/group/editLogin.jsp</result>
+        </action>
+		<action name="updateLogin" class="groupAction" method="updateLogin">
+            <result type="redirectAction">list</result>
+            <result name="input" type="redirectAction">list</result>
+        </action>
+        <action name="editPermission" class="groupAction" method="editPermission">
+            <result>/group/editPermission.jsp</result>
+        </action>
+		<action name="updatePermission" class="groupAction" method="updatePermission">
+            <result type="redirectAction">list</result>
+            <result name="input" type="redirectAction">list</result>
+        </action>
+        <!-- popup -->
+        <action name="popupShow" class="groupAction" method="show">
+            <result>/group/popupShow.jsp</result>
+        </action>
+    </package>
+</struts>

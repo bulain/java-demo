@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <package name="mailTemplate" namespace="/mailTemplate" extends="order-default">
+        <action name="list" class="mailTemplateAction" method="list">
+            <result>/mailTemplate/list.jsp</result>
+        </action>
+        <action name="new" class="mailTemplateAction" method="newn">
+            <result>/mailTemplate/new.jsp</result>
+        </action>
+		<action name="create" class="mailTemplateAction" method="create">
+			<interceptor-ref name="orderStack" />
+            <result type="redirectAction">list</result>
+            <result name="input">/mailTemplate/new.jsp</result>
+        </action>
+        <action name="edit" class="mailTemplateAction" method="edit">
+            <result>/mailTemplate/edit.jsp</result>
+        </action>
+		<action name="update" class="mailTemplateAction" method="update">
+			<interceptor-ref name="orderStack" />
+            <result type="redirectAction">list</result>
+            <result name="input">/mailTemplate/edit.jsp</result>
+        </action>
+        <action name="show" class="mailTemplateAction" method="show">
+            <result>/mailTemplate/show.jsp</result>
+        </action>
+		<action name="destroy" class="mailTemplateAction" method="destroy">
+            <result type="redirectAction">list</result>
+            <result name="input" type="redirectAction">list</result>
+        </action>
+    </package>
+</struts>

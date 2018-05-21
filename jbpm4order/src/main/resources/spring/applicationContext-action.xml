@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans default-autowire="byName">
+	<bean id="authorizeAction" class="com.bulain.jbpm4order.controller.AuthorizeAction" singleton="false" />
+	<bean id="orderAction" class="com.bulain.jbpm4order.controller.OrderAction" singleton="false" />
+	<bean id="workflowAction" class="com.bulain.jbpm4order.controller.WorkflowAction" singleton="false" />
+	<bean id="loginAction" class="com.bulain.jbpm4order.controller.LoginAction" singleton="false" />
+	<bean id="personAction" class="com.bulain.jbpm4order.controller.PersonAction" singleton="false" />
+	<bean id="referenceAction" class="com.bulain.jbpm4order.controller.ReferenceAction" singleton="false" />
+	<bean id="contentAction" class="com.bulain.jbpm4order.controller.ContentAction" singleton="false" />
+	<bean id="profileAction" class="com.bulain.jbpm4order.controller.ProfileAction" singleton="false" />
+	<bean id="groupAction" class="com.bulain.jbpm4order.controller.GroupAction" singleton="false" />
+	<bean id="authenticateAction" class="com.bulain.jbpm4order.controller.AuthenticateAction" singleton="false" />
+	<bean id="mailTemplateAction" class="com.bulain.jbpm4order.controller.MailTemplateAction" singleton="false" />
+</beans>

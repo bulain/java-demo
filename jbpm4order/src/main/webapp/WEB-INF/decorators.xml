@@ -1,0 +1,17 @@
+<decorators defaultdir="/decorators">
+	<decorator name="main" page="main.jsp">
+	    <pattern>*</pattern>
+   	</decorator>
+   	<decorator name="pop" page="popup.jsp">
+        <pattern>/**/popup*</pattern>
+    </decorator>
+    <decorator name="ajax" page="ajax.jsp">
+        <pattern>/**/ajax*</pattern>
+    </decorator>
+    <decorator name="authenticate" page="authenticate.jsp">
+        <pattern>/authenticate/*</pattern>
+    </decorator>
+    <decorator name="error" page="error.jsp">
+        <pattern>/error/*</pattern>
+    </decorator>
+</decorators>

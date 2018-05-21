@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <package name="login" namespace="/login" extends="order-default">
+        <action name="list" class="loginAction" method="list">
+            <result>/login/list.jsp</result>
+        </action>
+        <action name="new" class="loginAction" method="newn">
+            <result>/login/new.jsp</result>
+        </action>
+		<action name="create" class="loginAction" method="create">
+			<interceptor-ref name="orderStack" />
+            <result type="redirectAction">list</result>
+            <result name="input">/login/new.jsp</result>
+        </action>
+        <action name="edit" class="loginAction" method="edit">
+            <result>/login/edit.jsp</result>
+        </action>
+		<action name="update" class="loginAction" method="update">
+			<interceptor-ref name="orderStack" />
+            <result type="redirectAction">list</result>
+            <result name="input">/login/edit.jsp</result>
+        </action>
+        <action name="show" class="loginAction" method="show">
+            <result>/login/show.jsp</result>
+        </action>
+		<action name="destroy" class="loginAction" method="destroy">
+            <result type="redirectAction">list</result>
+            <result name="input" type="redirectAction">list</result>
+        </action>
+        <action name="editGroup" class="loginAction" method="editGroup">
+            <result>/login/editGroup.jsp</result>
+        </action>
+        <action name="updateGroup" class="loginAction" method="updateGroup">
+            <result type="redirectAction">list</result>
+            <result name="input" type="redirectAction">list</result>
+        </action>
+        <!-- popup -->
+        <action name="popupShow" class="loginAction" method="show">
+            <result>/login/popupShow.jsp</result>
+        </action>
+    </package>
+</struts>

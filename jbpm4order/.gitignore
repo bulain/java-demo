@@ -1,0 +1,10 @@
+/target
+Thumbs.db
+.classpath
+.project
+.settings/
+activemq-data/
+*.epoch
+*.out
+*.lck
+*.log

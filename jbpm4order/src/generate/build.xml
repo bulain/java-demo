@@ -1,0 +1,34 @@
+<project name="jbpm4order-generator" default="genfile" basedir=".">
+	<property file="build.properties"/>
+	
+	<path id="classpath">
+		<fileset dir="target/${ant.project.name}/WEB-INF/lib">
+			<include name="*.jar" />
+		</fileset>
+	</path>
+
+	<target name="copy" description="Copy the files">
+		<copy todir="target/${ant.project.name}">
+			<fileset dir="src/main/webapp" includes="**/*" />
+		</copy>
+		<copy todir="target/classes">
+			<fileset dir="src/main/resources" includes="**/*" />
+		</copy>
+		<native2ascii dest="target/classes" src="src/main/resources" includes="**/*.chinese" ext=".properties" encoding="UTF-8"/>
+		
+		<copy todir="target/${ant.project.name}/WEB-INF/classes">
+			<fileset dir="target/classes" includes="**/*" />
+		</copy>
+	</target>
+	
+	<target name="genfile" description="Generate the files" depends="copy">
+		<mkdir dir="gen"/>
+		<taskdef name="mbggenerator" classname="org.mybatis.generator.ant.GeneratorAntTask">
+			<classpath>
+                <pathelement location="target/${ant.project.name}/WEB-INF/classes"/>
+            </classpath>
+			<classpath refid="classpath"/>
+		</taskdef>
+		<mbggenerator overwrite="true" configfile="target/${ant.project.name}/WEB-INF/classes/${generator.file}" verbose="true"/>
+	</target>
+</project>

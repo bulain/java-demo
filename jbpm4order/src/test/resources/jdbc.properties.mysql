@@ -1,0 +1,27 @@
+PAGE_HEAD=
+PAGE_FOOT= LIMIT #{low}, #{pageSize}
+
+jdbc.driverClassName=com.mysql.jdbc.Driver
+jdbc.url=jdbc:mysql://localhost:3306/jbpm4order_test
+jdbc.username=jbpm4order
+jdbc.password=jbpm4order
+jdbc.schema=jbpm4order_test
+jdbc.acquireIncrement=5
+jdbc.minPoolSize=5
+jdbc.maxPoolSize=50
+jdbc.maxIdleTime=10
+jdbc.preferredTestQuery=select 1
+jdbc.mapper=classpath*:mybatis/mysql/*Mapper.xml
+
+jdbc.datatypeFactory=org.dbunit.ext.mysql.MySqlDataTypeFactory
+jdbc.resultSetTableFactory=org.dbunit.database.ForwardOnlyResultSetTableFactory
+jdbc.metadataHandler=org.dbunit.ext.mysql.MySqlMetadataHandler
+
+dataSource.dialect=org.hibernate.dialect.MySQLInnoDBDialect
+dataSource.hbm2ddl.auto=update
+dataSource.isolation=3
+dataSource.contextClass=jta
+dataSource.transactionFactory=org.hibernate.transaction.JTATransactionFactory
+dataSource.transactionManagerLookup=com.atomikos.icatch.jta.hibernate3.TransactionManagerLookup
+
+memcached.url=localhost:11211

@@ -1,0 +1,25 @@
+待了解功能列表：
+01，怎么启动流程。Done
+02，怎么调用Jsp页面。Done
+03，怎么调用Java程序。Done
+04，怎么调用Spring程序。Done
+05，怎么调用Jms程序。Done
+06，怎么调用Email程序。Done
+07，是否内置Jms程序。
+08，是否内置Email程序。Done
+09，是否内置Jms listener程序。
+10，是否内置Email listener程序。
+11，外部程序怎么调用Jbpm。
+12，怎么实现顺序流程。Done
+13，怎么实现出分支（包括：and, or, xor）。Done
+14，怎么实现入分支（包括：and, or, xor）。Done
+15，发起人：单个人，角色，一组人。Done
+16，接受人：单个人，角色，一组人。Done
+17，怎么实现会签（1:n, m:n, n:n）。Done
+18，外部Jms listener怎么写。
+19，外部Email listener怎么写。
+20，Jbpm4权限怎么用法，是否可以用外部表，可以用外部表，已集成。Done
+21，怎么调用子流程。
+22，怎么显示子流程历史纪录(是否显示为Tree)。
+23，怎么显示主流程历史纪录。
+24，流程历史记录怎么同业务表进行关联。

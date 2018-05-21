@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bulain.jbpm4order.dao.LoginMapper" >
+  <resultMap id="BaseResultMap" type="com.bulain.jbpm4order.model.Login" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="person_id" property="personId" jdbcType="INTEGER" />
+    <result column="login_name" property="loginName" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="hashed_password" property="hashedPassword" jdbcType="VARCHAR" />
+    <result column="enabled" property="enabled" jdbcType="VARCHAR" />
+    <result column="created_by" property="createdBy" jdbcType="VARCHAR" />
+    <result column="created_at" property="createdAt" jdbcType="TIMESTAMP" />
+    <result column="updated_by" property="updatedBy" jdbcType="VARCHAR" />
+    <result column="updated_at" property="updatedAt" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, person_id, login_name, email, hashed_password, enabled, created_by, created_at, 
+    updated_by, updated_at
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from logins
+    where id = #{id}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from logins
+    where id = #{id}
+  </delete>
+  <insert id="insert" parameterType="com.bulain.jbpm4order.model.Login" >
+    insert into logins (person_id, login_name, email, hashed_password, enabled, created_by, 
+      created_at, updated_by, updated_at)
+    values (#{personId}, #{loginName}, #{email}, #{hashedPassword}, #{enabled}, #{createdBy}, 
+      #{createdAt}, #{updatedBy}, #{updatedAt})
+    <selectKey resultType="java.lang.Integer" keyProperty="id" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+  </insert>
+  <insert id="insertSelective" parameterType="com.bulain.jbpm4order.model.Login" >
+    insert into logins
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="personId != null" >
+        person_id,
+      </if>
+      <if test="loginName != null" >
+        login_name,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="hashedPassword != null" >
+        hashed_password,
+      </if>
+      <if test="enabled != null" >
+        enabled,
+      </if>
+      <if test="createdBy != null" >
+        created_by,
+      </if>
+      <if test="createdAt != null" >
+        created_at,
+      </if>
+      <if test="updatedBy != null" >
+        updated_by,
+      </if>
+      <if test="updatedAt != null" >
+        updated_at,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="personId != null" >
+        #{personId},
+      </if>
+      <if test="loginName != null" >
+        #{loginName},
+      </if>
+      <if test="email != null" >
+        #{email},
+      </if>
+      <if test="hashedPassword != null" >
+        #{hashedPassword},
+      </if>
+      <if test="enabled != null" >
+        #{enabled},
+      </if>
+      <if test="createdBy != null" >
+        #{createdBy},
+      </if>
+      <if test="createdAt != null" >
+        #{createdAt},
+      </if>
+      <if test="updatedBy != null" >
+        #{updatedBy},
+      </if>
+      <if test="updatedAt != null" >
+        #{updatedAt},
+      </if>
+    </trim>
+    <selectKey resultType="java.lang.Integer" keyProperty="id" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bulain.jbpm4order.model.Login" >
+    update logins
+    <set >
+      <if test="personId != null" >
+        person_id = #{personId},
+      </if>
+      <if test="loginName != null" >
+        login_name = #{loginName},
+      </if>
+      <if test="email != null" >
+        email = #{email},
+      </if>
+      <if test="hashedPassword != null" >
+        hashed_password = #{hashedPassword},
+      </if>
+      <if test="enabled != null" >
+        enabled = #{enabled},
+      </if>
+      <if test="createdBy != null" >
+        created_by = #{createdBy},
+      </if>
+      <if test="createdAt != null" >
+        created_at = #{createdAt},
+      </if>
+      <if test="updatedBy != null" >
+        updated_by = #{updatedBy},
+      </if>
+      <if test="updatedAt != null" >
+        updated_at = #{updatedAt},
+      </if>
+    </set>
+    where id = #{id}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bulain.jbpm4order.model.Login" >
+    update logins
+    set person_id = #{personId},
+      login_name = #{loginName},
+      email = #{email},
+      hashed_password = #{hashedPassword},
+      enabled = #{enabled},
+      created_by = #{createdBy},
+      created_at = #{createdAt},
+      updated_by = #{updatedBy},
+      updated_at = #{updatedAt}
+    where id = #{id}
+  </update>
+</mapper>

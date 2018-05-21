@@ -1,0 +1,27 @@
+PAGE_HEAD=select * from ( select row_.*, rownum rownum_ from ( 
+PAGE_FOOT= ) row_ where rownum <= #{high}) where rownum_ > #{low}
+
+jdbc.driverClassName=oracle.jdbc.OracleDriver
+jdbc.url=jdbc:oracle:thin:@localhost:1521:orcl
+jdbc.username=jbpm4order_test
+jdbc.password=jbpm4order
+jdbc.schema=jbpm4order_test
+jdbc.acquireIncrement=5
+jdbc.minPoolSize=5
+jdbc.maxPoolSize=50
+jdbc.maxIdleTime=10
+jdbc.preferredTestQuery=select 1 from dual
+jdbc.mapper=classpath*:mybatis/oracle/*Mapper.xml
+
+jdbc.datatypeFactory=org.dbunit.ext.oracle.OracleDataTypeFactory
+jdbc.resultSetTableFactory=org.dbunit.database.ForwardOnlyResultSetTableFactory
+jdbc.metadataHandler=org.dbunit.database.DefaultMetadataHandler
+
+dataSource.dialect=org.hibernate.dialect.Oracle10gDialect
+dataSource.hbm2ddl.auto=update
+dataSource.isolation=3
+dataSource.contextClass=jta
+dataSource.transactionFactory=org.hibernate.transaction.JTATransactionFactory
+dataSource.transactionManagerLookup=com.atomikos.icatch.jta.hibernate3.TransactionManagerLookup
+
+memcached.url=localhost:11211

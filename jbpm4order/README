@@ -1,0 +1,12 @@
+This is a Jbpm4order demo.
+use the next technology: mysql, spring, mybatis, struts2, jbpm4
+This project contain 3 part.
+1, mybatis migrate: src/migrate
+2, mybatis generate: src/generate
+3, jbpm4order demo: /
+
+also, some document is in src/doc
+
+mvn eclipse:eclipse
+mvn process-resources
+mvn process-test-resources

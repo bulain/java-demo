@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process name="foreach" xmlns="http://jbpm.org/4.4/jpdl">
+   <start g="157,17,48,48" name="start1">
+      <transition g="-53,-7" name="to state1" to="state1"/>
+   </start>
+   <state g="139,89,92,52" name="state1">
+      <transition g="-65,-5" name="to foreach1" to="foreach1"/>
+   </state>
+   <foreach g="164,163,48,48" in="#{users}" name="foreach1" var="user">
+      <transition g="-53,-7" name="to task1" to="task1"/>
+   </foreach>
+   <task g="143,234,92,52" name="task1" candidate-users="#{user}">
+      <transition g="-48,-6" name="to join1" to="join1"/>
+   </task>
+   <join g="165,304,48,48" name="join1" multiplicity="#{number}">
+      <transition g="-55,-8" name="to state2" to="state2"/>
+   </join>
+   <state g="145,369,92,52" name="state2">
+      <transition g="-42,-6" name="to end1" to="end1"/>
+   </state>
+   <end g="172,439,48,48" name="end1"/>
+   <end-error g="-90,14,284,249" name="error1"/>
+</process>

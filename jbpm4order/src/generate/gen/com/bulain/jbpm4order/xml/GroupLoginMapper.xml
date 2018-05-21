@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bulain.jbpm4order.dao.GroupLoginMapper" >
+  <resultMap id="BaseResultMap" type="com.bulain.jbpm4order.model.GroupLogin" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="group_id" property="groupId" jdbcType="INTEGER" />
+    <result column="login_id" property="loginId" jdbcType="INTEGER" />
+    <result column="created_by" property="createdBy" jdbcType="VARCHAR" />
+    <result column="created_at" property="createdAt" jdbcType="TIMESTAMP" />
+    <result column="updated_by" property="updatedBy" jdbcType="VARCHAR" />
+    <result column="updated_at" property="updatedAt" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, group_id, login_id, created_by, created_at, updated_by, updated_at
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from group_logins
+    where id = #{id}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from group_logins
+    where id = #{id}
+  </delete>
+  <insert id="insert" parameterType="com.bulain.jbpm4order.model.GroupLogin" >
+    insert into group_logins (group_id, login_id, created_by, created_at, updated_by, updated_at
+      )
+    values (#{groupId}, #{loginId}, #{createdBy}, #{createdAt}, #{updatedBy}, #{updatedAt}
+      )
+    <selectKey resultType="java.lang.Integer" keyProperty="id" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+  </insert>
+  <insert id="insertSelective" parameterType="com.bulain.jbpm4order.model.GroupLogin" >
+    insert into group_logins
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="groupId != null" >
+        group_id,
+      </if>
+      <if test="loginId != null" >
+        login_id,
+      </if>
+      <if test="createdBy != null" >
+        created_by,
+      </if>
+      <if test="createdAt != null" >
+        created_at,
+      </if>
+      <if test="updatedBy != null" >
+        updated_by,
+      </if>
+      <if test="updatedAt != null" >
+        updated_at,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="groupId != null" >
+        #{groupId},
+      </if>
+      <if test="loginId != null" >
+        #{loginId},
+      </if>
+      <if test="createdBy != null" >
+        #{createdBy},
+      </if>
+      <if test="createdAt != null" >
+        #{createdAt},
+      </if>
+      <if test="updatedBy != null" >
+        #{updatedBy},
+      </if>
+      <if test="updatedAt != null" >
+        #{updatedAt},
+      </if>
+    </trim>
+    <selectKey resultType="java.lang.Integer" keyProperty="id" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bulain.jbpm4order.model.GroupLogin" >
+    update group_logins
+    <set >
+      <if test="groupId != null" >
+        group_id = #{groupId},
+      </if>
+      <if test="loginId != null" >
+        login_id = #{loginId},
+      </if>
+      <if test="createdBy != null" >
+        created_by = #{createdBy},
+      </if>
+      <if test="createdAt != null" >
+        created_at = #{createdAt},
+      </if>
+      <if test="updatedBy != null" >
+        updated_by = #{updatedBy},
+      </if>
+      <if test="updatedAt != null" >
+        updated_at = #{updatedAt},
+      </if>
+    </set>
+    where id = #{id}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bulain.jbpm4order.model.GroupLogin" >
+    update group_logins
+    set group_id = #{groupId},
+      login_id = #{loginId},
+      created_by = #{createdBy},
+      created_at = #{createdAt},
+      updated_by = #{updatedBy},
+      updated_at = #{updatedAt}
+    where id = #{id}
+  </update>
+</mapper>

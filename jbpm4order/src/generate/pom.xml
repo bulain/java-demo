@@ -1,0 +1,50 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+ 
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.bulain</groupId>
+  <artifactId>jbpm4order-generator</artifactId>
+  <packaging>war</packaging>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>jbpm4order-generator</name>
+  <url>http://maven.apache.org</url>
+  
+  <properties>
+  	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	<generator.version>1.3.0</generator.version>
+	<mysql.version>5.0.8</mysql.version>
+	<eclipse.versions>2.7</eclipse.versions>
+  </properties>
+  
+  <dependencies>
+  	<dependency>
+	    <groupId>org.mybatis.generator</groupId>
+		<artifactId>mybatis-generator-core</artifactId>
+	    <version>${generator.version}</version>
+	</dependency>
+	<dependency>
+	    <groupId>mysql</groupId>
+	    <artifactId>mysql-connector-java</artifactId>
+	    <version>${mysql.version}</version>
+	</dependency>
+  </dependencies>
+  
+  <build>
+    <finalName>jbpm4order-generator</finalName>
+    <plugins>
+    	<plugin>
+    		<artifactId>maven-compiler-plugin</artifactId>
+    		<configuration>
+    			<source>1.5</source>
+    			<target>1.5</target>
+    			<encoding>UTF-8</encoding>
+    		</configuration>
+    	</plugin>
+    	<plugin>
+			 <groupId>org.apache.maven.plugins</groupId>
+			 <artifactId>maven-eclipse-plugin</artifactId>
+			 <version>${eclipse.versions}</version>
+		</plugin>
+    </plugins>
+  </build>
+</project>

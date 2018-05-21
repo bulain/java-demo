@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process name="notify" xmlns="http://jbpm.org/4.4/jpdl">
+   <swimlane candidate-groups="#{groups}" name="swimlane"/>
+   <start g="166,24,48,48" name="start1">
+      <transition g="-44,-18" name="to task1" to="task1"/>
+   </start>
+   <task g="141,103,92,52" name="task1" swimlane="swimlane">
+   	  <notification template="group-notification"/>
+      <transition g="-42,-18" name="to end1" to="end1"/>
+   </task>
+   <end g="164,195,48,48" name="end1"/>
+</process>

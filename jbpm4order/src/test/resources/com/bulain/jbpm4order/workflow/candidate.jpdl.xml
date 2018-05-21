@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process name="candidate" xmlns="http://jbpm.org/4.4/jpdl">
+   <swimlane candidate-groups="#{groups}" candidate-users="#{users}" name="swimlane"/>
+
+   <start g="159,35,48,48" name="start1">
+      <transition g="-44,-18" name="to task1" to="task1"/>
+   </start>
+   <task g="138,124,92,52" name="task1" swimlane="swimlane">
+      <transition g="-42,-18" name="to end1" to="end1"/>
+   </task>
+   <end g="163,218,48,48" name="end1"/>
+</process>

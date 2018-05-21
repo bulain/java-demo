@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bulain.jbpm4order.dao.ContentMapper" >
+  <resultMap id="BaseResultMap" type="com.bulain.jbpm4order.model.Content" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="file_name" property="fileName" jdbcType="VARCHAR" />
+    <result column="content_type" property="contentType" jdbcType="VARCHAR" />
+    <result column="ref_id" property="refId" jdbcType="INTEGER" />
+    <result column="ref_name" property="refName" jdbcType="VARCHAR" />
+    <result column="catagory" property="catagory" jdbcType="VARCHAR" />
+    <result column="lang" property="lang" jdbcType="VARCHAR" />
+    <result column="created_by" property="createdBy" jdbcType="VARCHAR" />
+    <result column="created_at" property="createdAt" jdbcType="TIMESTAMP" />
+    <result column="updated_by" property="updatedBy" jdbcType="VARCHAR" />
+    <result column="updated_at" property="updatedAt" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.bulain.jbpm4order.model.Content" extends="BaseResultMap" >
+    <result column="bytes" property="bytes" jdbcType="LONGVARBINARY" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, file_name, content_type, ref_id, ref_name, catagory, lang, created_by, created_at, 
+    updated_by, updated_at
+  </sql>
+  <sql id="Blob_Column_List" >
+    bytes
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from contents
+    where id = #{id}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from contents
+    where id = #{id}
+  </delete>
+  <insert id="insert" parameterType="com.bulain.jbpm4order.model.Content" >
+    insert into contents (file_name, content_type, ref_id, ref_name, catagory, lang, 
+      created_by, created_at, updated_by, updated_at, bytes)
+    values (#{fileName}, #{contentType}, #{refId}, #{refName}, #{catagory}, #{lang}, 
+      #{createdBy}, #{createdAt}, #{updatedBy}, #{updatedAt}, #{bytes})
+    <selectKey resultType="java.lang.Integer" keyProperty="id" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+  </insert>
+  <insert id="insertSelective" parameterType="com.bulain.jbpm4order.model.Content" >
+    insert into contents
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="fileName != null" >
+        file_name,
+      </if>
+      <if test="contentType != null" >
+        content_type,
+      </if>
+      <if test="refId != null" >
+        ref_id,
+      </if>
+      <if test="refName != null" >
+        ref_name,
+      </if>
+      <if test="catagory != null" >
+        catagory,
+      </if>
+      <if test="lang != null" >
+        lang,
+      </if>
+      <if test="createdBy != null" >
+        created_by,
+      </if>
+      <if test="createdAt != null" >
+        created_at,
+      </if>
+      <if test="updatedBy != null" >
+        updated_by,
+      </if>
+      <if test="updatedAt != null" >
+        updated_at,
+      </if>
+      <if test="bytes != null" >
+        bytes,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="fileName != null" >
+        #{fileName},
+      </if>
+      <if test="contentType != null" >
+        #{contentType},
+      </if>
+      <if test="refId != null" >
+        #{refId},
+      </if>
+      <if test="refName != null" >
+        #{refName},
+      </if>
+      <if test="catagory != null" >
+        #{catagory},
+      </if>
+      <if test="lang != null" >
+        #{lang},
+      </if>
+      <if test="createdBy != null" >
+        #{createdBy},
+      </if>
+      <if test="createdAt != null" >
+        #{createdAt},
+      </if>
+      <if test="updatedBy != null" >
+        #{updatedBy},
+      </if>
+      <if test="updatedAt != null" >
+        #{updatedAt},
+      </if>
+      <if test="bytes != null" >
+        #{bytes},
+      </if>
+    </trim>
+    <selectKey resultType="java.lang.Integer" keyProperty="id" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bulain.jbpm4order.model.Content" >
+    update contents
+    <set >
+      <if test="fileName != null" >
+        file_name = #{fileName},
+      </if>
+      <if test="contentType != null" >
+        content_type = #{contentType},
+      </if>
+      <if test="refId != null" >
+        ref_id = #{refId},
+      </if>
+      <if test="refName != null" >
+        ref_name = #{refName},
+      </if>
+      <if test="catagory != null" >
+        catagory = #{catagory},
+      </if>
+      <if test="lang != null" >
+        lang = #{lang},
+      </if>
+      <if test="createdBy != null" >
+        created_by = #{createdBy},
+      </if>
+      <if test="createdAt != null" >
+        created_at = #{createdAt},
+      </if>
+      <if test="updatedBy != null" >
+        updated_by = #{updatedBy},
+      </if>
+      <if test="updatedAt != null" >
+        updated_at = #{updatedAt},
+      </if>
+      <if test="bytes != null" >
+        bytes = #{bytes},
+      </if>
+    </set>
+    where id = #{id}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.bulain.jbpm4order.model.Content" >
+    update contents
+    set file_name = #{fileName},
+      content_type = #{contentType},
+      ref_id = #{refId},
+      ref_name = #{refName},
+      catagory = #{catagory},
+      lang = #{lang},
+      created_by = #{createdBy},
+      created_at = #{createdAt},
+      updated_by = #{updatedBy},
+      updated_at = #{updatedAt},
+      bytes = #{bytes}
+    where id = #{id}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bulain.jbpm4order.model.Content" >
+    update contents
+    set file_name = #{fileName},
+      content_type = #{contentType},
+      ref_id = #{refId},
+      ref_name = #{refName},
+      catagory = #{catagory},
+      lang = #{lang},
+      created_by = #{createdBy},
+      created_at = #{createdAt},
+      updated_by = #{updatedBy},
+      updated_at = #{updatedAt}
+    where id = #{id}
+  </update>
+</mapper>

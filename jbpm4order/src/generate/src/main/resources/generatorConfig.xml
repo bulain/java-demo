@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd"[
+
+  <!ENTITY jdbcDriver "com.mysql.jdbc.Driver">
+  <!ENTITY jdbcUrl "jdbc:mysql://localhost:3306/jbpm4order_development">
+  <!ENTITY username "jbpm4order">
+  <!ENTITY password "jbpm4order">
+  <!ENTITY schema "jbpm4order_development">
+  <!ENTITY mysqlJar "target/jbpm4order-generator/WEB-INF/lib/mysql-connector-java-5.0.8.jar">
+  <!ENTITY packagePrefix "com.bulain.jbpm4order">
+  <!ENTITY target "gen">
+]>
+
+<generatorConfiguration>
+  <classPathEntry location="&mysqlJar;" />
+
+  <context id="mysqlTables" targetRuntime="MyBatis3">
+  	<commentGenerator type="org.mybatis.generator.internal.NoCommentGenerator"/>
+  	
+    <jdbcConnection driverClass="&jdbcDriver;" connectionURL="&jdbcUrl;"
+        userId="&username;" password="&password;">
+    </jdbcConnection>
+
+    <javaTypeResolver >
+      <property name="forceBigDecimals" value="false" />
+    </javaTypeResolver>
+    
+    <javaModelGenerator targetPackage="&packagePrefix;.model" targetProject="&target;">
+      <property name="enableSubPackages" value="true" />
+      <property name="trimStrings" value="true" />
+    </javaModelGenerator>
+
+    <sqlMapGenerator targetPackage="&packagePrefix;.xml"  targetProject="&target;">
+      <property name="enableSubPackages" value="true" />
+    </sqlMapGenerator>
+    
+    <javaClientGenerator type="XMLMAPPER" targetPackage="&packagePrefix;.dao"  targetProject="&target;">
+      <property name="enableSubPackages" value="true" />
+    </javaClientGenerator>
+
+    <table schema="&schema;" tableName="orders" domainObjectName="Order" 
+    	enableInsert="true" enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true" enableDeleteByPrimaryKey="true" 
+    	enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false">
+      <property name="useActualColumnNames" value="false"/>
+      <generatedKey column="ID" sqlStatement="Mysql" identity="true" />
+    </table>
+    
+    <table schema="&schema;" tableName="persons" domainObjectName="Person" 
+    	enableInsert="true" enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true" enableDeleteByPrimaryKey="true" 
+    	enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false">
+      <property name="useActualColumnNames" value="false"/>
+      <generatedKey column="ID" sqlStatement="Mysql" identity="true" />
+    </table>
+    
+    <table schema="&schema;" tableName="logins" domainObjectName="Login" 
+    	enableInsert="true" enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true" enableDeleteByPrimaryKey="true" 
+    	enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false">
+      <property name="useActualColumnNames" value="false"/>
+      <generatedKey column="ID" sqlStatement="Mysql" identity="true" />
+    </table>
+	 
+	 <table schema="&schema;" tableName="references" domainObjectName="Reference" 
+    	enableInsert="true" enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true" enableDeleteByPrimaryKey="true" 
+    	enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false">
+      <property name="useActualColumnNames" value="false"/>
+      <generatedKey column="ID" sqlStatement="Mysql" identity="true" />
+    </table>
+
+ 	 <table schema="&schema;" tableName="contents" domainObjectName="Content" 
+    	enableInsert="true" enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true" enableDeleteByPrimaryKey="true" 
+    	enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false">
+      <property name="useActualColumnNames" value="false"/>
+      <generatedKey column="ID" sqlStatement="Mysql" identity="true" />
+    </table>
+     
+    <table schema="&schema;" tableName="profiles" domainObjectName="Profile" 
+    	enableInsert="true" enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true" enableDeleteByPrimaryKey="true" 
+    	enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false">
+      <property name="useActualColumnNames" value="false"/>
+      <generatedKey column="ID" sqlStatement="Mysql" identity="true" />
+    </table>
+     
+     <table schema="&schema;" tableName="authorizes" domainObjectName="Authorize" 
+    	enableInsert="true" enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true" enableDeleteByPrimaryKey="true" 
+    	enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false">
+      <property name="useActualColumnNames" value="false"/>
+      <generatedKey column="ID" sqlStatement="Mysql" identity="true" />
+    </table>
+    
+    <table schema="&schema;" tableName="groups" domainObjectName="Group" 
+    	enableInsert="true" enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true" enableDeleteByPrimaryKey="true" 
+    	enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false">
+      <property name="useActualColumnNames" value="false"/>
+      <generatedKey column="ID" sqlStatement="Mysql" identity="true" />
+    </table>
+    
+    <table schema="&schema;" tableName="group_logins" domainObjectName="GroupLogin" 
+    	enableInsert="true" enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true" enableDeleteByPrimaryKey="true" 
+    	enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false">
+      <property name="useActualColumnNames" value="false"/>
+      <generatedKey column="ID" sqlStatement="Mysql" identity="true" />
+    </table>
+    
+    <table schema="&schema;" tableName="group_permissions" domainObjectName="GroupPermission" 
+    	enableInsert="true" enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true" enableDeleteByPrimaryKey="true" 
+    	enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false">
+      <property name="useActualColumnNames" value="false"/>
+      <generatedKey column="ID" sqlStatement="Mysql" identity="true" />
+    </table>
+    
+    <table schema="&schema;" tableName="permissions" domainObjectName="Permission" 
+    	enableInsert="true" enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true" enableDeleteByPrimaryKey="true" 
+    	enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false">
+      <property name="useActualColumnNames" value="false"/>
+      <generatedKey column="ID" sqlStatement="Mysql" identity="true" />
+    </table>
+    
+    <table schema="&schema;" tableName="mail_templates" domainObjectName="MailTemplate" 
+    	enableInsert="true" enableSelectByPrimaryKey="true" enableUpdateByPrimaryKey="true" enableDeleteByPrimaryKey="true" 
+    	enableSelectByExample="false" enableDeleteByExample="false" enableCountByExample="false" enableUpdateByExample="false">
+      <property name="useActualColumnNames" value="false"/>
+      <generatedKey column="ID" sqlStatement="Mysql" identity="true" />
+    </table>
+
+  </context>
+</generatorConfiguration>

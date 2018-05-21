@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bulain.jbpm4order.dao.MailTemplateMapper" >
+  <resultMap id="BaseResultMap" type="com.bulain.jbpm4order.model.MailTemplate" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="lang" property="lang" jdbcType="VARCHAR" />
+    <result column="subject" property="subject" jdbcType="VARCHAR" />
+    <result column="created_by" property="createdBy" jdbcType="VARCHAR" />
+    <result column="created_at" property="createdAt" jdbcType="TIMESTAMP" />
+    <result column="updated_by" property="updatedBy" jdbcType="VARCHAR" />
+    <result column="updated_at" property="updatedAt" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.bulain.jbpm4order.model.MailTemplate" extends="BaseResultMap" >
+    <result column="body" property="body" jdbcType="LONGVARBINARY" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, name, lang, subject, created_by, created_at, updated_by, updated_at
+  </sql>
+  <sql id="Blob_Column_List" >
+    body
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from mail_templates
+    where id = #{id}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from mail_templates
+    where id = #{id}
+  </delete>
+  <insert id="insert" parameterType="com.bulain.jbpm4order.model.MailTemplate" >
+    insert into mail_templates (name, lang, subject, created_by, created_at, updated_by, updated_at, 
+      body)
+    values (#{name}, #{lang}, #{subject}, #{createdBy}, #{createdAt}, #{updatedBy}, #{updatedAt}, 
+      #{body})
+    <selectKey resultType="java.lang.Integer" keyProperty="id" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+  </insert>
+  <insert id="insertSelective" parameterType="com.bulain.jbpm4order.model.MailTemplate" >
+    insert into mail_templates
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="lang != null" >
+        lang,
+      </if>
+      <if test="subject != null" >
+        subject,
+      </if>
+      <if test="createdBy != null" >
+        created_by,
+      </if>
+      <if test="createdAt != null" >
+        created_at,
+      </if>
+      <if test="updatedBy != null" >
+        updated_by,
+      </if>
+      <if test="updatedAt != null" >
+        updated_at,
+      </if>
+      <if test="body != null" >
+        body,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="name != null" >
+        #{name},
+      </if>
+      <if test="lang != null" >
+        #{lang},
+      </if>
+      <if test="subject != null" >
+        #{subject},
+      </if>
+      <if test="createdBy != null" >
+        #{createdBy},
+      </if>
+      <if test="createdAt != null" >
+        #{createdAt},
+      </if>
+      <if test="updatedBy != null" >
+        #{updatedBy},
+      </if>
+      <if test="updatedAt != null" >
+        #{updatedAt},
+      </if>
+      <if test="body != null" >
+        #{body},
+      </if>
+    </trim>
+    <selectKey resultType="java.lang.Integer" keyProperty="id" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bulain.jbpm4order.model.MailTemplate" >
+    update mail_templates
+    <set >
+      <if test="name != null" >
+        name = #{name},
+      </if>
+      <if test="lang != null" >
+        lang = #{lang},
+      </if>
+      <if test="subject != null" >
+        subject = #{subject},
+      </if>
+      <if test="createdBy != null" >
+        created_by = #{createdBy},
+      </if>
+      <if test="createdAt != null" >
+        created_at = #{createdAt},
+      </if>
+      <if test="updatedBy != null" >
+        updated_by = #{updatedBy},
+      </if>
+      <if test="updatedAt != null" >
+        updated_at = #{updatedAt},
+      </if>
+      <if test="body != null" >
+        body = #{body},
+      </if>
+    </set>
+    where id = #{id}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.bulain.jbpm4order.model.MailTemplate" >
+    update mail_templates
+    set name = #{name},
+      lang = #{lang},
+      subject = #{subject},
+      created_by = #{createdBy},
+      created_at = #{createdAt},
+      updated_by = #{updatedBy},
+      updated_at = #{updatedAt},
+      body = #{body}
+    where id = #{id}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bulain.jbpm4order.model.MailTemplate" >
+    update mail_templates
+    set name = #{name},
+      lang = #{lang},
+      subject = #{subject},
+      created_by = #{createdBy},
+      created_at = #{createdAt},
+      updated_by = #{updatedBy},
+      updated_at = #{updatedAt}
+    where id = #{id}
+  </update>
+</mapper>

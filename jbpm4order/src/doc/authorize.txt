@@ -1,0 +1,14 @@
+1，权限设计
+共分为：controller, action, permission
+url为：/context/controller/action
+对应权限为：permission
+
+表数据如下：
+controller	action	permission
+order		edit	ORDER_EDIT
+order		update	ORDER_EDIT
+order		*		ORDER_VIEW
+
+则：/order/edit 和  /order/update 需要ORDER_EDIT权限。
+而其他URL：/order/list 等其他需要ORDER_VIEW权限。
+对应任何一个URL，只会有一个权限。

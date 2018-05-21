@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process name="spring" xmlns="http://jbpm.org/4.4/jpdl">
+   <start g="162,21,48,48" name="start1">
+      <transition g="-45,-18" name="to java1" to="java1"/>
+   </start>
+   <java expr="#{referenceService}" g="141,97,92,52" method="findItem" name="java1" var="answer">
+   	  <arg><object expr="${name}"/></arg>
+   	  <arg><object expr="${lang}"/></arg>
+      <transition name="to state1" to="state1" g="-49,-18"/>
+   </java>
+   <state name="state1" g="141,194,92,52">
+      <transition name="to end1" to="end1" g="-42,-18"/>
+   </state>
+   <end name="end1" g="166,283,48,48"/>
+</process>

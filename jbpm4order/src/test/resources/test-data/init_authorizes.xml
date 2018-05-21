@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset>
+  <authorizes id="101" controller="controller_101" action="action_101" permission="permission_101"/>
+  <authorizes id="102" controller="controller_102" action="action_102" permission="permission_102"/>
+  <authorizes id="103" controller="controller_103" action="action_103" permission="permission_103"/>
+  <authorizes id="104" controller="controller_104" action="action_104" permission="permission_104"/>
+  <authorizes id="105" controller="controller_page" action="action_page" permission="permission_page"/>
+  <authorizes id="106" controller="controller_page" action="action_page" permission="permission_page"/>
+  <authorizes id="107" controller="controller_page" action="action_page" permission="permission_page"/>
+  <authorizes id="108" controller="controller_108" action="action_108" permission="permission_108"/>
+</dataset>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process name="event" xmlns="http://jbpm.org/4.4/jpdl">
+   <on event="start">
+      <event-listener class="com.bulain.jbpm4order.workflow.LogListener">
+        <field name="msg"><string value="process-start"/></field>
+      </event-listener>
+   </on>
+   <on event="end">
+      <event-listener class="com.bulain.jbpm4order.workflow.LogListener">
+        <field name="msg"><string value="process-end"/></field>
+      </event-listener>
+   </on>
+
+   <start g="169,16,48,48" name="start1">
+      <transition g="-44,-18" name="to task1" to="task1">
+      </transition>
+   </start>
+   <task candidate-users="user1" g="149,81,92,52" name="task1">
+   	  <on event="start">
+	      <event-listener class="com.bulain.jbpm4order.workflow.LogListener">
+	        <field name="msg"><string value="task-start"/></field>
+	      </event-listener>
+	  </on>
+	  <on event="end">
+	      <event-listener class="com.bulain.jbpm4order.workflow.LogListener">
+	        <field name="msg"><string value="task-end"/></field>
+	      </event-listener>
+	  </on>
+	  <on event="assign">
+	      <event-listener class="com.bulain.jbpm4order.workflow.LogListener">
+	        <field name="msg"><string value="task-assign"/></field>
+	      </event-listener>
+	  </on>
+      <transition name="to state1" to="state1" g="-49,-18"/>
+   </task>
+   <state name="state1" g="154,164,92,52">
+   	  <on event="start">
+	      <event-listener class="com.bulain.jbpm4order.workflow.LogListener">
+	        <field name="msg"><string value="state-start"/></field>
+	      </event-listener>
+	  </on>
+	  <on event="end">
+	      <event-listener class="com.bulain.jbpm4order.workflow.LogListener">
+	        <field name="msg"><string value="state-end"/></field>
+	      </event-listener>
+	  </on>
+      <transition name="to end1" to="end1" g="-42,-18">
+      	<event-listener class="com.bulain.jbpm4order.workflow.LogListener">
+	        <field name="msg"><string value="transition"/></field>
+	    </event-listener>
+      </transition>
+   </state>
+   <end g="175,232,48,48" name="end1"/>
+</process>

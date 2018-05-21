@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <package name="workflow" namespace="/workflow" extends="order-default">
+        <action name="list" class="workflowAction" method="list">
+            <result>/workflow/list.jsp</result>
+        </action>
+        <action name="deploy" class="workflowAction" method="deploy">
+            <result type="redirectAction">list</result>
+        </action>
+		<action name="destroy" class="workflowAction" method="destroy">
+            <result type="redirectAction">list</result>
+        </action>
+        <action name="start" class="workflowAction" method="start">
+            <result type="redirectAction">list</result>
+        </action>
+        <action name="view" class="workflowAction" method="view">
+            <result>/workflow/view.jsp</result>
+        </action>
+    </package>
+</struts>

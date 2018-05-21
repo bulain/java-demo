@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <package name="profile" namespace="/profile" extends="order-default">
+        <action name="list" class="profileAction" method="list">
+            <result>/profile/list.jsp</result>
+        </action>
+        <action name="new" class="profileAction" method="newn">
+            <result>/profile/new.jsp</result>
+        </action>
+		<action name="create" class="profileAction" method="create">
+			<interceptor-ref name="orderStack" />
+            <result type="redirectAction">list</result>
+            <result name="input">/profile/new.jsp</result>
+        </action>
+        <action name="edit" class="profileAction" method="edit">
+            <result>/profile/edit.jsp</result>
+        </action>
+		<action name="update" class="profileAction" method="update">
+			<interceptor-ref name="orderStack" />
+            <result type="redirectAction">list</result>
+            <result name="input">/profile/edit.jsp</result>
+        </action>
+        <action name="show" class="profileAction" method="show">
+            <result>/profile/show.jsp</result>
+        </action>
+		<action name="destroy" class="profileAction" method="destroy">
+            <result type="redirectAction">list</result>
+            <result name="input" type="redirectAction">list</result>
+        </action>
+    </package>
+</struts>

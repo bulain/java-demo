@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process name="java" xmlns="http://jbpm.org/4.4/jpdl">
+   <start g="115,37,48,48" name="start1">
+      <transition g="-45,-18" name="to java" to="java"/>
+   </start>
+   <java class="com.bulain.jbpm4order.workflow.JavaProcess" g="97,114,92,52" method="process" name="java" var="answer">
+      <arg><object expr="${action}"/></arg>
+      <transition name="to exclusive1" to="exclusive1" g="-68,-18"/>
+   </java>
+   <state g="40,291,92,52" name="state1">
+      <transition name="to end1" to="end1" g="-42,-18"/>
+   </state>
+   <end g="141,377,48,48" name="end1"/>
+   <decision name="exclusive1" g="122,214,48,48" expr="#{answer}">
+      <transition name="to state1" to="state1" g="-49,-18"/>
+      <transition name="to state2" to="state2" g="-49,-18"/>
+   </decision>
+   <state name="state2" g="185,290,92,52">
+      <transition name="to end1" to="end1" g="-42,-18"/>
+   </state>
+</process>

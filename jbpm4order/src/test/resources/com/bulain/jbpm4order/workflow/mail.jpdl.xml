@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process name="mail" xmlns="http://jbpm.org/4.4/jpdl">
+   <start g="170,111,48,48" name="start1">
+      <transition name="to mail" to="mail" g="-36,-18"/>
+   </start>
+   <mail g="146,209,92,52" name="mail" template="mail-template">
+      <transition name="to end1" to="end1" g="-42,-18"/>
+   </mail>
+   <end g="168,300,48,48" name="end1"/>
+</process>
