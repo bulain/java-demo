@@ -1,0 +1,5 @@
+This is Drools5 Demo Project.
+
+If you want to build this project, please follow the next step.
+1, checkout out activiti5-parent and run: mvn install.
+6, mvn clean package
