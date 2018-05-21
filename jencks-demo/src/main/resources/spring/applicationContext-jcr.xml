@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+<!-- 
+    <bean id="jcrSessionFactory" class="org.springmodules.jcr.jackrabbit.JackrabbitSessionFactory">
+        <property name="repository" ref="jcrRepository" />
+        <property name="credentials">
+            <bean class="javax.jcr.SimpleCredentials">
+                <constructor-arg index="0" value="admin" />
+                <constructor-arg index="1" value="admin" />
+            </bean>
+        </property>
+    </bean>
+    <bean id="jcrTemplate" class="org.springmodules.jcr.JcrTemplate">
+        <property name="sessionFactory" ref="jcrSessionFactory"/>
+        <property name="allowCreate" value="true"/>
+    </bean>
+    <bean id="contentDao" class="com.bulain.jencks.dao.ContentDaoImpl">
+        <property name="jcrTemplate" ref="jcrTemplate"/>
+    </bean>
+    <bean id="contentService" class="com.bulain.jencks.service.ContentServiceImpl">
+        <property name="contentDao" ref="contentDao"/>
+    </bean>
+ -->
+</beans>

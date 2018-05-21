@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans default-autowire="byName">
+	<bean id="personService" class="com.bulain.jencks.service.PersonServiceImpl"/>
+    <bean id="p2pJtaClient" class="com.bulain.jencks.jms.P2pJtaClient"/>
+</beans>
