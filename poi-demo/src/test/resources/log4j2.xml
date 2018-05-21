@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration status="OFF">
+    <appenders>
+        <console name="console" target="SYSTEM_OUT">
+            <patternLayout pattern="%d{HH:mm:ss.SSS} [%t] %p %c{1.}:%L - %m%n" />
+        </console>
+        <rollingFile name="rollingFile" fileName="logs/poi-demo.log" filePattern="logs/poi-demo.%d{yyyy-MM-dd}-%i.log.gz">
+            <patternLayout pattern="%d{HH:mm:ss.SSS} [%t] %p %c{1.}:%L - %m%n" />
+            <policies>
+                <timeBasedTriggeringPolicy />
+                <sizeBasedTriggeringPolicy size="1KB" />
+            </policies>
+            <defaultRolloverStrategy max="30" />
+        </rollingFile>
+    </appenders>
+    <loggers>
+        <logger name="com.bulain" level="DEBUG" />
+        <logger name="org.springframework" level="INFO" />
+        <root level="WARN">
+            <appender-ref ref="console" />
+            <appender-ref ref="rollingFile" />
+        </root>
+    </loggers>
+</configuration>

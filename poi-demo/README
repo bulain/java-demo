@@ -1,0 +1,31 @@
+大量数据导出到excel的通用解决方案
+
+实现要点
+1. 使用JdbcTemplate实现
+2. 使用poi生成excel
+3. 直接生产CSV文件
+
+测试结果(未使用游标)
+1. 使用CSV消耗的内存更大，生成的文件也更大。
+2. POI提供了三种实现，HSSFWorkbook, XSSFWorkbook, SXSSFWorkbook
+   HSSFWorkbook为office 2003及之前格式
+   XSSFWorkbook和SXSSFWorkbook为office2007及之后格式
+   SXSSFWorkbook为导出大数据量而设计的
+3. 导出10w条10个列的文件，SXSSFWorkbook大概需要15s左右，内存消耗320m左右
+
+
+测试结果(使用游标)
+1. Mysql必须5.0以上,驱动也要5.0以上
+2. Statement一定是TYPE_FORWARD_ONLY的,并发级别是CONCUR_READ_ONLY,Mysql默认就是这个
+3. jdbc参数中加入useCursorFetch=true
+4. 执行查询时指定数量Statement.setFetchSize(10000)
+5. 直接使用默认值,jdbc参数中同时加入useCursorFetch=true&defaultFetchSize=10000
+6. 当FetchSize=10000时消耗内容125m左右
+7. FetchSize越大,消耗时间越少,消耗内存越大
+8. 使用结果集时不能断开连接,否则必须全部装载到内存中
+9. JdbcTemplate和mybatis默认提供的方法都是全部加载到内存中的方法
+
+加入最新的日志：按日期/大小进行重命名
+1. apache-log4j-extras
+2. logback
+3. log4j v2
