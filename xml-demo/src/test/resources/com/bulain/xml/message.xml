@@ -1,0 +1,1 @@
+<message xmlns="http://bulain.com/jibx/pojo"><request><firstName>request.firstName</firstName><lastName>request.lastName</lastName></request><response><firstName>response.firstName</firstName><lastName>response.lastName</lastName></response></message>
