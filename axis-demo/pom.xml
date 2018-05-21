@@ -1,0 +1,201 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <parent>
+        <groupId>com.bulain</groupId>
+        <artifactId>parent</artifactId>
+        <version>1.0.0</version>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.bulain</groupId>
+    <artifactId>axis-demo</artifactId>
+    <packaging>war</packaging>
+    <version>1.0.1-SNAPSHOT</version>
+    <url>https://github.com/bulain/axis-demo</url>
+
+    <scm>
+        <connection>scm:git:git@github.com:bulain/axis-demo.git</connection>
+        <developerConnection>scm:git:git@github.com:bulain/axis-demo.git</developerConnection>
+        <url>git@github.com:bulain/axis-demo.git</url>
+    </scm>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <tools.version>1.6</tools.version>
+        <axis.version>1.4</axis.version>
+        <axis-wsdl4j.version>1.5.1</axis-wsdl4j.version>
+        <mail.version>1.4.4</mail.version>
+        <activation.version>1.1.1</activation.version>
+        <commons-logging.version>1.1.1</commons-logging.version>
+        <commons-discovery.version>0.2</commons-discovery.version>
+        <jetty7.version>7.6.2.v20120308</jetty7.version>
+    </properties>
+
+    <dependencies>
+        
+        <!-- axis -->
+        <dependency>
+            <groupId>axis</groupId>
+            <artifactId>axis</artifactId>
+            <version>${axis.version}</version>
+        </dependency>
+        
+        <!-- mail -->
+        <dependency>
+            <groupId>javax.mail</groupId>
+            <artifactId>mail</artifactId>
+        </dependency>
+    
+        <!-- spring -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+        </dependency>
+    
+        <!-- log4j -->
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+        </dependency>
+        
+        <!-- test -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+        
+        <!-- provided -->
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-webapp</artifactId>
+            <scope>provided</scope>
+            <version>${jetty7.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-jsp</artifactId>
+            <scope>provided</scope>
+            <version>${jetty7.version}</version>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <finalName>axis-demo</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>2.10</version>
+                <executions>
+                    <execution>
+                        <id>copy</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy</goal>
+                        </goals>
+                        <configuration>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>axis</groupId>
+                                    <artifactId>axis</artifactId>
+                                    <version>${axis.version}</version>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>src/main/axis</outputDirectory>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>axis</groupId>
+                                    <artifactId>axis-jaxrpc</artifactId>
+                                    <version>${axis.version}</version>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>src/main/axis</outputDirectory>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>axis</groupId>
+                                    <artifactId>axis-saaj</artifactId>
+                                    <version>${axis.version}</version>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>src/main/axis</outputDirectory>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>axis</groupId>
+                                    <artifactId>axis-wsdl4j</artifactId>
+                                    <version>${axis-wsdl4j.version}</version>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>src/main/axis</outputDirectory>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>commons-logging</groupId>
+                                    <artifactId>commons-logging</artifactId>
+                                    <version>${commons-logging.version}</version>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>src/main/axis</outputDirectory>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>commons-discovery</groupId>
+                                    <artifactId>commons-discovery</artifactId>
+                                    <version>${commons-discovery.version}</version>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>src/main/axis</outputDirectory>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>commons-discovery</groupId>
+                                    <artifactId>commons-discovery</artifactId>
+                                    <version>${commons-discovery.version}</version>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>src/main/axis</outputDirectory>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>javax.mail</groupId>
+                                    <artifactId>mail</artifactId>
+                                    <version>${mail.version}</version>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>src/main/axis</outputDirectory>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>javax.activation</groupId>
+                                    <artifactId>activation</artifactId>
+                                    <version>${activation.version}</version>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>src/main/axis</outputDirectory>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>axis</groupId>
+                                    <artifactId>axis-ant</artifactId>
+                                    <version>${axis.version}</version>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>src/main/axis</outputDirectory>
+                                </artifactItem>
+                            </artifactItems>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+
+</project>

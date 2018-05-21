@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:intf="http://ws.bulain.com" xmlns:impl="http://ws.bulain.com" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns1="http://pojo.bulain.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" targetNamespace="http://ws.bulain.com">
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://pojo.bulain.com">
+            <import namespace="http://schemas.xmlsoap.org/soap/encoding/" />
+            <complexType name="HelloReq">
+                <sequence>
+                    <element name="name" nillable="true" type="xsd:string" />
+                    <element maxOccurs="1" minOccurs="0" name="descr" nillable="true" type="xsd:string" />
+                </sequence>
+            </complexType>
+            <complexType name="HelloResp">
+                <sequence>
+                    <element name="name" nillable="true" type="xsd:string" />
+                    <element maxOccurs="1" minOccurs="0" name="descr" nillable="true" type="xsd:string" />
+                </sequence>
+            </complexType>
+        </schema>
+    </wsdl:types>
+    <wsdl:message name="HelloResponse">
+        <wsdl:part name="HelloResp" type="tns1:HelloResp" />
+    </wsdl:message>
+    <wsdl:message name="HelloRequest">
+        <wsdl:part name="HelloReq" type="tns1:HelloReq" />
+    </wsdl:message>
+
+    <wsdl:portType name="DemoWs">
+        <wsdl:operation name="Hello" parameterOrder="HelloReq">
+            <wsdl:input name="HelloRequest" message="impl:HelloRequest" />
+            <wsdl:output name="HelloResponse" message="impl:HelloResponse" />
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="DemoWsSoapBinding" type="impl:DemoWs">
+        <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http" />
+        <wsdl:operation name="Hello">
+            <wsdlsoap:operation />
+            <wsdl:input>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ws.bulain.com" />
+            </wsdl:input>
+            <wsdl:output>
+                <wsdlsoap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://ws.bulain.com" />
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="DemoWsService">
+        <wsdl:port name="DemoWs" binding="impl:DemoWsSoapBinding">
+            <wsdlsoap:address location="http://localhost:8080/axis/services/DemoWS" />
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
