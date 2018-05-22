@@ -1,0 +1,19 @@
+drop user mybatis_development cascade;
+drop tablespace user_data;
+
+create tablespace user_data
+  logging
+  datafile 'C:/oraclexe/app/oracle/oradata/XE/USER_DATA.dbf' 
+  size 64m 
+  autoextend on 
+  next 64m maxsize 1024m
+  extent management local;
+
+create user mybatis_development
+identified by "mybatis"
+default tablespace user_data
+temporary tablespace temp
+quota unlimited on user_data;
+
+grant connect,resource to mybatis_development;
+grant create view to mybatis_development;
