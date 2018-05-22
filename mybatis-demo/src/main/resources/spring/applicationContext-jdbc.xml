@@ -6,7 +6,7 @@
         <property name="configLocation" value="classpath:mybatis/mybatis-config.xml" />
         <property name="mapperLocations">
             <list>
-                <value>classpath*:mybatis/mysql/demo/*.xml</value>
+                <value>classpath*:mybatis/${jdbc.databaseType}/demo/*.xml</value>
                 <value>classpath*:mybatis/custom/demo/*.xml</value>
             </list>
         </property>

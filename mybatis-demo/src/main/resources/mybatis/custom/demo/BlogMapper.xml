@@ -3,9 +3,6 @@
 <mapper namespace="com.bulain.mybatis.demo.dao.BlogMapper">
 
     <insert id="bulkInsert" useGeneratedKeys="true" parameterType="java.util.List">
-        <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER">
-            SELECT LAST_INSERT_ID()
-        </selectKey>
         insert into blog
         (TITLE, DESCR, ACTIVE_FLAG, CREATED_VIA, REMARKS, CREATED_AT, CREATED_BY, UPDATED_AT, UPDATED_BY
         )values

@@ -11,6 +11,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <tools.version>1.6</tools.version>
         <mysql.version>5.1.38</mysql.version>
+        <sqljdbc.version>4.0</sqljdbc.version>
         <spring.version>4.2.6.RELEASE</spring.version>
         <mybatis.version>3.4.0</mybatis.version>
         <mybatis-spring.version>1.3.0</mybatis-spring.version>
@@ -76,6 +77,11 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>${mysql.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.microsoft.sqlserver</groupId>
+            <artifactId>sqljdbc4</artifactId>
+            <version>${sqljdbc.version}</version>
         </dependency>
         
         <!-- logger -->
@@ -173,6 +179,20 @@
                                     <version>${mybatis-generator.version}</version>
                                     <overWrite>true</overWrite>
                                     <outputDirectory>src/migration/mysql/drivers</outputDirectory>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>com.microsoft.sqlserver</groupId>
+                                    <artifactId>sqljdbc4</artifactId>
+                                    <version>${sqljdbc.version}</version>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>src/migration/mssql/drivers</outputDirectory>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>org.mybatis.generator</groupId>
+                                    <artifactId>mybatis-generator-core</artifactId>
+                                    <version>${mybatis-generator.version}</version>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>src/migration/mssql/drivers</outputDirectory>
                                 </artifactItem>
                             </artifactItems>
                         </configuration>

@@ -2,7 +2,7 @@
 	<property file="build.properties" />
 
 	<path id="classpath">
-		<fileset dir="src/migration/mysql/drivers">
+		<fileset dir="src/migration/${database.type}/drivers">
 			<include name="*.jar" />
 		</fileset>
 		<path location="target/classes" />
@@ -22,7 +22,6 @@
 				<propertyref name="generator.password" />
 				<propertyref name="generator.schema" />
 				<propertyref name="generator.packagePrefix" />
-				<propertyref name="generator.xmlPrefix" />
 				<propertyref name="generator.target" />
 			</propertyset>
 		</mbggenerator>

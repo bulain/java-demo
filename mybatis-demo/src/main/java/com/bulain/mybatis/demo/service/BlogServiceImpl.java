@@ -11,6 +11,7 @@ public class BlogServiceImpl implements BlogService {
     public Blog get(Long id) {
         return blogMapper.selectByPrimaryKey(id);
     }
+    
     @Override
     public Long insert(Blog data, boolean forced) {
         if (forced) {
@@ -19,22 +20,22 @@ public class BlogServiceImpl implements BlogService {
             blogMapper.insertSelective(data);
         }
 
-        try {
+        /*try {
             Thread.sleep(120 * 1000);
         } catch (Exception e) {
             e.printStackTrace();
-        }
+        }*/
 
         return data.getId();
     }
 
     @Override
     public Long update(Blog data, boolean forced) {
-        try {
+        /*try {
             Thread.sleep(120 * 1000);
         } catch (Exception e) {
             e.printStackTrace();
-        }
+        }*/
         
         if (forced) {
             blogMapper.updateByPrimaryKey(data);
