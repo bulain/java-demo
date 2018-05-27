@@ -1,0 +1,9 @@
+This is a dubbo example, will use next technology: dubbo, spring
+
+If you want to run:
+1, checkout out parent and run: 
+    git clone git@github.com:bulain/parent.git
+    mvn install
+3, checkout out dubbo-demo:
+    git clone git@github.com:bulain/dubbo-demo.git
+    mvn eclipse:eclipse
