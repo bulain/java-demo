@@ -1,0 +1,22 @@
+This is a flex project.
+
+If you want to build this project, please follow the next step.
+1, checkout parent and run: 
+    git clone git@github.com:bulain/parent.git
+    mvn install
+2, checkout common and run: 
+    git clone git@github.com:bulain/common.git
+    mvn install
+3, checkout flex-demo:
+   git clone git@github.com:bulain/flex-demo.git
+   mvn install -DflashPlayer.command=${flashplayer executable}
+
+you need add the responsitory into your nexus:
+  http://repository.sonatype.org/content/repositories/forge/
+
+download Linux Flash Player 11.2 Projector content debugger
+http://www.adobe.com/support/flashplayer/downloads.html
+rename the download flashplayerXXX to flashplayer, then put it into PATH
+
+for ubuntu 64 bit, please install ia32-libs
+sudo apt-get install ia32-libs

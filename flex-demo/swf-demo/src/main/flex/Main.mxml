@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute">
+  <mx:Script>
+   <![CDATA[
+    import mx.rpc.events.ResultEvent;
+    import mx.rpc.events.FaultEvent;
+    import mx.controls.Alert;
+
+    [Bindable]
+    private var xmldata:XML;
+
+   private function send_data():void {
+         httpXmlDataService.send();
+    }
+
+   private function faultHandler(event:FaultEvent):void{
+         mx.controls.Alert.show(event.fault.message,"Error in getting result");
+    }
+   private function resultHandler(event:ResultEvent):void{
+        xmldata=event.result as XML;
+   }
+   private function displayBeforeTax(row:Object,column:DataGridColumn):String{
+        return row.profit.beforetax;
+   }
+   private function displayAfterTax(row:Object,column:DataGridColumn):String{
+        return row.profit.aftertax;
+   }
+   ]]>
+ </mx:Script>
+
+<mx:HTTPService  id="httpXmlDataService"
+        url="flex/demo"
+        resultFormat="e4x"
+        result="resultHandler(event)"
+        fault="faultHandler(event)"
+        useProxy="false"/>
+<mx:Panel x="43" y="10" width="588" height="369" layout="absolute">
+ <mx:DataGrid x="50" y="23" width="469" height="265" dataProvider="{xmldata.item}">
+  <mx:columns>
+   <mx:DataGridColumn headerText="Type" dataField="@type"/>
+   <mx:DataGridColumn headerText="Sales" dataField="sales"/>
+
+   <mx:DataGridColumn headerText="Profit before tax" labelFunction="displayBeforeTax"/>
+   <mx:DataGridColumn headerText="Profit after tax" labelFunction="displayAfterTax"/>
+  </mx:columns>
+ </mx:DataGrid>
+ <mx:Button x="66" y="296" label="Get Data" click="send_data()" />
+</mx:Panel>
+</mx:Application>
