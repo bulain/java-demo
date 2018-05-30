@@ -17,7 +17,7 @@ import com.lambdaworks.redis.cluster.api.StatefulRedisClusterConnection;
 
 public class RedisClusterDemo {
 
-	RedisClusterClient client = RedisClusterClient.create("redis://192.168.158.3:7381,192.168.158.3:7382,192.168.158.3:7383");
+	RedisClusterClient client = RedisClusterClient.create("redis://192.168.158.3:7381,192.168.158.4:7381");
 
 	@Test
 	public void testSync() {
