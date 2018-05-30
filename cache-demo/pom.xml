@@ -13,8 +13,8 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <tools.version>1.5</tools.version>
-        <redis.version>2.8.1</redis.version>
+        <tools.version>1.7</tools.version>
+        <redis.version>2.9.0</redis.version>
         <redisson.version>1.0.2</redisson.version>
         <xmemcached.version>1.4.3</xmemcached.version>
         <spymemcached.version>2.11.2</spymemcached.version>
