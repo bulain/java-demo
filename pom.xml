@@ -58,6 +58,8 @@
         <module>jms-demo</module>
         <module>jolokia-demo</module>
         <module>jxls-demo</module>
+        <module>lettuce-demo</module>
+        <module>lettuce3-demo</module>
         <module>lucene-demo</module>
         <module>mail-demo</module>
         <module>math-demo</module>
