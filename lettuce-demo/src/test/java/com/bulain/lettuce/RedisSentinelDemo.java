@@ -17,7 +17,7 @@ import com.lambdaworks.redis.api.sync.RedisStringCommands;
 
 public class RedisSentinelDemo {
 
-	RedisClient client = RedisClient.create("redis-sentinel://192.168.158.3:28371,192.168.158.4:28371/0#mymaster");
+	RedisClient client = RedisClient.create("redis-sentinel://192.168.158.3:28381,192.168.158.4:28381/0#mymaster");
 
 	@Test
 	public void testSync() {
