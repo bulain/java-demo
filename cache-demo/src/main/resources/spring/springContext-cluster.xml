@@ -33,14 +33,15 @@
                 </bean>
             </set>
         </constructor-arg>
-        <constructor-arg index="1" value="${redis.timeout}" type="int" />
-        <constructor-arg index="2" ref="jedisPoolConfig" />
+        <constructor-arg index="1" value="${redis.connectionTimeout}" type="int" />
+        <constructor-arg index="2" value="${redis.soTimeout}" type="int" />
+        <constructor-arg index="3" value="${redis.maxAttempts}" type="int" />
+        <constructor-arg index="4" value="${redis.password}" />
+        <constructor-arg index="5" ref="jedisPoolConfig" />
     </bean>
     <bean id="cacheManager" class="com.bulain.cache.redis.RedisClusterCacheManager">
         <property name="jedisCluster" ref="jedisCluster" />
         <property name="expireSeconds" value="${redis.expireSeconds}" />
     </bean>
-    
-    
 
 </beans>
