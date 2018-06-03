@@ -112,38 +112,13 @@
                                             <wsdl>${basedir}/src/main/resources/wsdl/DemoService.wsdl</wsdl>
                                             <extraargs>
                                                 <extraarg>-verbose</extraarg>
-                                                <extraarg>-client</extraarg>
+                                                <extraarg>-compile</extraarg>
                                             </extraargs>
                                         </wsdlOption>
                                     </wsdlOptions>
                                 </configuration>
                                 <goals>
                                     <goal>wsdl2java</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                    <plugin>
-                        <groupId>org.apache.cxf</groupId>
-                        <artifactId>cxf-wadl2java-plugin</artifactId>
-                        <version>${cxf.version}</version>
-                        <executions>
-                            <execution>
-                                <id>generate-sources</id>
-                                <phase>generate-sources</phase>
-                                <configuration>
-                                    <wadlOptions>
-                                        <wadlOption>
-                                            <wadl>${basedir}/src/main/resources/wadl/PersonService.wadl</wadl>
-                                            <packagename>com.bulain.cxf.person.service</packagename>
-                                            <extraargs>
-                                                <extraarg>-verbose</extraarg>
-                                            </extraargs>
-                                        </wadlOption>
-                                    </wadlOptions>
-                                </configuration>
-                                <goals>
-                                    <goal>wadl2java</goal>
                                 </goals>
                             </execution>
                         </executions>
