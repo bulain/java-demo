@@ -8,7 +8,7 @@
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>cxf-demo</artifactId>
+    <artifactId>cxf2-demo</artifactId>
     <packaging>war</packaging>
 
     <properties>
@@ -140,7 +140,7 @@
     </dependencies>
 
     <build>
-        <finalName>cxf-demo</finalName>
+        <finalName>cxf2-demo</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -199,7 +199,7 @@
                     <stopPort>9999</stopPort>
                     <useTestClasspath>false</useTestClasspath>
                     <webAppConfig>
-                        <contextPath>/cxf-demo</contextPath>
+                        <contextPath>/cxf2-demo</contextPath>
                     </webAppConfig>
                     <connectors>
                         <connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">

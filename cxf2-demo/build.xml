@@ -1,4 +1,4 @@
-<project name="cxf-demo" default="copy" basedir=".">
+<project name="cxf2-demo" default="copy" basedir=".">
 	<property file="build.properties"/>
 
 	<path id="classpath">
