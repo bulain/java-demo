@@ -3,3 +3,5 @@
 
 #### JS文档：https://help.aliyun.com/document_detail/64047.html?spm=a2c4g.11186623.6.775.2CIG5P
 #### JS参考：https://github.com/rockuw/oss-in-browser
+
+#### https://github.com/aliyun/aliyun-openapi-java-sdk
