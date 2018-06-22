@@ -15,6 +15,7 @@
     
     <modules>
         <module>oss-demo</module>
+        <module>vod-demo</module>
     </modules>
 
 </project>
