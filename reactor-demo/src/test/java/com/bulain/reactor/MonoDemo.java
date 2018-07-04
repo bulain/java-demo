@@ -1,5 +1,7 @@
 package com.bulain.reactor;
 
+import java.util.Optional;
+
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,13 +14,19 @@ public class MonoDemo {
 
 	@Test
 	public void testMono() {
-		
+		Mono.fromSupplier(() -> "Hello").subscribe(System.out::println);
+		Mono.justOrEmpty(Optional.of("Hello")).subscribe(System.out::println);
+		Mono.create(sink -> sink.success("Hello")).subscribe(System.out::println);
+	}
+
+	@Test
+	public void testMonoProcessor() {
+
 		//Deferred is the publisher, Promise the consumer
 		MonoProcessor<String> promise = MonoProcessor.create();
 
 		Mono<String> mono = promise.doOnSuccess(p -> logger.info("Success: {}", p))
-		                .doOnTerminate(() -> logger.info("Terminate!"))
-		                .doOnError(t -> logger.error(t.getMessage(), t));
+		                .doOnTerminate(() -> logger.info("Terminate!")).doOnError(t -> logger.error(t.getMessage(), t));
 
 		promise.onNext("Hello World!");
 		//promise.onError(new IllegalArgumentException("Error! :P"));
@@ -26,5 +34,5 @@ public class MonoDemo {
 		String s = mono.block();
 		logger.info("s={}", s);
 	}
-	
+
 }
