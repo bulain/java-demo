@@ -5,6 +5,8 @@ import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.TimeUnit;
 
 import org.junit.Test;
 import org.slf4j.Logger;
@@ -13,6 +15,7 @@ import org.slf4j.LoggerFactory;
 import reactor.core.publisher.EmitterProcessor;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
+import reactor.test.StepVerifier;
 
 public class FluxDemo {
 	private Logger logger = LoggerFactory.getLogger(getClass());
@@ -56,6 +59,49 @@ public class FluxDemo {
 		}).subscribe(System.out::println);
 	}
 
+	@Test
+	public void testViaStepVerifier() {
+	    StepVerifier.create(Flux.just(1, 2, 3, 4, 5, 6))
+	            .expectNext(1, 2, 3, 4, 5, 6)
+	            .expectComplete()
+	            .verify();
+	    
+	    StepVerifier.create(Mono.error(new Exception("some error")))
+	            .expectErrorMessage("some error")
+	            .verify();
+	    
+		StepVerifier.create(Flux.range(1, 6)
+	            .map(i -> i * i))
+	            .expectNext(1, 4, 9, 16, 25, 36)
+	            .expectComplete();
+		
+		StepVerifier.create(
+		        Flux.just("flux", "mono")
+		                .flatMap(s -> Flux.fromArray(s.split("\\s*"))
+		                        .delayElements(Duration.ofMillis(100)))
+		                .doOnNext(System.out::print))
+		        .expectNextCount(8)
+		        .verifyComplete();
+		
+		StepVerifier.create(Flux.range(1, 6)
+	            .filter(i -> i % 2 == 1)
+	            .map(i -> i * i))
+	            .expectNext(1, 9, 25)
+	            .verifyComplete();
+	}
+	
+	@Test
+	public void testSimpleOperators() throws InterruptedException  {
+		CountDownLatch countDownLatch = new CountDownLatch(1);
+		
+		String desc = "Zip two sources together, that is to say wait for all the sources to emit one element and combine these elements once into a Tuple2.";
+		Flux<String> flux = Flux.fromArray(desc.split("\\s+"));
+		Flux.zip(flux, Flux.interval(Duration.ofMillis(100)))
+						.subscribe(t -> System.out.println(t.getT1()), null, countDownLatch::countDown);
+		
+		countDownLatch.await(10, TimeUnit.SECONDS);
+	}
+	
 	@Test
 	public void simpleFlux() throws InterruptedException {
 		// A Flux is a data publisher
