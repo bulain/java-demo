@@ -110,6 +110,16 @@ Windows/Linux线程栈大小
 JVM Options:
 -XX:PermSize=64m -XX:MaxPermSize=128m -Xms128m -Xmx512m -Xss256k -XX:+HeapDumpOnOutOfMemoryError
 
+4. java.lang.OutOfMemoryError: GC overhead limit exceeded
+程序基本上耗尽了所有的可用内存, GC也清理不了。
+调查原因：
+JVM抛出 java.lang.OutOfMemoryError: GC overhead limit exceeded 错误就是发出了这样的信号: 
+执行垃圾收集的时间比例太大, 有效的运算量太小. 
+默认情况下, 如果GC花费的时间超过 98%, 并且GC回收的内存少于 2%, JVM就会抛出这个错误。
+解决方案：
+加入启动参数 -XX:-UseGCOverheadLimit 
+加大对大小 -Xmx512m
+
 下面是我做试验得到的数据(Windows7 64bit, java.exe 32-bit)。
 可以得出，windows下32-bit的JDK下，ss默认值为320k, mx默认值为256m, MaxPermSize默认值为64m.
 Threads ss   WS  -Xms  -Xmx -XXPermSize -XXMaxPermSize
