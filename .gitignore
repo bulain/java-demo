@@ -6,6 +6,7 @@
 # Target
 target/
 .settings/
+.tomcatplugin
 
 # Log file
 *.log
