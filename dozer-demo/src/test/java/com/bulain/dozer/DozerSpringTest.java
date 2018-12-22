@@ -1,8 +1,9 @@
 package com.bulain.dozer;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import java.util.Date;
 
-import org.assertj.core.util.Objects;
 import org.dozer.Mapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -37,9 +38,9 @@ public class DozerSpringTest {
 		logger.info("{}", src);
 		logger.info("{}", dest);
 
-		Objects.areEqual(src.getId(), dest.getId());
-		Objects.areEqual(src.getName(), dest.getValue());
-		Objects.areEqual(src.getDate(), dest.getDate());
+		assertThat(dest.getId()).isEqualTo(src.getId());
+		assertThat(dest.getValue()).isEqualTo(src.getName());
+		assertThat(dest.getDate()).isEqualTo(src.getDate());
 		
 	}
 	
@@ -55,9 +56,9 @@ public class DozerSpringTest {
 		logger.info("{}", src);
 		logger.info("{}", dest);
 		
-		Objects.areEqual(src.getId(), dest.getId());
-		Objects.areEqual(src.getName(), dest.getValue());
-		Objects.areEqual(src.getDate(), dest.getDate());
+		assertThat(dest.getId()).isEqualTo(src.getId());
+		assertThat(dest.getValue()).isEqualTo(src.getName());
+		assertThat(dest.getDate()).isEqualTo(src.getDate());
 
 	}
 	
