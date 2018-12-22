@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.assertj.core.util.Objects;
 import org.dozer.DozerBeanMapper;
 import org.junit.Test;
 import org.slf4j.Logger;
@@ -33,6 +34,10 @@ public class DozerTest {
 		logger.info("{}", src);
 		logger.info("{}", dest);
 
+		Objects.areEqual(src.getId(), dest.getId());
+		Objects.areEqual(src.getName(), dest.getValue());
+		Objects.areEqual(src.getDate(), dest.getDate());
+		
 	}
 	
 	@Test
@@ -47,6 +52,10 @@ public class DozerTest {
 
 		logger.info("{}", src);
 		logger.info("{}", dest);
+		
+		Objects.areEqual(src.getId(), dest.getId());
+		Objects.areEqual(src.getName(), dest.getValue());
+		Objects.areEqual(src.getDate(), dest.getDate());
 
 	}
 

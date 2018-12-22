@@ -2,6 +2,7 @@ package com.bulain.dozer;
 
 import java.util.Date;
 
+import org.assertj.core.util.Objects;
 import org.dozer.Mapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -33,6 +34,11 @@ public class DozerSpringTest {
 
 		logger.info("{}", src);
 		logger.info("{}", dest);
+		
 
+		Objects.areEqual(src.getId(), dest.getId());
+		Objects.areEqual(src.getName(), dest.getValue());
+		Objects.areEqual(src.getDate(), dest.getDate());
+		
 	}
 }
