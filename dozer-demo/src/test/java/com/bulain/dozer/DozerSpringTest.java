@@ -14,6 +14,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.bulain.dozer.pojo.DozerData;
 import com.bulain.dozer.pojo.DozerInfo;
+import com.bulain.dozer.pojo.OrderData;
+import com.bulain.dozer.pojo.OrderInfo;
 
 @RunWith(SpringRunner.class)
 @ContextConfiguration(locations = {"classpath*:spring/spring-dozer.xml"})
@@ -24,7 +26,7 @@ public class DozerSpringTest {
 	private Mapper mapper;
 
 	@Test
-	public void testDozerSpringXml() {
+	public void testDozerXmlMapping() {
 		DozerData src = new DozerData();
 		src.setId(1L);
 		src.setDate(new Date());
@@ -34,11 +36,29 @@ public class DozerSpringTest {
 
 		logger.info("{}", src);
 		logger.info("{}", dest);
-		
 
 		Objects.areEqual(src.getId(), dest.getId());
 		Objects.areEqual(src.getName(), dest.getValue());
 		Objects.areEqual(src.getDate(), dest.getDate());
 		
 	}
+	
+	@Test
+	public void testDozerAnnotation() {
+		OrderData src = new OrderData();
+		src.setId(1L);
+		src.setDate(new Date());
+		src.setName("name");
+
+		OrderInfo dest = mapper.map(src, OrderInfo.class);
+
+		logger.info("{}", src);
+		logger.info("{}", dest);
+		
+		Objects.areEqual(src.getId(), dest.getId());
+		Objects.areEqual(src.getName(), dest.getValue());
+		Objects.areEqual(src.getDate(), dest.getDate());
+
+	}
+	
 }
