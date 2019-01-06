@@ -1,5 +1,6 @@
 package com.bulain.aspectj.service;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 import org.junit.Test;
@@ -21,12 +22,15 @@ public class DemoServiceTest {
 	@Test
 	public void testPage() {
 		DemoReq req = new DemoReq();
-		req.setName("bulain");
 		req.setTxType("sign");
+		req.setName("bulain");
 
 		DemoResp resp = demoService.page(req);
 
 		assertNotNull(resp);
+		assertEquals(req.getTxType(), resp.getTxType());
+		assertEquals(req.getName(), resp.getName());
+		
 	}
 
 }

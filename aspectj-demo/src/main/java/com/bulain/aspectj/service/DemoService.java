@@ -17,7 +17,7 @@ public class DemoService {
 		logger.info("{}", req);
 		
 		DemoResp resp = new DemoResp();
-		BeanUtils.copyProperties(req, resp);;
+		BeanUtils.copyProperties(req, resp);
 		
 		return resp;
 	}
