@@ -52,7 +52,6 @@
         <module>dubbo-demo</module>
         <module>elasticsearch-demo</module>
         <module>ews-demo</module>
-        <!-- <module>flex-demo</module> -->
         <module>guava-demo</module>
         <module>gwt-demo</module>
         <module>hbase-demo</module>
@@ -76,17 +75,21 @@
         <module>mail-demo</module>
         <module>math-demo</module>
         <module>mina-demo</module>
+        <module>mockito-demo</module>
         <module>mongodb-demo</module>
         <module>mybatis-demo</module>
         <module>netty-demo</module>
         <module>oauth-demo</module>
         <module>oltu-demo</module>
         <module>poi-demo</module>
+        <module>portlet-demo</module>
         <module>quartz-demo</module>
+        <module>reactor-demo</module>
         <module>reviewboard-client</module>
         <module>script-demo</module>
         <module>shiro-demo</module>
         <module>smooks-demo</module>
+        <module>socketio-demo</module>
         <module>springmvc-demo</module>
         <module>struts2-demo</module>
         <module>tika-demo</module>

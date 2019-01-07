@@ -14,7 +14,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <tools.version>1.5</tools.version>
-        <jibx.version>1.2.4.5</jibx.version>
+        <jibx.version>1.3.1</jibx.version>
     </properties>
 
     <dependencies>
