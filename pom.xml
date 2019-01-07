@@ -40,7 +40,6 @@
         <module>cxf-demo</module>
         <module>dbtools</module>
         <module>disruptor-demo</module>
-        <module>drools5-demo</module>
         <module>dubbo-demo</module>
         <module>elasticsearch-demo</module>
         <module>gwt-demo</module>

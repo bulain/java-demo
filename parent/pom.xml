@@ -15,8 +15,8 @@
         <mybatis.version>3.2.3</mybatis.version>
         <mybatis-spring.version>1.2.1</mybatis-spring.version>
         <generator.version>1.3.2</generator.version>
-        <spring.version>3.1.2.RELEASE</spring.version>
-        <struts2.version>2.3.1.2</struts2.version>
+        <spring.version>3.2.17.RELEASE</spring.version>
+        <struts2.version>2.5.18</struts2.version>
         <jbpm4.version>4.4</jbpm4.version>
         <activiti.version>5.14</activiti.version>
         <drools.version>5.1.1</drools.version>
@@ -48,9 +48,9 @@
         <connector.version>2.0.0</connector.version>
         <cxf.version>2.7.12</cxf.version>
         <jettison.version>1.3.2</jettison.version>
-        <camel.version>2.16.2</camel.version>
+        <camel.version>2.23.0</camel.version>
         <shiro.version>1.2.0</shiro.version>
-        <httpclient.version>4.3</httpclient.version>
+        <httpclient.version>4.5.6</httpclient.version>
         <!-- compile -->
         <servlet.version>2.5</servlet.version>
         <jsp.version>2.0</jsp.version>
@@ -58,8 +58,8 @@
         <junit.version>4.8.2</junit.version>
         <dbunit.version>2.4.8</dbunit.version>
         <h2.version>1.3.158</h2.version>
-        <jetty7.version>7.6.2.v20120308</jetty7.version>
-        <jetty8.version>8.1.15.v20140411</jetty8.version>
+        <jetty7.version>7.6.18.v20150929</jetty7.version>
+        <jetty8.version>8.1.22.v20160922</jetty8.version>
         <activemq.version>5.7.0</activemq.version>
         <wiser.version>1.2</wiser.version>
         <jwebunit.version>2.5</jwebunit.version>
