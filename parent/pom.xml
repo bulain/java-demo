@@ -17,6 +17,7 @@
         <generator.version>1.3.2</generator.version>
         <spring.version>3.2.17.RELEASE</spring.version>
         <struts2.version>2.5.18</struts2.version>
+        <xwork.version>2.3.36</xwork.version>
         <jbpm4.version>4.4</jbpm4.version>
         <activiti.version>5.14</activiti.version>
         <drools.version>5.1.1</drools.version>
@@ -138,11 +139,6 @@
             </dependency>
             <dependency>
                 <groupId>org.springframework</groupId>
-                <artifactId>spring-asm</artifactId>
-                <version>${spring.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
                 <artifactId>spring-aop</artifactId>
                 <version>${spring.version}</version>
             </dependency>
@@ -249,7 +245,7 @@
             <dependency>
                 <groupId>org.apache.struts.xwork</groupId>
                 <artifactId>xwork-core</artifactId>
-                <version>${struts2.version}</version>
+                <version>${xwork.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.struts</groupId>
@@ -574,11 +570,6 @@
             <dependency>
                 <groupId>org.apache.httpcomponents</groupId>
                 <artifactId>httpmime</artifactId>
-                <version>${httpclient.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.httpcomponents</groupId>
-                <artifactId>httpcore</artifactId>
                 <version>${httpclient.version}</version>
             </dependency>
             <!-- jwebunit -->

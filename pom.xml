@@ -24,9 +24,14 @@
         <!-- <module>migration</module> -->
         
         <module>activiti5-demo</module>
+        <module>aliyun-demo</module>
+        <module>amap-track-demo</module>
         <module>antlr-demo</module>
         <module>applet-demo</module>
         <module>appserver-demo</module>
+        <module>aspectj-demo</module>
+        <module>assertj-demo</module>
+        <module>aws-demo</module>
         <module>axis-demo</module>
         <module>axis2-demo</module>
         <module>bce-demo</module>
@@ -37,16 +42,24 @@
         <module>canal-demo</module>
         <module>cassandra-demo</module>
         <module>crawler-demo</module>
+        <module>csrf-demo</module>
         <module>cxf-demo</module>
+        <module>cxf2-demo</module>
         <module>dbtools</module>
         <module>disruptor-demo</module>
+        <module>dozer-demo</module>
+        <module>drools-demo</module>
         <module>dubbo-demo</module>
         <module>elasticsearch-demo</module>
+        <module>ews-demo</module>
+        <module>flex-demo</module>
+        <module>guava-demo</module>
         <module>gwt-demo</module>
         <module>hbase-demo</module>
         <module>hessian-demo</module>
         <module>hibernate-demo</module>
         <module>httpclient-demo</module>
+        <module>image-demo</module>
         <module>influxdb-demo</module>
         <module>jaas-demo</module>
         <module>jackrabbit-demo</module>

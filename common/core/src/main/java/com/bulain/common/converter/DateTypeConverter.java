@@ -62,7 +62,7 @@ public class DateTypeConverter extends StrutsTypeConverter {
         return dfs;
     }
 
-    private Locale getLocale(Map<String, Object> context) {
+    protected Locale getLocale(Map<String, Object> context) {
         if (context == null) {
             return Locale.getDefault();
         }
