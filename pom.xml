@@ -52,7 +52,7 @@
         <module>dubbo-demo</module>
         <module>elasticsearch-demo</module>
         <module>ews-demo</module>
-        <module>flex-demo</module>
+        <!-- <module>flex-demo</module> -->
         <module>guava-demo</module>
         <module>gwt-demo</module>
         <module>hbase-demo</module>
