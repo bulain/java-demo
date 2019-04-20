@@ -118,7 +118,7 @@ JVM抛出 java.lang.OutOfMemoryError: GC overhead limit exceeded 错误就是发
 默认情况下, 如果GC花费的时间超过 98%, 并且GC回收的内存少于 2%, JVM就会抛出这个错误。
 解决方案：
 加入启动参数 -XX:-UseGCOverheadLimit 
-加大对大小 -Xmx512m
+加大堆大小 -Xmx512m
 
 下面是我做试验得到的数据(Windows7 64bit, java.exe 32-bit)。
 可以得出，windows下32-bit的JDK下，ss默认值为320k, mx默认值为256m, MaxPermSize默认值为64m.
