@@ -163,13 +163,13 @@
         <dependency>
             <groupId>org.eclipse.jetty</groupId>
             <artifactId>jetty-webapp</artifactId>
-            <version>9.2.15.v20160210</version>
+            <version>9.2.28.v20190418</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.eclipse.jetty</groupId>
             <artifactId>jetty-jsp</artifactId>
-            <version>9.2.15.v20160210</version>
+            <version>9.2.28.v20190418</version>
             <scope>provided</scope>
         </dependency>
 
