@@ -304,9 +304,9 @@
                             </execution>
                         </executions>
                         <configuration>
-                            <wsdlFile>${basedir}/src/main/config/DemoService.wsdl</wsdlFile>
+                            <wsdlFile>${basedir}/src/main/config/WSBillService.wsdl</wsdlFile>
                             <databindingName>jaxbri</databindingName>
-                            <packageName>com.bulain.axis2.service.demo</packageName>
+                            <packageName>com.bulain.czy.service.demo</packageName>
                             <generateServerSide>true</generateServerSide>
                             <generateServerSideInterface>true</generateServerSideInterface>
                             <generateAllClasses>true</generateAllClasses>

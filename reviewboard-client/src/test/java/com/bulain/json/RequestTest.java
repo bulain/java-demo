@@ -1,4 +1,4 @@
-package com.bulain.json;
+package json;
 
 import net.sf.json.JSON;
 import net.sf.json.JSONSerializer;

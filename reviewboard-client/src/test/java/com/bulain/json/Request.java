@@ -1,4 +1,4 @@
-package com.bulain.json;
+package json;
 
 public class Request {
     private String repository;

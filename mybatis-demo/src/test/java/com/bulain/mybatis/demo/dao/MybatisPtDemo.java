@@ -34,8 +34,8 @@ public class MybatisPtDemo {
         }
         before.await();
 
-        int nThreads = 32;
-        int times = 100;
+        int nThreads = 4;
+        int times = 10000000;
         CountDownLatch latch = new CountDownLatch(nThreads * 1);
         for (int i = 0; i < nThreads; i++) {
             //executorService.submit(new PtCallable("insert", blogMapper, times, latch));
