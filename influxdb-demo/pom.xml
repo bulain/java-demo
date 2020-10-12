@@ -14,7 +14,7 @@
 		<spring.version>3.2.17.RELEASE</spring.version>
 		<slf4j.version>1.7.21</slf4j.version>
 		<logback.version>1.1.7</logback.version>
-		<junit.version>4.12</junit.version>
+		<junit.version>4.13.1</junit.version>
 		<compiler.version>2.3.2</compiler.version>
 		<eclipse.versions>2.9</eclipse.versions>
 		<source.version>2.1.2</source.version>
