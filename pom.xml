@@ -32,7 +32,7 @@
         <module>aspectj-demo</module>
         <module>assertj-demo</module>
         <module>aws-demo</module>
-        <module>axis-demo</module>
+        <!--<module>axis-demo</module>-->
         <module>axis2-demo</module>
         <module>bce-demo</module>
         <module>birt-demo</module>
