@@ -15,7 +15,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <tools.version>1.5</tools.version>
-        <mysql.version>5.1.17</mysql.version>
+        <mysql.version>8.0.16</mysql.version>
         <migration.env>test</migration.env>
         <selenium.version>2.18.0</selenium.version>
     </properties>
