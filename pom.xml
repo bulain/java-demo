@@ -62,7 +62,7 @@
         <module>influxdb-demo</module>
         <module>jaas-demo</module>
         <module>jackrabbit-demo</module>
-        <module>jbpm4-demo</module>
+        <!--<module>jbpm4-demo</module>-->
         <module>jbpm4order</module>
         <module>jencks-demo</module>
         <module>jgroup-demo</module>

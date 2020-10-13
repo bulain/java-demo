@@ -14,7 +14,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <tools.version>1.5</tools.version>
+        <tools.version>1.8</tools.version>
         <ognl.version>3.0.8</ognl.version>
         <zkspring.version>3.1.1</zkspring.version>
         <zats7.version>1.2.0</zats7.version>
@@ -166,8 +166,8 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>1.5</source>
-                    <target>1.5</target>
+                    <source>1.8</source>
+                    <target>1.8</target>
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
@@ -237,25 +237,6 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
-                <groupId>org.mortbay.jetty</groupId>
-                <artifactId>jetty-maven-plugin</artifactId>
-                <configuration>
-                    <argLine>-Xmx512m -XX:MaxPermSize=256m</argLine>
-                    <scanIntervalSeconds>10</scanIntervalSeconds>
-                    <stopKey>foo</stopKey>
-                    <stopPort>9999</stopPort>
-                    <webAppConfig>
-                        <contextPath>/zk-demo</contextPath>
-                    </webAppConfig>
-                    <connectors>
-                        <connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
-                            <port>8082</port>
-                            <maxIdleTime>60000</maxIdleTime>
-                        </connector>
-                    </connectors>
-                </configuration>
-            </plugin>
         </plugins>
     </build>
 
@@ -298,33 +279,6 @@
                 <migration.path>src/migration/oracle</migration.path>
                 <database.type>oracle</database.type>
             </properties>
-        </profile>
-        <profile>
-            <id>it</id>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.mortbay.jetty</groupId>
-                        <artifactId>jetty-maven-plugin</artifactId>
-                        <configuration>
-                            <argLine>-Xmx512m -XX:MaxPermSize=256m</argLine>
-                            <scanIntervalSeconds>10</scanIntervalSeconds>
-                            <stopKey>foo</stopKey>
-                            <stopPort>9999</stopPort>
-                            <useTestClasspath>true</useTestClasspath>
-                            <webAppConfig>
-                                <contextPath>/zk-demo</contextPath>
-                            </webAppConfig>
-                            <connectors>
-                                <connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
-                                    <port>8082</port>
-                                    <maxIdleTime>60000</maxIdleTime>
-                                </connector>
-                            </connectors>
-                        </configuration>
-                    </plugin>
-                </plugins>
-            </build>
         </profile>
     </profiles>
     <repositories>
