@@ -25,7 +25,7 @@
         <grizzly.version>2.1.4</grizzly.version>
         <httpclient.version>4.1.2</httpclient.version>
         <fastjson.version>1.1.28</fastjson.version>
-        <xstream.version>1.4.1</xstream.version>
+        <xstream.version>1.4.13-java7</xstream.version>
         <bsf.version>3.1</bsf.version>
         <zookeeper.version>3.3.3</zookeeper.version>
         <zkclient.version>0.1</zkclient.version>
