@@ -11,7 +11,7 @@
         <maven.test.skip>true</maven.test.skip>
         <tools.version>1.7</tools.version>
         <cxf.version>3.2.4</cxf.version>
-        <jetty.version>9.4.8.v20171121</jetty.version>
+        <jetty.version>9.4.34.v20201102</jetty.version>
         <jettison.version>1.4.0</jettison.version>
         <spring.version>5.0.5.RELEASE</spring.version>
         <slf4j.version>1.7.21</slf4j.version>
