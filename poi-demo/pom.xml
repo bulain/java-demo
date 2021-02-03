@@ -9,21 +9,18 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <tools.version>1.6</tools.version>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>1.8</maven.compiler.source>
         <mysql.version>5.1.39</mysql.version>
         <tomcat.version>7.0.54</tomcat.version>
         <spring.version>3.2.17.RELEASE</spring.version>
         <commons-collections.version>3.2.1</commons-collections.version>
-        <poi.version>3.14</poi.version>
-        <log4j.version>1.2.17</log4j.version>
+        <poi.version>4.1.2</poi.version>
         <slf4j.version>1.7.21</slf4j.version>
-        <logback.version>1.1.7</logback.version>
+        <logback.version>1.2.3</logback.version>
         <log4j2.version>2.4.1</log4j2.version>
         <junit.version>4.12</junit.version>
-        <dbunit.version>2.5.2</dbunit.version>
-        <compiler.version>2.3.2</compiler.version>
-        <eclipse.versions>2.9</eclipse.versions>
-        <source.version>2.1.2</source.version>
     </properties>
 
     <dependencies>
@@ -38,6 +35,13 @@
             <groupId>org.apache.poi</groupId>
             <artifactId>poi-ooxml</artifactId>
             <version>${poi.version}</version>
+        </dependency>
+        
+        <!-- easyexcel -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>easyexcel</artifactId>
+            <version>2.2.7</version>
         </dependency>
     
         <!-- commons -->
@@ -72,30 +76,11 @@
         </dependency>
         
         <!-- logger -->
-        <!--
-        <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>apache-log4j-extras</artifactId>
-            <version>${log4j.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-            <version>${log4j.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
-            <version>${slf4j.version}</version>
-        </dependency>
-        -->
-
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
             <version>${slf4j.version}</version>
         </dependency>
-
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
@@ -153,7 +138,6 @@
         </dependency>
          -->
         
-        
 		<!-- test -->
         <dependency>
             <groupId>org.springframework</groupId>
@@ -167,46 +151,7 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.dbunit</groupId>
-            <artifactId>dbunit</artifactId>
-            <version>${dbunit.version}</version>
-            <scope>test</scope>
-        </dependency>
 
     </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>${compiler.version}</version>
-                <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
-                    <encoding>UTF-8</encoding>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-source-plugin</artifactId>
-                <version>${source.version}</version>
-                <executions>
-                    <execution>
-                        <id>attach-sources</id>
-                        <goals>
-                            <goal>jar-no-fork</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-eclipse-plugin</artifactId>
-                <version>${eclipse.versions}</version>
-            </plugin>
-        </plugins>
-    </build>
 
 </project>
