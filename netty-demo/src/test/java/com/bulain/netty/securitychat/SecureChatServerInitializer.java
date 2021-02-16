@@ -25,10 +25,6 @@ public class SecureChatServerInitializer extends ChannelInitializer<SocketChanne
         ChannelPipeline pipeline = ch.pipeline();
 
         // Add SSL handler first to encrypt and decrypt everything.
-        // In this example, we use a bogus certificate in the server side
-        // and accept any invalid certificates in the client side.
-        // You will need something more complicated to identify both
-        // and server in the real world.
         pipeline.addLast(sslCtx.newHandler(ch.alloc()));
 
         // On top of the SSL handler, add the text line codec.

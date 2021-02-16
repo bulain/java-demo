@@ -7,10 +7,11 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
 import io.netty.handler.ssl.SslContext;
+import io.netty.handler.ssl.SslContextBuilder;
 import io.netty.handler.ssl.util.SelfSignedCertificate;
 
 /**
- * Simple SSL chat server modified from {@link TelnetServer}.
+ * Simple SSL chat server modified from TelnetServer.
  */
 public final class SecureChatServer {
 
@@ -18,16 +19,16 @@ public final class SecureChatServer {
 
     public static void main(String[] args) throws Exception {
         SelfSignedCertificate ssc = new SelfSignedCertificate();
-        SslContext sslCtx = SslContext.newServerContext(ssc.certificate(), ssc.privateKey());
+        SslContext sslCtx = SslContextBuilder.forServer(ssc.certificate(), ssc.privateKey()).build();
 
         EventLoopGroup bossGroup = new NioEventLoopGroup(1);
         EventLoopGroup workerGroup = new NioEventLoopGroup();
         try {
-            ServerBootstrap b = new ServerBootstrap();
-            b.group(bossGroup, workerGroup)
-             .channel(NioServerSocketChannel.class)
-             .handler(new LoggingHandler(LogLevel.INFO))
-             .childHandler(new SecureChatServerInitializer(sslCtx));
+            ServerBootstrap b = new ServerBootstrap()
+                    .group(bossGroup, workerGroup)
+                    .channel(NioServerSocketChannel.class)
+                    .handler(new LoggingHandler(LogLevel.INFO))
+                    .childHandler(new SecureChatServerInitializer(sslCtx));
 
             b.bind(PORT).sync().channel().closeFuture().sync();
         } finally {
