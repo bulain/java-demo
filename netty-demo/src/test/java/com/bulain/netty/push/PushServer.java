@@ -20,39 +20,21 @@ public class PushServer {
         EventLoopGroup bossGroup = new NioEventLoopGroup(1);
         EventLoopGroup workerGroup = new NioEventLoopGroup(1);
         try {
-            ServerBootstrap b = new ServerBootstrap();
-            b.group(bossGroup, workerGroup).channel(NioServerSocketChannel.class)
-                    .handler(new LoggingHandler(LogLevel.INFO)).childHandler(new ChannelInitializer<SocketChannel>() {
+            ServerBootstrap b = new ServerBootstrap()
+                    .group(bossGroup, workerGroup)
+                    .channel(NioServerSocketChannel.class)
+                    .handler(new LoggingHandler(LogLevel.INFO))
+                    .childHandler(new ChannelInitializer<SocketChannel>() {
                         @Override
                         protected void initChannel(SocketChannel ch) throws Exception {
                             ChannelPipeline p = ch.pipeline();
-                            p.addLast(new ObjectEncoder(), new ObjectDecoder(ClassResolvers.cacheDisabled(null)),
-                                    new PushServerHandler());
+                            p.addLast(new ObjectEncoder());
+                            p.addLast(new ObjectDecoder(ClassResolvers.cacheDisabled(null)));
+                            p.addLast(new PushServerHandler());
                         }
-
                     });
 
             b.bind(PORT).sync().channel().closeFuture().sync();
-
-            /*
-            {
-                BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-                for (;;) {
-                    String line = in.readLine();
-                    if (line == null) {
-                        break;
-                    }
-
-                    Printer printer = Printer.createPrinter("TEST-0");
-                    Report report = new Report();
-                    report.setName(line);
-                    PushChannels.writeAndFlush(printer, report);
-
-                    if ("bye".equals(line.toLowerCase())) {
-                        break;
-                    }
-                }
-            }*/
 
         } finally {
             bossGroup.shutdownGracefully();

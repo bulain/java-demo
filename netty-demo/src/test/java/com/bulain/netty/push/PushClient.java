@@ -45,15 +45,18 @@ public class PushClient {
     public static void runTask(final Printer printer) throws InterruptedException {
         EventLoopGroup group = new NioEventLoopGroup();
         try {
-            Bootstrap b = new Bootstrap();
-            b.group(group).channel(NioSocketChannel.class).handler(new ChannelInitializer<SocketChannel>() {
-                @Override
-                public void initChannel(SocketChannel ch) throws Exception {
-                    ChannelPipeline p = ch.pipeline();
-                    p.addLast(new ObjectEncoder(), new ObjectDecoder(ClassResolvers.cacheDisabled(null)),
-                            new PushClientHandler(printer));
-                }
-            });
+            Bootstrap b = new Bootstrap()
+                    .group(group)
+                    .channel(NioSocketChannel.class)
+                    .handler(new ChannelInitializer<SocketChannel>() {
+                        @Override
+                        public void initChannel(SocketChannel ch) throws Exception {
+                            ChannelPipeline p = ch.pipeline();
+                            p.addLast(new ObjectEncoder());
+                            p.addLast(new ObjectDecoder(ClassResolvers.cacheDisabled(null)));
+                            p.addLast(new PushClientHandler(printer));
+                        }
+                    });
 
             b.connect(HOST, PORT).sync().channel().closeFuture().sync();
         } finally {
