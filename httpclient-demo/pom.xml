@@ -3,7 +3,6 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.bulain.java</groupId>
     <artifactId>httpclient-demo</artifactId>
-    <packaging>war</packaging>
     <version>1.0.0-SNAPSHOT</version>
     <name>httpclient-demo</name>
 
@@ -12,13 +11,11 @@
         <httpclient.version>4.5.12</httpclient.version>
         <httpcore.version>4.4.13</httpcore.version>
         <fastjson.version>1.2.67</fastjson.version>
+        <spring.version>3.2.17.RELEASE</spring.version>
         <tools.version>1.8</tools.version>
         <slf4j.version>1.7.21</slf4j.version>
         <logback.version>1.1.7</logback.version>
         <junit.version>4.12</junit.version>
-        <compiler.version>2.3.2</compiler.version>
-        <eclipse.versions>2.9</eclipse.versions>
-        <source.version>2.1.2</source.version>
     </properties>
 
     <dependencies>
@@ -75,7 +72,6 @@
             <artifactId>slf4j-api</artifactId>
             <version>${slf4j.version}</version>
         </dependency>
-
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
@@ -94,40 +90,13 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${spring.version}</version>
+            <scope>test</scope>
+        </dependency>
 
     </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>${compiler.version}</version>
-                <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                    <encoding>UTF-8</encoding>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-source-plugin</artifactId>
-                <version>${source.version}</version>
-                <executions>
-                    <execution>
-                        <id>attach-sources</id>
-                        <goals>
-                            <goal>jar-no-fork</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-eclipse-plugin</artifactId>
-                <version>${eclipse.versions}</version>
-            </plugin>
-        </plugins>
-    </build>
 
 </project>
