@@ -20,7 +20,7 @@
         <activation.version>1.1.1</activation.version>
         <commons-logging.version>1.1.1</commons-logging.version>
         <commons-discovery.version>0.2</commons-discovery.version>
-        <jetty7.version>7.6.2.v20120308</jetty7.version>
+        <jetty7.version>9.4.36.v20210114</jetty7.version>
     </properties>
 
     <dependencies>
