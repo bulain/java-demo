@@ -24,7 +24,7 @@ public class LongEventDemo {
         LongEventFactory factory = new LongEventFactory();
 
         // Specify the size of the ring buffer, must be power of 2.
-        int bufferSize = 1024;
+        int bufferSize = 16;
 
         // Construct the Disruptor
         Disruptor<LongEvent> disruptor = new Disruptor<LongEvent>(factory, bufferSize, threadFactory);
@@ -41,7 +41,7 @@ public class LongEventDemo {
         LongEventProducer producer = new LongEventProducer(ringBuffer);
 
         ByteBuffer bb = ByteBuffer.allocate(8);
-        for (long l = 0; l < 10L; l++) {
+        for (long l = 0; l < 128L; l++) {
             bb.putLong(0, l);
             producer.onData(bb);
         }
@@ -58,7 +58,7 @@ public class LongEventDemo {
         LongEventFactory factory = new LongEventFactory();
 
         // Specify the size of the ring buffer, must be power of 2.
-        int bufferSize = 1024;
+        int bufferSize = 16;
 
         // Construct the Disruptor
         Disruptor<LongEvent> disruptor = new Disruptor<LongEvent>(factory, bufferSize, threadFactory);
@@ -75,7 +75,7 @@ public class LongEventDemo {
         LongEventProducerWithTranslator producer = new LongEventProducerWithTranslator(ringBuffer);
 
         ByteBuffer bb = ByteBuffer.allocate(8);
-        for (long l = 0; l < 10L; l++) {
+        for (long l = 0; l < 128L; l++) {
             bb.putLong(0, l);
             producer.onData(bb);
         }
@@ -92,7 +92,7 @@ public class LongEventDemo {
         LongEventFactory factory = new LongEventFactory();
 
         // Specify the size of the ring buffer, must be power of 2.
-        int bufferSize = 1024;
+        int bufferSize = 16;
 
         // Construct the Disruptor
         Disruptor<LongEvent> disruptor = new Disruptor<LongEvent>(factory, bufferSize, threadFactory);
@@ -109,7 +109,7 @@ public class LongEventDemo {
         final LongEventProducer producer = new LongEventProducer(ringBuffer);
         
         int nThreads = 5;
-        long size = 2048L;
+        long size = 128L;
         ExecutorService executorService = Executors.newFixedThreadPool(nThreads);
         for (long l = 0; l < size; l++) {
             final ByteBuffer bb = ByteBuffer.allocate(8);
@@ -117,7 +117,6 @@ public class LongEventDemo {
             Callable<Void> task = new Callable<Void>() {
                 public Void call() throws Exception {
                     producer.onData(bb);
-                    //Thread.sleep(1000);
                     return null;
                 }
             };

@@ -2,18 +2,15 @@
 
     <parent>
         <groupId>com.bulain.java</groupId>
-        <artifactId>parent</artifactId>
+        <artifactId>java-demo</artifactId>
         <version>1.0.0-SNAPSHOT</version>
-        <relativePath>../parent/</relativePath>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
     <artifactId>disruptor-demo</artifactId>
-    <packaging>jar</packaging>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <tools.version>1.7</tools.version>
         <disruptor.version>3.4.2</disruptor.version>
     </properties>
 
@@ -34,7 +31,6 @@
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
-            <version>1.0.13</version>
         </dependency>
         
         <!-- test -->
@@ -46,30 +42,4 @@
 
     </dependencies>
 
-    <build>
-        <finalName>disruptor-demo</finalName>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>1.7</source>
-                    <target>1.7</target>
-                    <encoding>UTF-8</encoding>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-source-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>attach-sources</id>
-                        <goals>
-                            <goal>jar-no-fork</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
 </project>
