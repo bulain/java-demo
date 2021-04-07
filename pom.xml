@@ -127,7 +127,8 @@
         <module>weixin-rpc</module>
         <module>xml-demo</module>
         <module>zk-demo</module>
-        
+        <module>hutool-demo</module>
+
         <!-- <module>osgi-demo</module> -->
         <!-- <module>flex-demo</module> -->
         
