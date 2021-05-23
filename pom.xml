@@ -19,17 +19,24 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <maven.compiler.target>1.8</maven.compiler.target>
         <maven.compiler.source>1.8</maven.compiler.source>
-        
-        <spring-boot.version>2.3.4.RELEASE</spring-boot.version>
+
+        <spring-boot.version>2.3.10.RELEASE</spring-boot.version>
+        <aliyun-spring-boot.version>1.0.0</aliyun-spring-boot.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
-            <!-- spring-boot -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-parent</artifactId>
+                <artifactId>spring-boot-dependencies</artifactId>
                 <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>aliyun-spring-boot-dependencies</artifactId>
+                <version>${aliyun-spring-boot.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -52,11 +59,10 @@
         <module>parent</module>
         <module>common</module>
         <!-- <module>migration</module> -->
-        
-        <module>activiti5-demo</module>
+        <!--<module>activiti5-demo</module>-->
         <module>aliyun-demo</module>
         <module>amap-track-demo</module>
-        <module>antlr-demo</module>
+        <!--<module>antlr-demo</module>-->
         <module>applet-demo</module>
         <module>appserver-demo</module>
         <module>aspectj-demo</module>
@@ -74,27 +80,27 @@
         <module>crawler-demo</module>
         <module>csrf-demo</module>
         <module>cxf-demo</module>
-        <module>cxf2-demo</module>
+        <!--<module>cxf2-demo</module>-->
         <module>dbtools</module>
         <module>disruptor-demo</module>
         <module>dozer-demo</module>
         <module>drools-demo</module>
-        <module>dubbo-demo</module>
+        <!--<module>dubbo-demo</module>-->
         <module>elasticsearch-demo</module>
         <module>ews-demo</module>
         <module>guava-demo</module>
-        <module>gwt-demo</module>
+        <!--<module>gwt-demo</module>-->
         <module>hbase-demo</module>
         <module>hessian-demo</module>
-        <module>hibernate-demo</module>
+        <!--<module>hibernate-demo</module>-->
         <module>httpclient-demo</module>
         <module>image-demo</module>
         <module>influxdb-demo</module>
         <module>jaas-demo</module>
-        <module>jackrabbit-demo</module>
+        <!--<module>jackrabbit-demo</module>-->
         <!--<module>jbpm4-demo</module>-->
-        <module>jbpm4order</module>
-        <module>jencks-demo</module>
+        <!--<module>jbpm4order</module>-->
+        <!--<module>jencks-demo</module>-->
         <module>jgroup-demo</module>
         <module>jms-demo</module>
         <module>jolokia-demo</module>
@@ -112,19 +118,19 @@
         <module>oauth-demo</module>
         <module>oltu-demo</module>
         <module>poi-demo</module>
-        <module>portlet-demo</module>
+        <!--<module>portlet-demo</module>-->
         <module>quartz-demo</module>
         <module>reactor-demo</module>
-        <module>reviewboard-client</module>
+        <!--<module>reviewboard-client</module>-->
         <module>script-demo</module>
         <module>shiro-demo</module>
         <module>smooks-demo</module>
         <module>socketio-demo</module>
         <module>springmvc-demo</module>
-        <module>struts2-demo</module>
+        <!--<module>struts2-demo</module>-->
         <module>tika-demo</module>
-        <module>tomcat-cache-demo</module>
-        <module>weixin-rpc</module>
+        <!--<module>tomcat-cache-demo</module>-->
+        <!--<module>weixin-rpc</module>-->
         <module>xml-demo</module>
         <module>zk-demo</module>
         <module>hutool-demo</module>
