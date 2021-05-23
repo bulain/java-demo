@@ -63,22 +63,22 @@
         <module>aliyun-demo</module>
         <module>amap-track-demo</module>
         <!--<module>antlr-demo</module>-->
-        <module>applet-demo</module>
-        <module>appserver-demo</module>
+        <!--<module>applet-demo</module>-->
+        <!--<module>appserver-demo</module>-->
         <module>aspectj-demo</module>
         <module>assertj-demo</module>
         <module>aws-demo</module>
         <!--<module>axis-demo</module>-->
         <!--<module>axis2-demo</module>-->
         <module>bce-demo</module>
-        <module>birt-demo</module>
+        <!--<module>birt-demo</module>-->
         <module>btrace-demo</module>
         <module>cache-demo</module>
-        <module>camel-demo</module>
+        <!--<module>camel-demo</module>-->
         <module>canal-demo</module>
         <module>cassandra-demo</module>
-        <module>crawler-demo</module>
-        <module>csrf-demo</module>
+        <!--<module>crawler-demo</module>-->
+        <!--<module>csrf-demo</module>-->
         <module>cxf-demo</module>
         <!--<module>cxf2-demo</module>-->
         <module>dbtools</module>
@@ -96,17 +96,17 @@
         <module>httpclient-demo</module>
         <module>image-demo</module>
         <module>influxdb-demo</module>
-        <module>jaas-demo</module>
+        <!--<module>jaas-demo</module>-->
         <!--<module>jackrabbit-demo</module>-->
         <!--<module>jbpm4-demo</module>-->
         <!--<module>jbpm4order</module>-->
         <!--<module>jencks-demo</module>-->
-        <module>jgroup-demo</module>
+        <!--<module>jgroup-demo</module>-->
         <module>jms-demo</module>
         <module>jolokia-demo</module>
-        <module>jxls-demo</module>
+        <!--<module>jxls-demo</module>-->
         <module>lettuce-demo</module>
-        <module>lettuce3-demo</module>
+        <!--<module>lettuce3-demo</module>-->
         <module>lucene-demo</module>
         <module>mail-demo</module>
         <module>math-demo</module>
@@ -134,10 +134,8 @@
         <module>xml-demo</module>
         <module>zk-demo</module>
         <module>hutool-demo</module>
-
         <!-- <module>osgi-demo</module> -->
         <!-- <module>flex-demo</module> -->
-        
     </modules>
 
 
