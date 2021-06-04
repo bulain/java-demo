@@ -15,7 +15,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <svnkit.version>1.3.6</svnkit.version>
         <sequence.version>1.0.0</sequence.version>
-        <hc.version>4.1.1</hc.version>
+        <hc.version>4.5.13</hc.version>
     </properties>
 
     <dependencies>
