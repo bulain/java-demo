@@ -56,46 +56,22 @@
     </build>
 
     <modules>
-        <module>parent</module>
         <module>aliyun-demo</module>
         <module>aws-demo</module>
         <module>bce-demo</module>
-        <module>btrace-demo</module>
         <module>cache-demo</module>
         <module>canal-demo</module>
-        <module>cassandra-demo</module>
         <module>cxf-demo</module>
-        <module>disruptor-demo</module>
-        <module>dozer-demo</module>
         <module>drools-demo</module>
-        <module>elasticsearch-demo</module>
-        <module>ews-demo</module>
-        <module>guava-demo</module>
-        <module>hessian-demo</module>
-        <module>httpclient-demo</module>
-        <module>image-demo</module>
         <module>jms-demo</module>
-        <module>jolokia-demo</module>
-        <module>lettuce-demo</module>
         <module>lucene-demo</module>
         <module>mail-demo</module>
         <module>math-demo</module>
-        <module>mina-demo</module>
-        <module>mockito-demo</module>
         <module>mybatis-demo</module>
         <module>netty-demo</module>
-        <module>oauth-demo</module>
-        <module>oltu-demo</module>
         <module>poi-demo</module>
-        <module>quartz-demo</module>
         <module>reactor-demo</module>
         <module>script-demo</module>
-        <module>shiro-demo</module>
-        <module>smooks-demo</module>
-        <module>socketio-demo</module>
-        <module>springmvc-demo</module>
-        <module>tika-demo</module>
-        <module>xml-demo</module>
         <module>hutool-demo</module>
         <module>util-demo</module>
     </modules>

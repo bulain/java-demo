@@ -2,9 +2,8 @@
 
     <parent>
         <groupId>com.bulain.java</groupId>
-        <artifactId>parent</artifactId>
+        <artifactId>java-demo</artifactId>
         <version>1.0.0-SNAPSHOT</version>
-        <relativePath>../parent/</relativePath>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
@@ -20,10 +19,6 @@
     <dependencies>
     
         <!-- logger -->
-        <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-        </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
@@ -42,6 +37,7 @@
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
+            <version>2.9.0</version>
         </dependency>
 
         <!-- spring -->
@@ -57,32 +53,5 @@
         </dependency>
 
     </dependencies>
-
-    <build>
-        <finalName>math-demo</finalName>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                    <encoding>UTF-8</encoding>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-source-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>attach-sources</id>
-                        <goals>
-                            <goal>jar-no-fork</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
 
 </project>
