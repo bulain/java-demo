@@ -1,9 +1,0 @@
-.classpath
-.project
-.settings/
-.tomcatplugin
-*_zh_CN.properties
-zk-demo.log
-jdbc.properties
-Thumbs.db
-target/

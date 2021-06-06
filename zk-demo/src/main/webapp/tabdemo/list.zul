@@ -1,4 +1,0 @@
-<vlayout hflex="1" vflex="1">
-    <include hflex="1" vflex="1" src="/tabdemo/person.zul"/>
-    <include hflex="1" vflex="1" src="/tabdemo/login.zul"/>
-</vlayout>

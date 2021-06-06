@@ -1,3 +1,0 @@
-[submodule "src/migration"]
-	path = src/migration
-	url = git@github.com:bulain/migration.git

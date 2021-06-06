@@ -1,8 +1,0 @@
-<window title="Cutm" border="normal" hflex="1" vflex="1" apply="org.zkoss.bind.BindComposer" viewModel="@id('vm') @init('com.bulain.zk.vm.CutmVm')">
-    <vlayout id="parent">
-
-    </vlayout>
-    <hlayout>
-        <button label="保存" onClick="@command('save')" autodisable="self" />
-    </hlayout>
-</window>

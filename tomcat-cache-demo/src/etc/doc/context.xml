@@ -1,7 +1,0 @@
-<context>
-
-	<Manager className="de.javakaffee.web.msm.MemcachedBackupSessionManager"
-		memcachedNodes="redis://localhost" sticky="true" sessionBackupAsync="true"
-		requestUriIgnorePattern=".*\.(ico|png|gif|jpg|css|js)$" />
-
-</context>

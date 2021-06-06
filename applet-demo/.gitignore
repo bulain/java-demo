@@ -1,5 +1,0 @@
-.classpath
-.project
-.settings/
-src/main/webapp/applet/*.jar
-target/

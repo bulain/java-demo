@@ -1,8 +1,0 @@
-If you want to build this project, please follow the next step.
-1, checkout out parent and run: 
-    git clone git@github.com:bulain/parent.git
-    mvn install
-2, checkout out hbase-demo:
-    git clone git@github.com:bulain/hbase-demo.git
-    mvn clean package
-    

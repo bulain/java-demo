@@ -1,6 +1,0 @@
-[submodule "src/main/webapp/web-static"]
-	path = src/main/webapp/web-static
-	url = git@github.com:bulain/web-static.git
-[submodule "src/migration"]
-	path = src/migration
-	url = git@github.com:bulain/migration.git

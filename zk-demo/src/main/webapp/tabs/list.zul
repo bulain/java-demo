@@ -1,8 +1,0 @@
-<tabbox apply="org.zkoss.bind.BindComposer" viewModel="@id('tabVm') @init('com.bulain.zk.vm.TabVm')" vflex="1" hflex="1">
-    <tabs id="menuTabs">
-        <tab label="First Page" />
-    </tabs>
-    <tabpanels id="menuTabpanels" vflex="1" hflex="1">
-        <tabpanel></tabpanel>
-    </tabpanels>
-</tabbox>

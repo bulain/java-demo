@@ -1,8 +1,0 @@
-<binding xmlns:ns2="http://bulain.com/axis2/pojo/1.0" name="binding" package="com.bulain.jibx.pojo" force-classes="true" add-constructors="true">
-  <namespace uri="http://bulain.com/axis2/pojo/1.0" default="elements"/>
-  <namespace uri="http://bulain.com/axis2/service/demo/1.0" prefix="ns1"/>
-  <mapping abstract="true" type-name="ns2:demo" class="com.bulain.axis2.pojo._1_0.Demo">
-    <value style="element" name="request" field="request" usage="optional"/>
-    <value style="element" name="response" field="response" usage="optional"/>
-  </mapping>
-</binding>
