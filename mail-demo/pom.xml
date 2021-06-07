@@ -12,7 +12,7 @@
         <tools.version>1.6</tools.version>
         <spring.version>3.2.17.RELEASE</spring.version>
         <slf4j.version>1.7.21</slf4j.version>
-        <logback.version>1.1.7</logback.version>
+        <logback.version>1.2.0</logback.version>
         <junit.version>4.13.1</junit.version>
         <compiler.version>2.3.2</compiler.version>
         <eclipse.versions>2.9</eclipse.versions>
