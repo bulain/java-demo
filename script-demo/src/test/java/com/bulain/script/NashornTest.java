@@ -1,31 +1,25 @@
 package com.bulain.script;
 
-import static org.junit.Assert.assertEquals;
+import org.junit.Test;
 
+import javax.script.*;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.script.Bindings;
-import javax.script.Compilable;
-import javax.script.Invocable;
-import javax.script.ScriptEngine;
-import javax.script.ScriptEngineManager;
-import javax.script.ScriptException;
+import static org.junit.Assert.assertEquals;
 
-import org.junit.Test;
-
-public class RhinoTest {
+public class NashornTest {
 
     private ScriptEngineManager manager = new ScriptEngineManager();
-    private ScriptEngine engine = manager.getEngineByName("ECMAScript");
+    private ScriptEngine engine = manager.getEngineByName("nashorn");
 
     @Test
-    public void testRhino() throws ScriptException {
+    public void testNashorn() throws ScriptException {
         // test
         Object eval = engine.eval("3+2*4");
 
         // assert
-        assertEquals(11d, eval);
+        assertEquals(11, eval);
     }
 
     @Test
@@ -84,7 +78,7 @@ public class RhinoTest {
 
         // assert
         assertEquals(18.0, eval);
-        assertEquals(9.0, bindings.get("page"));
+        assertEquals(9, bindings.get("page"));
     }
 
     @Test
@@ -127,23 +121,10 @@ public class RhinoTest {
     }
 
     @Test
-    public void testImportPackage() throws ScriptException {
-        // prepare
-        Bindings bindings = engine.createBindings();
-        String script = "importPackage(com.bulain.script);RhinoTest.JavaMethod.testStatic('i love javascript.')";
-
-        // test
-        Object eval = engine.eval(script, bindings);
-
-        // assert
-        assertEquals("I LOVE JAVASCRIPT.", eval);
-    }
-
-    @Test
     public void testImportClass() throws ScriptException {
         // prepare
         Bindings bindings = engine.createBindings();
-        String script = "importClass(com.bulain.script.RhinoTest);RhinoTest.JavaMethod.testStatic('i love javascript.')";
+        String script = "var JavaMethod = Java.type('com.bulain.script.NashornTest.JavaMethod');JavaMethod.testStatic('i love javascript.')";
 
         // test
         Object eval = engine.eval(script, bindings);
@@ -156,7 +137,7 @@ public class RhinoTest {
     public void testCallJavaStaticMethod() throws ScriptException {
         // prepare
         Bindings bindings = engine.createBindings();
-        String script = "com.bulain.script.RhinoTest.JavaMethod.testStatic('i love javascript.')";
+        String script = "com.bulain.script.NashornTest.JavaMethod.testStatic('i love javascript.')";
 
         // test
         Object eval = engine.eval(script, bindings);
@@ -184,7 +165,7 @@ public class RhinoTest {
     public void testCallJavaMethod() throws ScriptException {
         // prepare
         Bindings bindings = engine.createBindings();
-        String script = "var methods = new com.bulain.script.RhinoTest.JavaMethod(); methods.test('i love javascript.')";
+        String script = "var methods = new com.bulain.script.NashornTest.JavaMethod(); methods.test('i love javascript.')";
 
         // test
         Object eval = engine.eval(script, bindings);
@@ -227,7 +208,7 @@ public class RhinoTest {
         }
     }
 
-    static class JavaMethod {
+    public static class JavaMethod {
         public static String testStatic(final String str) {
             return str.toUpperCase();
         }
