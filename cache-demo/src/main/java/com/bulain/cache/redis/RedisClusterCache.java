@@ -9,6 +9,8 @@ import redis.clients.jedis.JedisCluster;
 
 import com.bulain.cache.util.SerializeUtil;
 
+import java.util.concurrent.Callable;
+
 public class RedisClusterCache implements Cache {
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
@@ -52,6 +54,18 @@ public class RedisClusterCache implements Cache {
         byte[] value = null;
         value = jedisCluster.hget(toBytes(name), toBytes(key));
         return (value != null ? new SimpleValueWrapper(SerializeUtil.deserialize(value)) : null);
+    }
+
+    @Override
+    public <T> T get(Object key, Class<T> type) {
+        ValueWrapper valueWrapper = get(key);
+        return (T) valueWrapper.get();
+    }
+
+    @Override
+    public <T> T get(Object key, Callable<T> valueLoader) {
+        ValueWrapper valueWrapper = get(key);
+        return (T) valueWrapper.get();
     }
 
     public void put(Object key, Object value) {
