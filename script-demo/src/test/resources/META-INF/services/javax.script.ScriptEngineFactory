@@ -1,1 +1,2 @@
 com.googlecode.aviator.script.AviatorScriptEngineFactory
+org.mvel2.jsr223.MvelScriptEngineFactory

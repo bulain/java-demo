@@ -1,49 +1,58 @@
 package com.bulain.script;
 
-import static org.junit.Assert.assertEquals;
-
-import java.util.HashMap;
-import java.util.Map;
-
 import org.junit.Test;
-import org.mvel2.MVEL;
 import org.mvel2.templates.TemplateRuntime;
+
+import javax.script.Bindings;
+import javax.script.ScriptEngine;
+import javax.script.ScriptEngineManager;
+import javax.script.ScriptException;
+
+import static org.junit.Assert.assertEquals;
 
 public class Mvel2Test {
 
-    @Test
-    public void testEvelMap() {
-        Map<String, Object> vars = new HashMap<String, Object>();
-        vars.put("x", new Integer(5));
-        vars.put("y", new Integer(10));
+    private ScriptEngineManager manager = new ScriptEngineManager();
+    private ScriptEngine engine = manager.getEngineByName("mvel");
 
-        Integer result = (Integer) MVEL.eval("x * y", vars);
+    @Test
+    public void testEvelMap() throws ScriptException {
+        Bindings bindings = engine.createBindings();
+        bindings.put("x", new Integer(5));
+        bindings.put("y", new Integer(10));
+
+        Integer result = (Integer) engine.eval("x * y", bindings);
         assertEquals(Integer.valueOf(50), result);
     }
 
     @Test
-    public void testEvelObject() {
+    public void testEvelObject() throws ScriptException {
+        
         Person person = new Person();
         person.setName("Test");
 
-        Object result1 = MVEL.eval("name == 'Test'", person);
+        Bindings bindings = engine.createBindings();
+        bindings.put("person", person);
+        
+        Object result1 = engine.eval("person.name == 'Test'", bindings);
         assertEquals(true, result1);
 
-        String result2 = (String) MVEL.eval("name", person);
+        String result2 = (String) engine.eval("person.name", bindings);
         assertEquals("Test", result2);
     }
     
     @Test
-    public void testEvalTemplate(){
+    public void testEvalTemplate() throws ScriptException {
         String template = "Hello, my name is @{name}";
-        Map<String, Object> vars = new HashMap<String, Object>();
-        vars.put("name", "Michael");
+        
+        Bindings bindings = engine.createBindings();
+        bindings.put("name", "Michael");
 
-        String output = (String) TemplateRuntime.eval(template, vars);
+        String output = (String) TemplateRuntime.eval(template, bindings);
         assertEquals("Hello, my name is Michael", output);
     }
 
-    static class Person {
+    public static class Person {
         private String name;
         public void setName(String name) {
             this.name = name;
