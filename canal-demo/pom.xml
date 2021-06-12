@@ -1,22 +1,23 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-
+    
+    <parent>
+        <groupId>com.bulain.java</groupId>
+        <artifactId>java-demo</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+    
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.bulain.java</groupId>
     <artifactId>canal-demo</artifactId>
     <packaging>jar</packaging>
-    <version>1.0.0-SNAPSHOT</version>
-    <name>canal-demo</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <tools.version>1.6</tools.version>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        
         <canal.version>1.0.24</canal.version>
-        <slf4j.version>1.7.21</slf4j.version>
-        <logback.version>1.1.7</logback.version>
-        <junit.version>4.13.1</junit.version>
-        <compiler.version>2.3.2</compiler.version>
-        <eclipse.versions>2.9</eclipse.versions>
-        <source.version>2.1.2</source.version>
+        <jedis.version>2.7.2</jedis.version>
     </properties>
 
     <dependencies>
@@ -32,21 +33,19 @@
         <dependency>
             <groupId>redis.clients</groupId>
             <artifactId>jedis</artifactId>
-            <version>2.7.2</version>
+            <version>${jedis.version}</version>
         </dependency>
         
         <!-- logback -->
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
-            <version>1.1.2</version>
         </dependency>
 
         <!-- test -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
 

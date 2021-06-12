@@ -1,4 +1,5 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
     <parent>
         <artifactId>java-demo</artifactId>
         <groupId>com.bulain.java</groupId>
@@ -11,12 +12,13 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <tools.version>1.7</tools.version>
-        <redis.version>2.9.0</redis.version>
-        <redisson.version>1.0.2</redisson.version>
-        <lettuce.version>4.4.5.Final</lettuce.version>
-        <xmemcached.version>1.4.3</xmemcached.version>
-        <spymemcached.version>2.11.2</spymemcached.version>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        
+        <redisson.version>3.15.6</redisson.version>
+        <xmemcached.version>2.4.7</xmemcached.version>
+        <spymemcached.version>2.12.3</spymemcached.version>
     </properties>
 
     <dependencies>
@@ -33,12 +35,10 @@
         <dependency>
             <groupId>redis.clients</groupId>
             <artifactId>jedis</artifactId>
-            <version>${redis.version}</version>
         </dependency>
         <dependency>
-            <groupId>biz.paluch.redis</groupId>
-            <artifactId>lettuce</artifactId>
-            <version>${lettuce.version}</version>
+            <groupId>io.lettuce</groupId>
+            <artifactId>lettuce-core</artifactId>
         </dependency>
         
         <!-- xmemcached -->

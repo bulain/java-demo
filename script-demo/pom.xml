@@ -12,6 +12,9 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>1.8</maven.compiler.source>
         
         <commons-io.version>2.9.0</commons-io.version>
         <mvel2.version>2.4.12.Final</mvel2.version>
@@ -42,6 +45,12 @@
                     <artifactId>js</artifactId>
                 </exclusion>
             </exclusions>
+        </dependency>
+
+        <!-- groovy -->
+        <dependency>
+            <groupId>org.codehaus.groovy</groupId>
+            <artifactId>groovy</artifactId>
         </dependency>
          
         <!-- mvel -->
