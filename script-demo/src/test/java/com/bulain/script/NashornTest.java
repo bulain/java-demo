@@ -124,7 +124,7 @@ public class NashornTest {
     public void testImportClass() throws ScriptException {
         // prepare
         Bindings bindings = engine.createBindings();
-        String script = "var JavaMethod = Java.type('com.bulain.script.NashornTest.JavaMethod');JavaMethod.testStatic('i love javascript.')";
+        String script = "JavaMethod = Java.type('com.bulain.script.NashornTest.JavaMethod');JavaMethod.testStatic('i love javascript.')";
 
         // test
         Object eval = engine.eval(script, bindings);
