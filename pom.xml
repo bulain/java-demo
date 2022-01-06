@@ -73,6 +73,7 @@
         <module>script-demo</module>
         <module>hutool-demo</module>
         <module>util-demo</module>
+        <module>rxtx-demo</module>
     </modules>
 
 
