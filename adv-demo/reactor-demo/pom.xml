@@ -51,7 +51,7 @@
             <dependency>
                 <groupId>io.projectreactor</groupId>
                 <artifactId>reactor-bom</artifactId>
-                <version>Dysprosium-SR12</version>
+                <version>2020.0.15</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
