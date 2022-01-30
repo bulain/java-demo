@@ -16,7 +16,7 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <maven.compiler.source>1.8</maven.compiler.source>
         
-        <commons-collections.version>3.2.1</commons-collections.version>
+        <commons-collections.version>3.2.2</commons-collections.version>
         <poi.version>4.1.2</poi.version>
         <easyexcel.version>2.2.7</easyexcel.version>
         <jxls.version>2.10.0</jxls.version>
