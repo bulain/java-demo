@@ -16,8 +16,23 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <maven.compiler.target>1.8</maven.compiler.target>
         <maven.compiler.source>1.8</maven.compiler.source>
+
+        <aws-s3.version>1.12.149</aws-s3.version>
+
     </properties>
-    
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- aws -->
+            <dependency>
+                <groupId>com.amazonaws</groupId>
+                <artifactId>aws-java-sdk-s3</artifactId>
+                <version>${aws-s3.version}</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
     <modules>
         <module>s3-demo</module>
     </modules>
