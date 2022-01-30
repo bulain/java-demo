@@ -32,18 +32,18 @@ public class AviatorTest {
         // ScriptEngineManager scope
         manager.put("greeting", "ScriptEngineManager scope");
         eval = engine.eval(script);
-        assertEquals("ScriptEngineManager scope", eval);
+        assertEquals(null, eval);
 
         // ScriptEngine scope
         engine.put("greeting", "ScriptEngine scope");
         eval = engine.eval(script);
-        assertEquals("ScriptEngineManager scope", eval);
+        assertEquals("ScriptEngine scope", eval);
 
         // Bindings scope
         Bindings bindings = engine.createBindings();
         bindings.put("greeting", "Bindings scope");
         eval = engine.eval(script, bindings);
-        assertEquals("ScriptEngineManager scope", eval);
+        assertEquals("Bindings scope", eval);
     }
 
     @Test
@@ -65,7 +65,7 @@ public class AviatorTest {
         // ScriptEngineManager scope
         manager.put("greeting", "ScriptEngineManager scope");
         eval = engine.eval(script);
-        assertEquals("ScriptEngineManager scope", eval);
+        assertEquals("ScriptEngine scope", eval);
     }
 
     @Test
