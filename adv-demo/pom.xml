@@ -1,0 +1,32 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <parent>
+        <groupId>com.bulain.java</groupId>
+        <artifactId>java-demo</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+    
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>adv-demo</artifactId>
+    <packaging>pom</packaging>
+    
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>1.8</maven.compiler.source>
+    </properties>
+    
+    <modules>
+        <module>cache-demo</module>
+        <module>canal-demo</module>
+        <module>cxf-demo</module>
+        <module>dbs-demo</module>
+        <module>drools-demo</module>
+        <module>mybatis-demo</module>
+        <module>netty-demo</module>
+        <module>reactor-demo</module>
+    </modules>
+
+</project>
