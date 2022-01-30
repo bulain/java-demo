@@ -86,23 +86,11 @@
     </build>
 
     <modules>
+        <module>adv-demo</module>
         <module>aliyun-demo</module>
         <module>aws-demo</module>
         <module>bce-demo</module>
-        <module>cache-demo</module>
-        <module>canal-demo</module>
-        <module>cxf-demo</module>
-        <module>drools-demo</module>
-        <module>jms-demo</module>
-        <module>mail-demo</module>
-        <module>math-demo</module>
-        <module>mybatis-demo</module>
-        <module>netty-demo</module>
-        <module>poi-demo</module>
-        <module>reactor-demo</module>
-        <module>script-demo</module>
-        <module>util-demo</module>
-        <module>rxtx-demo</module>
+        <module>std-demo</module>
     </modules>
 
 

@@ -1,9 +1,0 @@
-generator.file=src/test/resources/mybatis/mybatis-generator-config-mysql.xml
-generator.jdbcDriver=com.mysql.jdbc.Driver
-generator.jdbcUrl=jdbc:mysql://localhost:3306/mybatis_development
-generator.username=mybatis
-generator.password=mybatis
-generator.schema=
-generator.packagePrefix=com.bulain.mybatis.demo
-generator.target=target/mybatis-mysql
-database.type=mysql

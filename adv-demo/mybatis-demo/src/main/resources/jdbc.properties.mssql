@@ -1,0 +1,22 @@
+PAGE_HEAD=
+PAGE_FOOT= OFFSET #{low} ROWS FETCH NEXT #{pageSize} ROWS ONLY
+FIRST_HEAD=
+FIRST_FOOT= OFFSET 0 ROWS FETCH NEXT 1 ROWS ONLY
+
+jdbc.driverClassName=com.microsoft.sqlserver.jdbc.SQLServerDriver
+jdbc.url=jdbc:sqlserver://localhost:1433;databaseName=mybatis_development
+jdbc.username=mybatis
+jdbc.password=mybatis
+jdbc.schema=dbo
+jdbc.acquireIncrement=5
+jdbc.minPoolSize=5
+jdbc.maxPoolSize=50
+jdbc.maxIdleTime=10
+jdbc.preferredTestQuery=select 1
+jdbc.databaseType=mssql
+jdbc.environment=development
+
+jdbc.datatypeFactory=org.dbunit.ext.mssql.MsSqlDataTypeFactory
+jdbc.resultSetTableFactory=org.dbunit.database.ForwardOnlyResultSetTableFactory
+jdbc.metadataHandler=org.dbunit.database.DefaultMetadataHandler
+jdbc.escapePattern=?
