@@ -2,7 +2,7 @@
 
     <parent>
         <groupId>com.bulain.java</groupId>
-        <artifactId>aliyun-demo</artifactId>
+        <artifactId>ali-demo</artifactId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
     
