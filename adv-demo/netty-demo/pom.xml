@@ -15,9 +15,9 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <maven.compiler.source>1.8</maven.compiler.source>
         
-        <netty.version>4.1.65.Final</netty.version>
+        <netty.version>4.1.73.Final</netty.version>
         <mina.version>2.1.5</mina.version>
-        <disruptor.version>3.4.2</disruptor.version>
+        <disruptor.version>3.4.4</disruptor.version>
     </properties>
     
     <dependencies>
