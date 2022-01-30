@@ -6,11 +6,12 @@ import java.util.concurrent.ConcurrentMap;
 
 import org.junit.Test;
 import org.redisson.Redisson;
+import org.redisson.api.RedissonClient;
 
 public class RedissonDemo {
     @Test
     public void testRedisson() {
-        Redisson redisson = Redisson.create();
+        RedissonClient redisson = Redisson.create();
 
         ConcurrentMap<String, String> map = redisson.getMap("anyMap");
         map.put("foo", "bar");

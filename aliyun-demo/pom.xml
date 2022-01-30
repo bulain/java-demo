@@ -21,7 +21,6 @@
     <modules>
         <module>amap-demo</module>
         <module>oss-demo</module>
-        <module>vod-demo</module>
     </modules>
 
 </project>

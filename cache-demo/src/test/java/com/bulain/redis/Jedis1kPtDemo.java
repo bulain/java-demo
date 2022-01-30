@@ -2,6 +2,7 @@ package com.bulain.redis;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.Date;
 import java.util.concurrent.Callable;
 import java.util.concurrent.CountDownLatch;
@@ -34,7 +35,7 @@ public class Jedis1kPtDemo {
 
         ClassPathResource resource = new ClassPathResource("data/1k.txt");
         InputStream is = resource.getInputStream();
-        String value = IOUtils.toString(is);
+        String value = IOUtils.toString(is, StandardCharsets.UTF_8);
 
         for (int i = 0; i < nThreads; i++) {
             executorService.submit(new PtCallable("hset", pool, times, value, latch));
