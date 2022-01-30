@@ -21,7 +21,7 @@
         <ognl.version>3.2.21</ognl.version>
         <javassist.version>3.28.0-GA</javassist.version>
         <jslint.version>1.4.7</jslint.version>
-        <aviator.version>4.2.10</aviator.version>
+        <aviator.version>5.3.0</aviator.version>
         <rhino.version>1.7.13</rhino.version>
     </properties>
 
