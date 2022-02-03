@@ -5,9 +5,9 @@ import org.openjdk.jmh.annotations.*;
 import java.util.concurrent.TimeUnit;
 
 @BenchmarkMode(Mode.AverageTime)
-@Warmup(iterations = 3, time = 1)
-@Measurement(iterations = 5, time = 5)
-@Threads(4)
+@Warmup(iterations = 1, time = 1, timeUnit = TimeUnit.SECONDS)
+@Measurement(iterations = 3, time = 1, timeUnit = TimeUnit.SECONDS)
+@Threads(8)
 @OutputTimeUnit(TimeUnit.MICROSECONDS)
 public class StringBenchmark {
 
