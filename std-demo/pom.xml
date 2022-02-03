@@ -19,6 +19,7 @@
     </properties>
     
     <modules>
+        <module>jmh-demo</module>
         <module>jms-demo</module>
         <module>mail-demo</module>
         <module>math-demo</module>
