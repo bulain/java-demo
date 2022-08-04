@@ -19,6 +19,7 @@
     </properties>
     
     <modules>
+        <module>jasper-demo</module>
         <module>jmh-demo</module>
         <module>jms-demo</module>
         <module>mail-demo</module>
