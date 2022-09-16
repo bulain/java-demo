@@ -9,6 +9,7 @@
     <logger name="org.springframework" level="INFO" />
     <logger name="org.springframework.mail" level="DEBUG" />
     <logger name="javax.mail" level="DEBUG" />
+    <logger name="com.bulain" level="DEBUG" />
 
     <root level="WARN">
         <appender-ref ref="console" />
