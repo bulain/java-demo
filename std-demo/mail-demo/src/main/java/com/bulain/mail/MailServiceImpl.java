@@ -5,8 +5,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.mail.MessagingException;
+import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.mail.MailException;
 import org.springframework.mail.MailParseException;
 import org.springframework.mail.MailPreparationException;
@@ -22,12 +24,15 @@ import org.springframework.mail.javamail.MimeMessagePreparator;
 public class MailServiceImpl implements MailService {
     private JavaMailSender mailSender;
     private String from;
+    private String fromNick;
     private boolean active;
 
+    @Override
     public void send(SimpleMailMessage simpleMessage) {
         send(new SimpleMailMessage[]{simpleMessage});
     }
 
+    @Override
     public void send(SimpleMailMessage[] simpleMessages) {
         if (active) {
             for (SimpleMailMessage simpleMessage : simpleMessages) {
@@ -37,10 +42,12 @@ public class MailServiceImpl implements MailService {
         }
     }
 
+    @Override
     public void send(MimeMessagePreparator mimeMessagePreparator) {
         send(new MimeMessagePreparator[]{mimeMessagePreparator});
     }
 
+    @Override
     public void send(MimeMessagePreparator[] mimeMessagePreparators) {
         if (active) {
             try {
@@ -49,7 +56,11 @@ public class MailServiceImpl implements MailService {
                     MimeMessage mimeMessage = mailSender.createMimeMessage();
                     preparator.prepare(mimeMessage);
                     MimeMessageHelper helper = new MimeMessageHelper(mimeMessage);
-                    helper.setFrom(from);
+                    if (StringUtils.isNotBlank(fromNick)) {
+                        helper.setFrom(new InternetAddress(from, fromNick));
+                    } else {
+                        helper.setFrom(from);
+                    }
                     mimeMessages.add(mimeMessage);
                 }
                 mailSender.send(mimeMessages.toArray(new MimeMessage[mimeMessages.size()]));
@@ -74,5 +85,7 @@ public class MailServiceImpl implements MailService {
     public void setActive(boolean active) {
         this.active = active;
     }
-
+    public void setFromNick(String fromNick) {
+        this.fromNick = fromNick;
+    }
 }

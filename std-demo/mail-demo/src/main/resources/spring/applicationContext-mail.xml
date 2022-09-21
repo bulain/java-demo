@@ -18,6 +18,7 @@
     </bean>
     <bean id="mailService" class="com.bulain.mail.MailServiceImpl">
         <property name="from" value="${mail.from}" />
+        <property name="fromNick" value="${mail.fromNick}" />
         <property name="mailSender" ref="mailSender" />
         <property name="active" value="${mail.active}" />
     </bean>
