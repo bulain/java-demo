@@ -17,7 +17,7 @@
         <maven.compiler.source>1.8</maven.compiler.source>
        
         <cxf.version>3.2.4</cxf.version>
-        <jettison.version>1.4.0</jettison.version>
+        <jettison.version>1.5.1</jettison.version>
     </properties>
 
     <dependencies>
