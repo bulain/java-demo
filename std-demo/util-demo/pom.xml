@@ -57,7 +57,6 @@
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-            <version>31.0.1-jre</version>
         </dependency>
 
         <!-- jolokia -->
@@ -74,18 +73,6 @@
             <groupId>org.jolokia</groupId>
             <artifactId>jolokia-client-javascript</artifactId>
             <version>1.6.2</version>
-        </dependency>
-
-        <!-- tika -->
-        <dependency>
-            <groupId>org.apache.tika</groupId>
-            <artifactId>tika-core</artifactId>
-            <version>1.27</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.tika</groupId>
-            <artifactId>tika-parsers</artifactId>
-            <version>1.27</version>
         </dependency>
 
         <!-- httpclient -->
@@ -106,12 +93,12 @@
         <dependency>
             <groupId>org.jasypt</groupId>
             <artifactId>jasypt</artifactId>
-            <version>1.9.2</version>
+            <version>1.9.3</version>
         </dependency>
         <dependency>
             <groupId>org.jasypt</groupId>
-            <artifactId>jasypt-spring31</artifactId>
-            <version>1.9.2</version>
+            <artifactId>jasypt-spring4</artifactId>
+            <version>1.9.3</version>
         </dependency>
 
         <!-- fastjson -->
@@ -148,10 +135,6 @@
         </dependency>
 
         <!-- logger -->
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-        </dependency>
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>

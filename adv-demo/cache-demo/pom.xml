@@ -16,9 +16,6 @@
         <maven.compiler.target>17</maven.compiler.target>
         <maven.compiler.source>17</maven.compiler.source>
         
-        <redisson.version>3.15.6</redisson.version>
-        <xmemcached.version>2.4.7</xmemcached.version>
-        <spymemcached.version>2.12.3</spymemcached.version>
     </properties>
 
     <dependencies>
@@ -30,7 +27,7 @@
         <dependency>
             <groupId>org.redisson</groupId>
             <artifactId>redisson</artifactId>
-            <version>${redisson.version}</version>
+            <version>3.18.0</version>
         </dependency>
         <dependency>
             <groupId>redis.clients</groupId>
@@ -45,34 +42,24 @@
         <dependency>
             <groupId>net.spy</groupId>
             <artifactId>spymemcached</artifactId>
-            <version>${spymemcached.version}</version>
+            <version>2.12.3</version>
         </dependency>
         <dependency>
             <groupId>com.googlecode.xmemcached</groupId>
             <artifactId>xmemcached</artifactId>
-            <version>${xmemcached.version}</version>
+            <version>2.4.7</version>
         </dependency>
 
-        <!-- log4j -->
+        <!-- logback -->
         <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>commons-logging</groupId>
-            <artifactId>commons-logging</artifactId>
-            <version>1.2</version>
-        </dependency>
-        
+
         <!-- commons -->
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
-            <version>2.9.0</version>
         </dependency>
         
         <!-- spring -->
@@ -88,20 +75,7 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-aspects</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.aspectj</groupId>
-            <artifactId>aspectjweaver</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.aspectj</groupId>
-            <artifactId>aspectjrt</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>cglib</groupId>
-            <artifactId>cglib</artifactId>
-            <version>3.3.0</version>
-        </dependency>
-        
+
         <!-- test -->
         <dependency>
             <groupId>org.springframework</groupId>

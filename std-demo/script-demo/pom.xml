@@ -16,14 +16,6 @@
         <maven.compiler.target>17</maven.compiler.target>
         <maven.compiler.source>17</maven.compiler.source>
         
-        <commons-io.version>2.9.0</commons-io.version>
-        <mvel2.version>2.4.12.Final</mvel2.version>
-        <ognl.version>3.2.21</ognl.version>
-        <javassist.version>3.28.0-GA</javassist.version>
-        <jslint.version>1.4.7</jslint.version>
-        <aviator.version>5.3.0</aviator.version>
-        <rhino.version>1.7.14</rhino.version>
-        <nashorn.version>15.4</nashorn.version>
     </properties>
 
     <dependencies>
@@ -32,14 +24,13 @@
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
-            <version>${commons-io.version}</version>
         </dependency>
         
         <!-- jslint4java -->
         <dependency>
             <groupId>com.googlecode.jslint4java</groupId>
             <artifactId>jslint4java</artifactId>
-            <version>${jslint.version}</version>
+            <version>2.0.5</version>
             <exclusions>
                 <exclusion>
                     <groupId>rhino</groupId>
@@ -58,40 +49,40 @@
         <dependency>
             <groupId>org.mvel</groupId>
             <artifactId>mvel2</artifactId>
-            <version>${mvel2.version}</version>
+            <version>2.4.14.Final</version>
         </dependency>
         
         <!-- ognl -->
         <dependency>
             <groupId>ognl</groupId>
             <artifactId>ognl</artifactId>
-            <version>${ognl.version}</version>
+            <version>3.3.4</version>
         </dependency>
         <dependency>
             <groupId>org.javassist</groupId>
             <artifactId>javassist</artifactId>
-            <version>${javassist.version}</version>
+            <version>3.29.2-GA</version>
         </dependency>
         
         <!-- aviator -->
         <dependency>
             <groupId>com.googlecode.aviator</groupId>
             <artifactId>aviator</artifactId>
-            <version>${aviator.version}</version>
+            <version>5.3.3</version>
         </dependency>
         
         <!-- rhino -->
         <dependency>
             <groupId>org.mozilla</groupId>
             <artifactId>rhino</artifactId>
-            <version>${rhino.version}</version>
+            <version>1.7.14</version>
         </dependency>
 
         <!-- nashorn -->
         <dependency>
             <groupId>org.openjdk.nashorn</groupId>
             <artifactId>nashorn-core</artifactId>
-            <version>${nashorn.version}</version>
+            <version>15.4</version>
         </dependency>
         
         <!-- test -->
