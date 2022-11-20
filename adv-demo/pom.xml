@@ -25,7 +25,7 @@
         <module>dbs-demo</module>
         <!--<module>drools-demo</module>-->
         <module>mybatis-demo</module>
-        <!--<module>netty-demo</module>-->
+        <module>netty-demo</module>
         <module>reactor-demo</module>
     </modules>
 

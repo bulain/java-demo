@@ -7,10 +7,9 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.TimeUnit;
 
-import org.junit.Test;
-
 import com.lmax.disruptor.RingBuffer;
 import com.lmax.disruptor.dsl.Disruptor;
+import org.junit.jupiter.api.Test;
 
 @SuppressWarnings("unchecked")
 public class LongEventDemo {
