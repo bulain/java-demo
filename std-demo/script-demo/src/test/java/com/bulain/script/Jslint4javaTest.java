@@ -14,7 +14,7 @@ public class Jslint4javaTest {
         JSLintBuilder builder = new JSLintBuilder();
         JSLint jslint = builder.fromDefault();
         
-        String javaScript = "a=3+2;";
+        String javaScript = "var a = 3 + 2;";
         JSLintResult result = jslint.lint("test", javaScript);
         
         assertTrue(result.getIssues().isEmpty());

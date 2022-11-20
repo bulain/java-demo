@@ -16,8 +16,8 @@
         <maven.compiler.target>17</maven.compiler.target>
         <maven.compiler.source>17</maven.compiler.source>
        
-        <cxf.version>3.2.4</cxf.version>
-        <jettison.version>1.4.0</jettison.version>
+        <cxf.version>3.5.4</cxf.version>
+        <jettison.version>1.5.2</jettison.version>
     </properties>
 
     <dependencies>
@@ -69,10 +69,6 @@
     
         <!-- logger -->
         <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-        </dependency>
-        <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
         </dependency>
@@ -89,6 +85,16 @@
         </dependency>
 
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.3.2</version>
+            </plugin>
+        </plugins>
+    </build>
 
     <profiles>
         <profile>
