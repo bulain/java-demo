@@ -14,7 +14,7 @@ import redis.clients.jedis.JedisPool;
 
 public class RedisCacheManager implements CacheManager, InitializingBean {
 
-    private final ConcurrentMap<String, Cache> cacheMap = new ConcurrentHashMap<String, Cache>();
+    private final ConcurrentMap<String, Cache> cacheMap = new ConcurrentHashMap<>();
     private JedisPool jedisPool;
     private int expireSeconds;
 
@@ -31,25 +31,21 @@ public class RedisCacheManager implements CacheManager, InitializingBean {
     }
 
     public Cache getCache(String name) {
-        Cache cache = this.cacheMap.get(name);
-        if (cache == null) {
-            synchronized (this.cacheMap) {
-                cache = this.cacheMap.get(name);
-                if (cache == null) {
-                    cache = createRedisCache(name);
-                    this.cacheMap.put(name, cache);
-                }
-            }
-        }
-        return cache;
+        return this.cacheMap.computeIfAbsent(name, k -> {
+            Cache v = createRedisCache(k);
+            this.cacheMap.put(k, v);
+            return v;
+        });
     }
 
     public Collection<String> getCacheNames() {
         return Collections.unmodifiableSet(this.cacheMap.keySet());
     }
+
     public void setJedisPool(JedisPool jedisPool) {
         this.jedisPool = jedisPool;
     }
+
     public void setExpireSeconds(int expireSeconds) {
         this.expireSeconds = expireSeconds;
     }

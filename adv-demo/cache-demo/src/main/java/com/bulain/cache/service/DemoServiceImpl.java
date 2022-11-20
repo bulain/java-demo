@@ -14,7 +14,7 @@ public class DemoServiceImpl implements DemoService {
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
     private Long pk = 0L;
-    private Map<Long, Demo> map = new HashMap<Long, Demo>();
+    private Map<Long, Demo> map = new HashMap<>();
 
     @Cacheable(value = "DemoService", key = "#id")
     public Demo get(Long id) {

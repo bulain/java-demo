@@ -14,15 +14,15 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <maven.compiler.target>1.8</maven.compiler.target>
-        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <maven.compiler.source>17</maven.compiler.source>
     </properties>
     
     <modules>
         <module>jasper-demo</module>
         <module>jmh-demo</module>
-        <module>jms-demo</module>
-        <module>mail-demo</module>
+        <!--<module>jms-demo</module>-->
+        <!--<module>mail-demo</module>-->
         <module>math-demo</module>
         <module>poi-demo</module>
         <module>rxtx-demo</module>

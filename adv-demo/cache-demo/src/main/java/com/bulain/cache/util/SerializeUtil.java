@@ -15,6 +15,8 @@ import org.slf4j.LoggerFactory;
 public class SerializeUtil {
     private static final Logger logger = LoggerFactory.getLogger(SerializeUtil.class);
 
+    private SerializeUtil(){}
+
     public static byte[] serialize(Object object) {
         ObjectOutputStream oos = null;
         ByteArrayOutputStream baos = null;
@@ -22,12 +24,11 @@ public class SerializeUtil {
             baos = new ByteArrayOutputStream();
             oos = new ObjectOutputStream(baos);
             oos.writeObject(object);
-            byte[] bytes = baos.toByteArray();
-            return bytes;
+            return baos.toByteArray();
         } catch (Exception e) {
             logger.error("serialize()-", e);
         }
-        return null;
+        return new byte[0];
     }
 
     @SuppressWarnings("unchecked")

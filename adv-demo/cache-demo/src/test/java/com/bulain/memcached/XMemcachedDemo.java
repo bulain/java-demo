@@ -1,31 +1,30 @@
 package com.bulain.memcached;
 
-import static org.junit.Assert.assertEquals;
-
-import java.io.IOException;
-import java.util.concurrent.TimeoutException;
-
 import net.rubyeye.xmemcached.GetsResponse;
 import net.rubyeye.xmemcached.MemcachedClient;
 import net.rubyeye.xmemcached.MemcachedClientBuilder;
 import net.rubyeye.xmemcached.XMemcachedClientBuilder;
 import net.rubyeye.xmemcached.exception.MemcachedException;
 import net.rubyeye.xmemcached.utils.AddrUtil;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import java.io.IOException;
+import java.util.concurrent.TimeoutException;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class XMemcachedDemo {
     private static MemcachedClient client;
 
-    @BeforeClass
+    @BeforeAll
     public static void setUpClass() throws IOException {
         MemcachedClientBuilder builder = new XMemcachedClientBuilder(AddrUtil.getAddresses("localhost:11211"));
         client = builder.build();
     }
 
-    @AfterClass
+    @AfterAll
     public static void tearDown() throws IOException {
         client.shutdown();
     }

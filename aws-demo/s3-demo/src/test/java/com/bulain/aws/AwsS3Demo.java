@@ -1,29 +1,21 @@
 package com.bulain.aws;
 
-import java.io.File;
-
-import org.junit.Before;
-import org.junit.Test;
+import com.amazonaws.services.s3.AmazonS3;
+import com.amazonaws.services.s3.AmazonS3ClientBuilder;
+import com.amazonaws.services.s3.model.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.amazonaws.services.s3.AmazonS3;
-import com.amazonaws.services.s3.AmazonS3ClientBuilder;
-import com.amazonaws.services.s3.model.CopyObjectResult;
-import com.amazonaws.services.s3.model.DeleteObjectsRequest;
-import com.amazonaws.services.s3.model.DeleteObjectsResult;
-import com.amazonaws.services.s3.model.ListObjectsV2Result;
-import com.amazonaws.services.s3.model.ObjectMetadata;
-import com.amazonaws.services.s3.model.PutObjectRequest;
-import com.amazonaws.services.s3.model.PutObjectResult;
-import com.amazonaws.services.s3.model.S3Object;
+import java.io.File;
 
 public class AwsS3Demo {
 	private Logger logger = LoggerFactory.getLogger(getClass());
 
 	private AmazonS3 s3;
 
-	@Before
+	@BeforeEach
 	public void setUp() {
 		s3 = AmazonS3ClientBuilder.defaultClient();
 	}

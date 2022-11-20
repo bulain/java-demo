@@ -1,26 +1,26 @@
 package com.bulain.redis;
-import static org.junit.Assert.assertEquals;
 
-import java.util.List;
-
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.Test;
-
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.Pipeline;
 import redis.clients.jedis.Response;
 import redis.clients.jedis.Transaction;
 
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 public class JedisDemo {
     private static Jedis jedis;
 
-    @BeforeClass
+    @BeforeAll
     public static void setUpClass() {
-        jedis = new Jedis("localhost");
+        jedis = new Jedis("localhost", 6379);
     }
 
-    @AfterClass
+    @AfterAll
     public static void tearDownClass() {
         jedis.disconnect();
     }
@@ -41,7 +41,7 @@ public class JedisDemo {
         String hget = jedis.hget("key", "field");
         assertEquals("hget", hget);
         
-        jedis.expire("key", 0);
+        jedis.expire("key", 0L);
         jedis.del("key");
         hget = jedis.hget("key", "field");
         assertEquals(null, hget);
@@ -56,7 +56,7 @@ public class JedisDemo {
 
         Transaction tx = jedis.multi();
         tx.set("watch01", "v-1");
-        List<Response<?>> results = tx.execGetResponse();
+        List<Object> results = tx.exec();
 
         assertEquals(1, results.size());
 

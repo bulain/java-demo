@@ -8,7 +8,7 @@ import org.influxdb.InfluxDBFactory;
 import org.influxdb.dto.BatchPoints;
 import org.influxdb.dto.Point;
 import org.influxdb.dto.Query;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class BasicDemo {
 

@@ -1,6 +1,6 @@
 package com.bulain.script;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.mvel2.templates.TemplateRuntime;
 
 import javax.script.Bindings;
@@ -8,7 +8,7 @@ import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class Mvel2Test {
 

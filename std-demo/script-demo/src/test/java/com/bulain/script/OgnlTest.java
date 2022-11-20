@@ -1,14 +1,14 @@
 package com.bulain.script;
 
-import static org.junit.Assert.assertEquals;
+
+import ognl.Ognl;
+import ognl.OgnlException;
+import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import ognl.Ognl;
-import ognl.OgnlException;
-
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class OgnlTest {
 

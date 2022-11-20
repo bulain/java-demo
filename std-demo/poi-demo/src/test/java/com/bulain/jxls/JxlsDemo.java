@@ -1,6 +1,6 @@
 package com.bulain.jxls;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.jxls.common.Context;
 import org.jxls.util.JxlsHelper;
 import org.springframework.core.io.ClassPathResource;

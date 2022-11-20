@@ -22,8 +22,8 @@ public class RedisClusterCache implements Cache {
         byte[] ret = null;
         if (obj instanceof Number) {
             ret = obj.toString().getBytes();
-        } else if (obj instanceof String) {
-            ret = ((String) obj).getBytes();
+        } else if (obj instanceof String str) {
+            ret = str.getBytes();
         }
         return ret;
     }
@@ -59,17 +59,23 @@ public class RedisClusterCache implements Cache {
     @Override
     public <T> T get(Object key, Class<T> type) {
         ValueWrapper valueWrapper = get(key);
+        if (valueWrapper == null) {
+            return null;
+        }
         return (T) valueWrapper.get();
     }
 
     @Override
     public <T> T get(Object key, Callable<T> valueLoader) {
         ValueWrapper valueWrapper = get(key);
+        if (valueWrapper == null) {
+            return null;
+        }
         return (T) valueWrapper.get();
     }
 
     public void put(Object key, Object value) {
-        logger.trace("put({},{},{})", new Object[]{name, key, value});
+        logger.trace("put({},{},{})", name, key, value);
 
         if (key == null || value == null) {
             return;
@@ -88,15 +94,15 @@ public class RedisClusterCache implements Cache {
     public Object getNativeCache() {
         return jedisCluster;
     }
-    
+
     public void setName(String name) {
         this.name = name;
     }
-    
+
     public void setJedisCluster(JedisCluster jedisCluster) {
         this.jedisCluster = jedisCluster;
     }
-    
+
     public void setExpireSeconds(int expireSeconds) {
         this.expireSeconds = expireSeconds;
     }
