@@ -22,7 +22,7 @@
         <module>jasper-demo</module>
         <module>jmh-demo</module>
         <!--<module>jms-demo</module>-->
-        <!--<module>mail-demo</module>-->
+        <module>mail-demo</module>
         <module>math-demo</module>
         <module>poi-demo</module>
         <module>rxtx-demo</module>
