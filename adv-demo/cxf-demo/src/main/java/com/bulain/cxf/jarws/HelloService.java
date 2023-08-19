@@ -1,9 +1,10 @@
 package com.bulain.cxf.jarws;
 
-import javax.jws.WebMethod;
-import javax.jws.WebParam;
-import javax.jws.WebResult;
-import javax.jws.WebService;
+
+import jakarta.jws.WebMethod;
+import jakarta.jws.WebParam;
+import jakarta.jws.WebResult;
+import jakarta.jws.WebService;
 
 @WebService(name="HelloService", serviceName="HelloService", targetNamespace="http://cxf.bulain.com/hello/service/1.0")
 public interface HelloService {

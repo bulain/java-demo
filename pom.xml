@@ -25,6 +25,7 @@
         <module>adv-demo</module>
         <module>ali-demo</module>
         <module>aws-demo</module>
+        <module>bce-demo</module>
         <module>std-demo</module>
     </modules>
 

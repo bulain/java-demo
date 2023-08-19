@@ -5,17 +5,19 @@ import java.util.Iterator;
 import java.util.List;
 
 public class PersonServiceImpl implements PersonService {
-    private List<Person> persons = new ArrayList<Person>();
+    private List<Person> persons = new ArrayList<>();
     private long index = 100L;
 
     public PersonServiceImpl() {
         init();
     }
 
+    @Override
     public List<Person> list() {
         return persons;
     }
 
+    @Override
     public Person get(Long id) {
         Person temp = null;
         for (Person p : persons) {
@@ -27,12 +29,14 @@ public class PersonServiceImpl implements PersonService {
         return temp;
     }
 
+    @Override
     public void create(Person person) {
         index++;
         person.setId(index);
         persons.add(person);
     }
 
+    @Override
     public void update(Long id, Person person) {
         for (Person p : persons) {
             if (p.getId().equals(id)) {
@@ -42,6 +46,7 @@ public class PersonServiceImpl implements PersonService {
         }
     }
 
+    @Override
     public void delete(Long id) {
         Iterator<Person> iterator = persons.iterator();
         while (iterator.hasNext()) {

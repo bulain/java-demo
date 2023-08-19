@@ -16,8 +16,8 @@
         <maven.compiler.target>17</maven.compiler.target>
         <maven.compiler.source>17</maven.compiler.source>
        
-        <cxf.version>3.5.4</cxf.version>
-        <jettison.version>1.5.2</jettison.version>
+        <cxf.version>4.0.2</cxf.version>
+        <jettison.version>1.5.4</jettison.version>
     </properties>
 
     <dependencies>
@@ -48,13 +48,6 @@
         <dependency>
             <groupId>org.eclipse.jetty</groupId>
             <artifactId>jetty-webapp</artifactId>
-        </dependency>
-        
-        <!-- jettison -->
-        <dependency>
-            <groupId>org.codehaus.jettison</groupId>
-            <artifactId>jettison</artifactId>
-            <version>${jettison.version}</version>
         </dependency>
         
         <!-- spring -->

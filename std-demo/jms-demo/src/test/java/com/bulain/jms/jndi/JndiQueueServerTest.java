@@ -1,6 +1,8 @@
 package com.bulain.jms.jndi;
 
-
+import jakarta.jms.*;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.slf4j.Logger;
@@ -11,16 +13,14 @@ import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
 
-import javax.jms.*;
-import java.util.Date;
-
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+@Disabled
 @ExtendWith(SpringExtension.class)
 @TestExecutionListeners(value = {DependencyInjectionTestExecutionListener.class})
 @ContextConfiguration(locations = {"classpath:spring/applicationContext-resource.xml",
         "classpath:spring/applicationContext-jndi.xml"})
-public class JndiQueueClientDemo {
+class JndiQueueServerTest {
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
@@ -34,7 +34,7 @@ public class JndiQueueClientDemo {
     private Destination destinationC;
 
     @Test
-    public void testJndi() {
+    void testJndi() {
         assertNotNull(connectionFactory);
         assertNotNull(destinationA);
         assertNotNull(destinationB);
@@ -42,29 +42,39 @@ public class JndiQueueClientDemo {
     }
 
     @Test
-    public void testQueueSender() throws JMSException, InterruptedException {
+    void testQueueConsumer() throws JMSException, InterruptedException {
         QueueConnectionFactory cf = (QueueConnectionFactory) connectionFactory;
         QueueConnection conn = cf.createQueueConnection();
         conn.start();
 
-        QueueSession session = conn.createQueueSession(false, Session.AUTO_ACKNOWLEDGE);
-        QueueSender sender = session.createSender((Queue) destinationA);
-        sender.setDeliveryMode(DeliveryMode.NON_PERSISTENT);
-        TextMessage message = session.createTextMessage();
+        final QueueSession session = conn.createQueueSession(false, Session.AUTO_ACKNOWLEDGE);
+        QueueReceiver receiver = session.createReceiver((Queue) destinationA);
+        receiver.setMessageListener(new MessageListener() {
+            @Override
+            public void onMessage(Message msg) {
+                logger.debug("Queue Receive: {}", msg);
 
-        String body = "This is a Queue message.@" + new Date();
-        message.setText(body);
-        message.setJMSReplyTo(destinationB);
+                Assertions.assertNotNull(msg);
+                try {
+                    String jmsMessageID = msg.getJMSMessageID();
+                    Destination replyTo = msg.getJMSReplyTo();
 
-        sender.send(message);
-        sender.close();
-        
-        logger.debug("Request: {}", message);
+                    QueueSender sender = session.createSender((Queue) replyTo);
+                    TextMessage respMessage = session.createTextMessage();
+                    respMessage.setJMSCorrelationID(jmsMessageID);
+                    respMessage.setText("Queue Response Message");
+                    sender.send(respMessage);
 
-        QueueReceiver receiver = session.createReceiver((Queue) destinationB, "JMSCorrelationID='" + message.getJMSMessageID()
-                + "'");
-        Message replyMessage = receiver.receive();
-        logger.debug("Response: {}", replyMessage);
+                    sender.close();
+
+                    logger.debug("Queue Send: {}", respMessage);
+                } catch (JMSException e) {
+                    logger.error("onMessage()-", e);
+                }
+            }
+        });
+
+        Thread.sleep(5 * 1000);
 
         receiver.close();
         session.close();

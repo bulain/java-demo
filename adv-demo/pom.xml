@@ -23,7 +23,7 @@
         <module>canal-demo</module>
         <module>cxf-demo</module>
         <module>dbs-demo</module>
-        <!--<module>drools-demo</module>-->
+        <module>drools-demo</module>
         <module>mybatis-demo</module>
         <module>netty-demo</module>
         <module>reactor-demo</module>

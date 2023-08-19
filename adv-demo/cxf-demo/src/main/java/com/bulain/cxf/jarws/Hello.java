@@ -1,6 +1,6 @@
 package com.bulain.cxf.jarws;
 
-import javax.xml.bind.annotation.XmlType;
+import jakarta.xml.bind.annotation.XmlType;
 
 @XmlType(name="hello", namespace="http://cxf.bulain.com/hello/1.0")
 public class Hello {

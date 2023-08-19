@@ -1,6 +1,6 @@
 package com.bulain.cxf.jaxrs;
 
-import javax.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name = "person")
 public class Person {
