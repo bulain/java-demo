@@ -4,8 +4,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.joda.time.DateTime;
-import org.junit.Before;
-import org.junit.Test;
 
 import com.baidubce.BceClientConfiguration;
 import com.baidubce.auth.DefaultBceCredentials;
@@ -22,12 +20,14 @@ import com.baidubce.services.tsdb.model.Query;
 import com.baidubce.services.tsdb.model.QueryDatapointsResponse;
 import com.baidubce.util.JsonUtils;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 public class TsdbClientDemo {
 
     private TsdbClient tsdbClient;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         String ACCESS_KEY_ID = "";
         String SECRET_ACCESS_KEY = "";
@@ -89,12 +89,12 @@ public class TsdbClientDemo {
                         //.withRelativeStart("2 seconds ago")) // 设置相对的开始时间，这里设置为2秒前
                         .withAbsoluteStart(start.getMillis()).withAbsoluteEnd(end.getMillis()))
                 .addGroupBy(new GroupBy() // 创建GroupBy对象
-                        .withName(TsdbConstants.GROUP_BY_NAME_TIME) // 设置分组方式为Time
+                        .withName(TsdbConstants.Group.GROUP_BY_NAME_TIME) // 设置分组方式为Time
                         .withTimeRangeSize("60 minutes") // 设置目标时长
                         .withGroupCount(1)) // 设置分组个数
                 .withLimit(100) // 设置返回数据点数目限制
                 .addAggregator(new Aggregator() // 创建Aggregator对象
-                        .withName(TsdbConstants.AGGREGATOR_NAME_SUM) // 设置聚合函数为Sum
+                        .withName(TsdbConstants.AggregatorName.AGGREGATOR_NAME_SUM) // 设置聚合函数为Sum
                         .withSampling("60 minutes"))); // 设置采样
 
         // 查询数据

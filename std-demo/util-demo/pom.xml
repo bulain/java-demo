@@ -63,16 +63,17 @@
         <dependency>
             <groupId>org.jolokia</groupId>
             <artifactId>jolokia-core</artifactId>
+            <version>1.7.2</version>
         </dependency>
         <dependency>
             <groupId>org.jolokia</groupId>
             <artifactId>jolokia-client-java</artifactId>
-            <version>1.6.2</version>
+            <version>1.7.2</version>
         </dependency>
         <dependency>
             <groupId>org.jolokia</groupId>
             <artifactId>jolokia-client-javascript</artifactId>
-            <version>1.6.2</version>
+            <version>1.7.2</version>
         </dependency>
 
         <!-- httpclient -->
@@ -93,11 +94,6 @@
         <dependency>
             <groupId>org.jasypt</groupId>
             <artifactId>jasypt</artifactId>
-            <version>1.9.3</version>
-        </dependency>
-        <dependency>
-            <groupId>org.jasypt</groupId>
-            <artifactId>jasypt-spring4</artifactId>
             <version>1.9.3</version>
         </dependency>
 

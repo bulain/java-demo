@@ -1,15 +1,10 @@
 package com.bulain.kafka;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.kafka.core.KafkaTemplate;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.bulain.kafka.KafkaApplication;
-
-@RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest(classes = KafkaApplication.class)
 public class KafkaSender {
 
