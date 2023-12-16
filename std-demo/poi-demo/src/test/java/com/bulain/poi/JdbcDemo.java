@@ -18,19 +18,20 @@ import java.util.zip.ZipOutputStream;
 
 import javax.sql.DataSource;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestExecutionListeners;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
 
-@RunWith(SpringJUnit4ClassRunner.class)
+@ExtendWith(SpringExtension.class)
 @TestExecutionListeners(value = {DependencyInjectionTestExecutionListener.class})
 @ContextConfiguration(locations = {"classpath*:spring/applicationContext*.xml"})
 public class JdbcDemo {
@@ -48,14 +49,14 @@ public class JdbcDemo {
     private DataSource dataSource;
     private java.util.Date startAt;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         logger.info("{}-start", Thread.currentThread());
 
         startAt = new java.util.Date();
     }
 
-    @After
+    @AfterEach
     public void tearDown() {
         java.util.Date endAt = new java.util.Date();
         double during = (endAt.getTime() - startAt.getTime()) / 1000d;

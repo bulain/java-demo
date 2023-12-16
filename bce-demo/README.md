@@ -1,2 +1,0 @@
-# bce-demo
-Bce Demo

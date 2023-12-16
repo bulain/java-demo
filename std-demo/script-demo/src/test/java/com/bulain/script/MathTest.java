@@ -1,11 +1,13 @@
 package com.bulain.script;
 
-import static org.junit.Assert.*;
+import org.junit.jupiter.api.Test;
+
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
 
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 
 public class MathTest {
     private ScriptEngineManager manager = new ScriptEngineManager();

@@ -1,12 +1,11 @@
 package com.bulain.script;
 
-import static org.junit.Assert.assertTrue;
-
-import org.junit.Test;
-
 import com.googlecode.jslint4java.JSLint;
 import com.googlecode.jslint4java.JSLintBuilder;
 import com.googlecode.jslint4java.JSLintResult;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class Jslint4javaTest {
     @Test

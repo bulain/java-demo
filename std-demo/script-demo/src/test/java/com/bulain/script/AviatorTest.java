@@ -1,6 +1,7 @@
 package com.bulain.script;
 
-import static org.junit.Assert.assertEquals;
+
+import org.junit.jupiter.api.Test;
 
 import javax.script.Bindings;
 import javax.script.Compilable;
@@ -8,7 +9,8 @@ import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
 
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 
 public class AviatorTest {
 

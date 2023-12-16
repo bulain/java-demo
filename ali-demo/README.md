@@ -1,2 +1,0 @@
-# aliyun-demo
-aliyun demo

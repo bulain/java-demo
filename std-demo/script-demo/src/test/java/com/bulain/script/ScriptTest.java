@@ -1,11 +1,11 @@
 package com.bulain.script;
 
+import org.junit.jupiter.api.Test;
+
 import java.util.List;
 
 import javax.script.ScriptEngineFactory;
 import javax.script.ScriptEngineManager;
-
-import org.junit.Test;
 
 public class ScriptTest {
     private ScriptEngineManager manager = new ScriptEngineManager();

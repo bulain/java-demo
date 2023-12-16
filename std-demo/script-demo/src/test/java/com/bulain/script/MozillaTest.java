@@ -1,28 +1,28 @@
 package com.bulain.script;
 
-import static org.junit.Assert.assertEquals;
-
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.mozilla.javascript.Context;
 import org.mozilla.javascript.Function;
 import org.mozilla.javascript.NativeJavaObject;
 import org.mozilla.javascript.Scriptable;
 import org.mozilla.javascript.ScriptableObject;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 public class MozillaTest {
 
     private Context ctx;
     private Scriptable scope;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         ctx = Context.enter();
         scope = ctx.initStandardObjects();
     }
 
-    @After
+    @AfterEach
     public void tearDown() {
         Context.exit();
     }
