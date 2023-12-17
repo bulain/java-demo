@@ -41,7 +41,7 @@ class HtmlToPdfTest {
 
     @Test
     @SneakyThrows
-    void htmlToPng4flying() {
+    void htmlToPdf4flying() {
 
         String code = "1234567890";
         String barcode = "";
