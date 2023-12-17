@@ -16,6 +16,7 @@ import org.fit.cssbox.io.DefaultDOMSource;
 import org.fit.cssbox.io.DocumentSource;
 import org.fit.cssbox.io.StreamDocumentSource;
 import org.fit.cssbox.layout.Dimension;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.core.io.ClassPathResource;
 import org.w3c.dom.Document;
@@ -31,7 +32,8 @@ import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 
-class HtmlToPngDemo {
+@Disabled
+class HtmlToPngTest {
 
     @Test
     @SneakyThrows
