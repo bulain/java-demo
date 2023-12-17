@@ -1,26 +1,26 @@
 package com.bulain.redis;
-import static org.junit.Assert.assertEquals;
 
 import java.util.List;
 
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.Test;
-
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.Pipeline;
 import redis.clients.jedis.Response;
 import redis.clients.jedis.Transaction;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 public class JedisDemo {
     private static Jedis jedis;
 
-    @BeforeClass
+    @BeforeAll
     public static void setUpClass() {
         jedis = new Jedis("localhost");
     }
 
-    @AfterClass
+    @AfterAll
     public static void tearDownClass() {
         jedis.disconnect();
     }

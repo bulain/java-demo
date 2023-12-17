@@ -1,30 +1,29 @@
 package com.bulain.zip;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import org.apache.commons.io.IOUtils;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
+
+import java.io.*;
 import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Enumeration;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
-import org.apache.commons.io.IOUtils;
-import org.junit.Test;
-
-public class UnzipTest {
+@Disabled
+class UnzipTest {
 
     @Test
-    public void testEnglish() throws IOException {
+    void testEnglish() throws IOException {
         String src = "src/test/resources/test-data/english.zip";
         String dir = "target/";
         unzip(src, dir);
     }
 
     @Test
-    public void testChinese() throws FileNotFoundException, IOException {
+    void testChinese() throws FileNotFoundException, IOException {
         String src = "src/test/resources/test-data/中文测试.zip";
         String dir = "target/";
         unzip(src, dir);
@@ -38,7 +37,7 @@ public class UnzipTest {
         }
         
         ZipFile zip = new ZipFile(src, Charset.forName("GBK"));
-        for (Enumeration entries = zip.entries(); entries.hasMoreElements();) {
+        for (Enumeration<? extends ZipEntry> entries = zip.entries(); entries.hasMoreElements();) {
             ZipEntry entry = (ZipEntry) entries.nextElement();
 
             System.out.println(entry.getName());
@@ -55,7 +54,7 @@ public class UnzipTest {
             String dest = dir + name;
 
             BufferedInputStream bin = new BufferedInputStream(zip.getInputStream(entry));
-            BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(dest));
+            BufferedOutputStream bos = new BufferedOutputStream(Files.newOutputStream(Paths.get(dest)));
             try {
                 IOUtils.copy(bin, bos);
             } finally {

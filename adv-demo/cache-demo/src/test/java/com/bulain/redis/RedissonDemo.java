@@ -1,12 +1,12 @@
 package com.bulain.redis;
 
-import static org.junit.Assert.assertEquals;
+import org.junit.jupiter.api.Test;
+import org.redisson.Redisson;
+import org.redisson.api.RedissonClient;
 
 import java.util.concurrent.ConcurrentMap;
 
-import org.junit.Test;
-import org.redisson.Redisson;
-import org.redisson.api.RedissonClient;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class RedissonDemo {
     @Test

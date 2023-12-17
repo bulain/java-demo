@@ -24,7 +24,6 @@ import java.util.List;
 
 import org.apache.commons.lang.math.RandomUtils;
 import org.bson.Document;
-import org.junit.Test;
 
 import com.mongodb.Block;
 import com.mongodb.MongoClient;
@@ -39,6 +38,7 @@ import com.mongodb.client.model.UpdateOneModel;
 import com.mongodb.client.model.WriteModel;
 import com.mongodb.client.result.DeleteResult;
 import com.mongodb.client.result.UpdateResult;
+import org.junit.jupiter.api.Test;
 
 public class MongoDemo {
 

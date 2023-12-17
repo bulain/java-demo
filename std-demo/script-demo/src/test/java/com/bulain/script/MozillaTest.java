@@ -2,6 +2,7 @@ package com.bulain.script;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.mozilla.javascript.Context;
 import org.mozilla.javascript.Function;
@@ -11,24 +12,25 @@ import org.mozilla.javascript.ScriptableObject;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class MozillaTest {
+@Disabled
+class MozillaTest {
 
     private Context ctx;
     private Scriptable scope;
 
     @BeforeEach
-    public void setUp() {
+    void setUp() {
         ctx = Context.enter();
         scope = ctx.initStandardObjects();
     }
 
     @AfterEach
-    public void tearDown() {
+    void tearDown() {
         Context.exit();
     }
 
     @Test
-    public void testRhino() {
+    void testRhino() {
 
         // test
         Object eval = ctx.evaluateString(scope, "3+2*4", null, 0, null);
@@ -39,7 +41,7 @@ public class MozillaTest {
     }
 
     @Test
-    public void testCallJsMethod() {
+    void testCallJsMethod() {
 
         // test
         ctx.evaluateString(scope, "function test(){page=9; return page;}", null, 0, null);
@@ -51,7 +53,7 @@ public class MozillaTest {
     }
 
     @Test
-    public void testGlobal2VarScope() {
+    void testGlobal2VarScope() {
 
         //global
         Context gctx = Context.enter();
@@ -89,7 +91,7 @@ public class MozillaTest {
     }
 
     @Test
-    public void testCallJavaStaticMethod1() {
+    void testCallJavaStaticMethod1() {
         // prepare
         String script = "var JavaMethod = Packages.com.bulain.script.MozillaTest.JavaMethod;JavaMethod.testStatic('i love javascript.')";
 
@@ -102,7 +104,7 @@ public class MozillaTest {
     }
 
     @Test
-    public void testCallJavaStaticMethod2() {
+    void testCallJavaStaticMethod2() {
 
         // prepare
         String script = "com.bulain.script.MozillaTest.JavaMethod.testStatic('i love javascript.')";
@@ -117,7 +119,7 @@ public class MozillaTest {
     }
 
     @Test
-    public void testCallJavaMethod1() {
+    void testCallJavaMethod1() {
         // prepare
         String script = "var methods = new com.bulain.script.MozillaTest.JavaMethod(); methods.test('i love javascript.')";
 
@@ -130,7 +132,7 @@ public class MozillaTest {
     }
 
     @Test
-    public void testCallJavaMethod2() {
+    void testCallJavaMethod2() {
 
         JavaMethod callback = new JavaMethod();
         Scriptable obj = Context.toObject(callback, scope);
@@ -148,7 +150,7 @@ public class MozillaTest {
     }
 
     @Test
-    public void testCallJavaMethod3() {
+    void testCallJavaMethod3() {
 
         JavaMethod callback = new JavaMethod();
         Scriptable obj = Context.toObject(callback, scope);

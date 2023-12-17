@@ -1,6 +1,6 @@
 package com.bulain.memcached;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.IOException;
 import java.util.Properties;
@@ -11,14 +11,14 @@ import net.spy.memcached.CASResponse;
 import net.spy.memcached.CASValue;
 import net.spy.memcached.MemcachedClient;
 
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 public class SpyMemcachedDemo {
     private static MemcachedClient client;
 
-    @BeforeClass
+    @BeforeAll
     public static void setUpClass() throws IOException {
         Properties systemProperties = System.getProperties();
         systemProperties.put("net.spy.log.LoggerImpl", "net.spy.memcached.compat.log.Log4JLogger");
@@ -27,7 +27,7 @@ public class SpyMemcachedDemo {
         client = new MemcachedClient(new BinaryConnectionFactory(), AddrUtil.getAddresses("localhost:11211"));
     }
 
-    @AfterClass
+    @AfterAll
     public static void tearDownClass() {
         client.shutdown();
     }

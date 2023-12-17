@@ -1,9 +1,8 @@
 package com.bulain.redis;
 
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.Test;
-
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPubSub;
@@ -12,7 +11,7 @@ public class PubSubDemo {
     private static JedisPool pool;
     private static String channel = "/bulain/channel";
 
-    @BeforeClass
+    @BeforeAll
     public static void setUpClass() {
         pool = new JedisPool("localhost");
 
@@ -31,7 +30,7 @@ public class PubSubDemo {
 
     }
 
-    @AfterClass
+    @AfterAll
     public static void tearDownClass() {
         pool.destroy();
     }

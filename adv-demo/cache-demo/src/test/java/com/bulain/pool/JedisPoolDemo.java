@@ -1,17 +1,16 @@
 package com.bulain.pool;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 
-@RunWith(SpringJUnit4ClassRunner.class)
+@ExtendWith(SpringExtension.class)
 @ContextConfiguration(locations = {"classpath*:spring/springContext-redis.xml"})
 public class JedisPoolDemo {
 

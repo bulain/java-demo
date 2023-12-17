@@ -1,6 +1,5 @@
 package com.bulain.redis;
 
-import static org.junit.Assert.assertEquals;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -9,22 +8,24 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 import org.apache.commons.io.IOUtils;
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 import org.springframework.core.io.ClassPathResource;
 
 import redis.clients.jedis.Jedis;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 public class JedisPtDemo {
     private static Jedis jedis;
 
-    @BeforeClass
+    @BeforeAll
     public static void setUpClass() {
         jedis = new Jedis("localhost");
     }
 
-    @AfterClass
+    @AfterAll
     public static void tearDownClass() {
         jedis.disconnect();
     }
