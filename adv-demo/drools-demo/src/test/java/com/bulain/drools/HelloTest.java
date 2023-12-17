@@ -1,7 +1,7 @@
 package com.bulain.drools;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.kie.api.KieServices;
 import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
@@ -15,7 +15,7 @@ public class HelloTest {
 	protected KieServices kieServices;
 	protected KieContainer kieContainer;
 
-	@Before
+	@BeforeEach
 	public void setUp() {
 		kieServices = KieServices.Factory.get();
 		kieContainer = kieServices.getKieClasspathContainer();
