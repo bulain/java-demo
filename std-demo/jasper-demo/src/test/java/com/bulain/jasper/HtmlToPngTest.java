@@ -49,9 +49,10 @@ class HtmlToPngTest {
             baos.flush();
             barcode = "data:image/png;base64," + Base64.getEncoder().encodeToString(baos.toByteArray());
         }
+        String d2code = "12345678901234567890";
         String qrcode = "";
         {
-            BitMatrix bitMatrix = new QRCodeWriter().encode(code, BarcodeFormat.QR_CODE, 60, 60);
+            BitMatrix bitMatrix = new QRCodeWriter().encode(d2code, BarcodeFormat.QR_CODE, 60, 60);
             BufferedImage image = MatrixToImageWriter.toBufferedImage(bitMatrix);
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             ImageIO.write(image, "png", baos);
@@ -67,7 +68,7 @@ class HtmlToPngTest {
         html = html.replace("####0", barcode);
         html = html.replace("####1", code);
         html = html.replace("XXXX0", qrcode);
-        html = html.replace("XXXX1", code);
+        html = html.replace("XXXX1", d2code);
         ByteArrayInputStream bais = new ByteArrayInputStream(html.getBytes(StandardCharsets.UTF_8));
         Document document = XMLResource.load(bais).getDocument();
 
@@ -120,7 +121,7 @@ class HtmlToPngTest {
         media.setDimensions(200, 300);
         media.setDeviceDimensions(200, 300);
 
-        DOMAnalyzer da = new DOMAnalyzer(doc, docSource.getURL());
+        DOMAnalyzer da = new DOMAnalyzer(doc, docSource.getURL(),false);
         da.setMediaSpec(media);
         da.attributesToStyles();
         da.addStyleSheet(null, CSSNorm.stdStyleSheet(), DOMAnalyzer.Origin.AGENT);
