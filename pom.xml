@@ -31,27 +31,11 @@
 
     <dependencyManagement>
         <dependencies>
-            <!-- spring-framework -->
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-framework-bom</artifactId>
-                <version>6.0.11</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-            <!-- spring-data -->
-            <dependency>
-                <groupId>org.springframework.data</groupId>
-                <artifactId>spring-data-bom</artifactId>
-                <version>2023.0.3</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
             <!-- spring-boot -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
-                <version>3.1.2</version>
+                <version>3.2.6</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
