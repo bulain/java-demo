@@ -12,10 +12,10 @@ import com.lmax.disruptor.dsl.Disruptor;
 import org.junit.jupiter.api.Test;
 
 @SuppressWarnings("unchecked")
-public class LongEventDemo {
+class LongEventDemo {
 
     @Test
-    public void testProducer() {
+    void testProducer() {
         // Executor that will be used to construct new threads for consumers
         ThreadFactory threadFactory = Executors.defaultThreadFactory();
 
@@ -26,7 +26,7 @@ public class LongEventDemo {
         int bufferSize = 16;
 
         // Construct the Disruptor
-        Disruptor<LongEvent> disruptor = new Disruptor<LongEvent>(factory, bufferSize, threadFactory);
+        Disruptor<LongEvent> disruptor = new Disruptor<>(factory, bufferSize, threadFactory);
 
         // Connect the handler
         disruptor.handleEventsWith(new LongEventHandler()).then(new ClearingEventHandler());
@@ -49,7 +49,7 @@ public class LongEventDemo {
     }
 
     @Test
-    public void testProducerWithTranslator() {
+    void testProducerWithTranslator() {
         // Executor that will be used to construct new threads for consumers
         ThreadFactory threadFactory = Executors.defaultThreadFactory();
 
@@ -60,7 +60,7 @@ public class LongEventDemo {
         int bufferSize = 16;
 
         // Construct the Disruptor
-        Disruptor<LongEvent> disruptor = new Disruptor<LongEvent>(factory, bufferSize, threadFactory);
+        Disruptor<LongEvent> disruptor = new Disruptor<>(factory, bufferSize, threadFactory);
 
         // Connect the handler
         disruptor.handleEventsWith(new LongEventHandler()).then(new ClearingEventHandler());
@@ -83,7 +83,7 @@ public class LongEventDemo {
     }
 
     @Test
-    public void testMultiThread() throws InterruptedException {
+    void testMultiThread() throws InterruptedException {
         // Executor that will be used to construct new threads for consumers
         ThreadFactory threadFactory = Executors.defaultThreadFactory();
 
@@ -94,7 +94,7 @@ public class LongEventDemo {
         int bufferSize = 16;
 
         // Construct the Disruptor
-        Disruptor<LongEvent> disruptor = new Disruptor<LongEvent>(factory, bufferSize, threadFactory);
+        Disruptor<LongEvent> disruptor = new Disruptor<>(factory, bufferSize, threadFactory);
 
         // Connect the handler
         disruptor.handleEventsWith(new LongEventHandler()).then(new ClearingEventHandler());
