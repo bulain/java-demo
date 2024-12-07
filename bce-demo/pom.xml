@@ -17,8 +17,6 @@
         <maven.compiler.target>17</maven.compiler.target>
         <maven.compiler.source>17</maven.compiler.source>
 
-        <bce.version>0.10.276</bce.version>
-
     </properties>
     
     <modules>
@@ -33,11 +31,15 @@
             <dependency>
                 <groupId>com.baidubce</groupId>
                 <artifactId>bce-java-sdk</artifactId>
-                <version>${bce.version}</version>
+                <version>0.10.353</version>
                 <exclusions>
                     <exclusion>
                         <groupId>org.apache.hbase</groupId>
                         <artifactId>hbase-client</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.bouncycastle</groupId>
+                        <artifactId>bcprov-jdk15on</artifactId>
                     </exclusion>
                 </exclusions>
             </dependency>
